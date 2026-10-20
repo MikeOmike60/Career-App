@@ -1,8 +1,8 @@
 /**
  * „Noch ein Jahr?“ – eigene Entscheidung, die nach der jährlichen OVR-Wahl
  * erscheint, wenn die normale Ruhestandsabwägung anschlägt, der Körper aber
- * noch trägt. Es gibt kein Alterscap: solange der Körper mitmacht, darf die
- * Frage nach jeder weiteren Saison erneut kommen.
+ * noch trägt. Die Frage darf nach jeder weiteren Saison erneut kommen, bis
+ * Körper oder Höchstalter (careerAgeLimit) die Karriere beenden.
  */
 import type { GameState, PendingRetirementDecision, RetirementOption, RetirementStory } from "./types";
 import type { Rng } from "./rng";

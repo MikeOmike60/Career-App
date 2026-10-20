@@ -172,6 +172,8 @@ export function careerStory(state: GameState, ctx: StoryContext): StoryChapter[]
   const ending =
     state.retirementCause === "body"
       ? `Am Ende entschied der Körper. Nach ${last.age} Jahren und ${totalApps} Pflichtspielen ging es nicht mehr. `
+      : state.retirementCause === "natural"
+        ? `Mit ${last.age} Jahren war der Moment gekommen, den kein Fußballer aufhalten kann. ${state.player.retirementExtensions > 0 ? "Er hatte alles herausgezögert, was herauszuzögern war. " : ""}`
       : state.player.retirementExtensions > 0
         ? `${state.player.retirementExtensions === 1 ? "Eine Saison" : `${state.player.retirementExtensions} Saisons`} hängte er noch an – weil er nicht loslassen konnte. Mit ${last.age} war Schluss. `
         : `Mit ${last.age} Jahren entschied er selbst, dass es genug war. `;

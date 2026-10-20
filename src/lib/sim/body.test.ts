@@ -8,6 +8,9 @@ import {
   canPlayAnotherSeason,
   extensionWear,
   isBodyFinished,
+  maxCareerAge,
+  MAX_CAREER_AGE,
+  MAX_CAREER_AGE_ABSOLUTE,
   nextBodyWear,
 } from "./body";
 
@@ -52,7 +55,7 @@ function runCareer(
   return { age, wear };
 }
 
-describe("Körperverschleiß statt Alterslimit", () => {
+describe("Körperverschleiß und Höchstalter", () => {
   it("wächst streng monoton und nie um weniger als den Mindestzuwachs", () => {
     let wear = 0;
     for (let age = 16; age <= 60; age++) {
@@ -83,9 +86,9 @@ describe("Körperverschleiß statt Alterslimit", () => {
     expect(isBodyFinished(97.4)).toBe(false);
   });
 
-  it("erlaubt einem extrem robusten, verletzungsfreien Verlauf Alter 50 mit Verschleiß unter 100", () => {
-    const { age, wear } = runCareer(idealSeason, 50);
-    expect(age).toBe(50);
+  it("lässt einen extrem robusten, verletzungsfreien Verlauf körperlich bis zum Höchstalter durchhalten", () => {
+    const { age, wear } = runCareer(idealSeason, MAX_CAREER_AGE);
+    expect(age).toBe(MAX_CAREER_AGE);
     expect(wear).toBeLessThan(BODY_WEAR_LIMIT);
     expect(canPlayAnotherSeason(wear)).toBe(true);
   });
@@ -93,12 +96,12 @@ describe("Körperverschleiß statt Alterslimit", () => {
   it("verschleißt einen normal belasteten Verlauf klar schneller", () => {
     let wear = 0;
     let injuries = 0;
-    for (let age = 16; age < 50; age++) {
+    for (let age = 16; age < MAX_CAREER_AGE; age++) {
       if (age % 4 === 0) injuries += 1;
       wear = nextBodyWear(normalSeason(age, wear, injuries));
       if (wear >= BODY_WEAR_LIMIT) break;
     }
-    const ideal = runCareer(idealSeason, 50).wear;
+    const ideal = runCareer(idealSeason, MAX_CAREER_AGE).wear;
     expect(wear).toBeGreaterThan(ideal + 20);
   });
 
@@ -115,6 +118,13 @@ describe("Körperverschleiß statt Alterslimit", () => {
       }
     }
     expect(endAge).toBeLessThan(45);
+  });
+
+  it("setzt ein realistisches Höchstalter – Torhüter und Legenden etwas später", () => {
+    const field = maxCareerAge({ goalkeeper: false, longevity: 0.5, legend: false });
+    expect(field).toBe(MAX_CAREER_AGE);
+    expect(maxCareerAge({ goalkeeper: true, longevity: 0.5, legend: false })).toBeGreaterThan(field);
+    expect(maxCareerAge({ goalkeeper: true, longevity: 1, legend: true })).toBeLessThanOrEqual(MAX_CAREER_AGE_ABSOLUTE);
   });
 
   it("verhindert ein Comeback nach körperlichem Karriereende", () => {

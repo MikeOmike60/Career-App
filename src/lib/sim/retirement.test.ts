@@ -9,7 +9,7 @@ import {
   pickRetirementStory,
   type RetirementStoryInput,
 } from "./retirement";
-import { advanceToNextDecision, applyDecision, applyDecisionAndAdvance, createInitialState, signWithClub } from "./engine";
+import { advanceToNextDecision, applyDecision, applyDecisionAndAdvance, careerAgeLimit, createInitialState, decisionOptionIds, signWithClub } from "./engine";
 import { canPlayAnotherSeason, isBodyFinished } from "./body";
 import { clubsOf } from "./data";
 import { subRng } from "./rng";
@@ -85,44 +85,37 @@ describe("Ruhestandsentscheidung „Noch ein Jahr?“", () => {
     expect(d.options.map((o) => o.id)).toEqual(["retire-continue", "retire-stop"]);
   });
 
-  it("verlängert bei „weitermachen“ auch jenseits 50, solange der Körper trägt", () => {
-    const s = veteran(77, 51, 52);
+  it("verlängert bei „weitermachen“, solange Körper und Höchstalter es zulassen", () => {
+    const s = veteran(77, 36, 52);
     const wearBefore = s.player.bodyWear;
     s.pending = buildRetirementDecision(s, subRng(77, "retire"));
     const next = applyDecision(s, "retire-continue");
-    // Die Verlängerung wird angenommen: mehr Verschleiß, aber kein Karriereende.
     expect(next.player.retirementExtensions).toBe(1);
     expect(next.player.bodyWear).toBeGreaterThan(wearBefore);
-    expect(next.retirementCause).not.toBe("choice");
-    // Nach der Zusage folgt zuerst das jährliche Transferfenster; die
-    // Alterung passiert mit der dann gespielten Saison.
     expect(next.retired).toBe(false);
-    expect(next.player.retireAge).toBeGreaterThanOrEqual(52);
+    expect(next.retirementCause).not.toBe("choice");
     expect(canPlayAnotherSeason(next.player.bodyWear)).toBe(true);
-    /**
-     * Beweis über die tatsächlich gespielte Saison: erst die offenen
-     * Entscheidungen (u. a. das neue Transferfenster) auflösen, dann muss eine
-     * echte Saison mit Alter 52+ in der Chronik stehen.
-     */
-    let s2 = next;
-    let guard = 0;
-    const before = s2.seasons.length;
-    while (s2.seasons.length === before && !s2.retired && guard++ < 8) {
-      const p2 = s2.pending;
-      if (!p2) {
-        s2 = advanceToNextDecision(s2);
-        continue;
+  });
+
+  it("beendet jede Karriere spätestens mit dem Höchstalter – auch wenn man immer weitermacht", () => {
+    for (const seed of [77, 78, 79, 80]) {
+      let s = veteran(seed, 37, 20);
+      const limit = careerAgeLimit(s);
+      for (let guard = 0; guard < 60 && s.phase !== "end"; guard++) {
+        const p = s.pending;
+        if (!p) {
+          s = advanceToNextDecision(s);
+          if (!s.pending && s.phase !== "end") break;
+          continue;
+        }
+        const ids = decisionOptionIds(p);
+        const pick = ["retire-continue", "stay", "comeback-no"].find((id) => ids.includes(id)) ?? ids[0]!;
+        s = applyDecisionAndAdvance(s, pick);
       }
-      s2 = applyDecisionAndAdvance(
-        s2,
-        p2.kind === "club" || p2.kind === "comeback" ? "stay" : (p2.options[0]?.id ?? "stay"),
-      );
+      expect(s.retired).toBe(true);
+      expect(s.seasons[s.seasons.length - 1]!.age).toBeLessThan(limit);
+      expect(s.player.age).toBeLessThanOrEqual(limit);
     }
-    const played = s2.seasons[s2.seasons.length - 1]!;
-    expect(s2.seasons.length).toBeGreaterThan(before);
-    // Die Saison wird mit 51 gespielt; danach ist der Spieler nachweislich 52+.
-    expect(played.age).toBeGreaterThanOrEqual(51);
-    expect(s2.player.age).toBeGreaterThanOrEqual(52);
   });
 
   it("beendet die Karriere bei „aufhören“ mit Ursache choice", () => {

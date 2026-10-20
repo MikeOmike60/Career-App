@@ -142,7 +142,11 @@ const CareerCard = forwardRef<HTMLDivElement, { state: GameState; onOpenTrophy: 
           </p>
           <p className="tiny muted break" style={{ margin: "4px 0 0" }}>
             Körperlicher Zustand am Karriereende: {bodyWearLabel(state.player.bodyWear)}
-            {state.retirementCause === "body" ? " · Der Körper konnte nicht mehr." : ""}
+            {state.retirementCause === "body"
+              ? " · Der Körper konnte nicht mehr."
+              : state.retirementCause === "natural"
+                ? ` · Mit ${state.player.age} war die Zeit gekommen.`
+                : ""}
           </p>
         </div>
         {state.investorProject ? (
