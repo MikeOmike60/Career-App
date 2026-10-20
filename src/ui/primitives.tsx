@@ -58,53 +58,54 @@ function hexPoints(cx: number, cy: number, r: number): string {
   }).join(" ");
 }
 
+const stageImages = new Map<boolean, string>();
+
+/** Hexagons als SVG-Datei – Safari rastert Bilder einmal und verschiebt sie danach nur noch. */
+function stageImage(dark: boolean): string {
+  const cached = stageImages.get(dark);
+  if (cached) return cached;
+  const hexes = LAYERS.flatMap((l) => l.hexes)
+    .map(
+      (h) =>
+        `<g opacity="${h.o}">` +
+        `<polygon points="${hexPoints(h.x, h.y + 7, h.r)}" fill="${dark ? "#000" : "#24394a"}" opacity="${dark ? 0.25 : 0.07}"/>` +
+        `<polygon points="${hexPoints(h.x, h.y, h.r)}" fill="url(#f)" stroke="${dark ? "rgba(124,199,255,.35)" : "#fff"}" stroke-width="2"/>` +
+        `<polygon points="${hexPoints(h.x, h.y, h.r * 0.78)}" fill="none" stroke="${dark ? "rgba(124,199,255,.18)" : "rgba(19,32,43,.06)"}" stroke-width="1.5"/>` +
+        `</g>`,
+    )
+    .join("");
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800">` +
+    `<defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="1">` +
+    `<stop offset="0" stop-color="#fff" stop-opacity="${dark ? 0.16 : 1}"/>` +
+    `<stop offset="1" stop-color="${dark ? "#7cc7ff" : "#e9eef2"}" stop-opacity="${dark ? 0.03 : 0.7}"/>` +
+    `</linearGradient></defs>${hexes}</svg>`;
+  const url = `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}")`;
+  stageImages.set(dark, url);
+  return url;
+}
+
 /**
  * FIFA-13-Bühne: weiße, schwebende Hexagons auf silbrigem Grund.
- * Die Ebene wird einmal gerastert und danach nur per GPU verschoben –
- * so bleibt es auch auf älteren iPhones flüssig.
+ * Die Hexagons sind ein fertiges Bild auf einer eigenen GPU-Ebene – so bleibt
+ * es auch auf älteren iPhones flüssig.
  */
 export function HexBackground({ dark, still }: { dark?: boolean; still?: boolean }) {
-  const id = dark ? "d" : "l";
+  const layer = LAYERS[0]!;
   return (
     <div className={`stage ${dark ? "stage-dark" : ""}`} aria-hidden>
-      {LAYERS.map((layer, li) => (
-        <svg
-          key={li}
-          className={still ? undefined : "hex-layer"}
-          viewBox="0 0 420 800"
-          preserveAspectRatio="xMidYMid slice"
-          style={
-            {
-              "--dur": `${layer.dur}s`,
-              "--delay": `${layer.delay}s`,
-              "--dx": `${layer.dx}px`,
-              "--dy": `${layer.dy}px`,
-            } as React.CSSProperties
-          }
-        >
-          {li === 0 && (
-            <defs>
-              <linearGradient id={`hexfill-${id}`} x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#fff" stopOpacity={dark ? 0.16 : 1} />
-                <stop offset="1" stopColor={dark ? "#7cc7ff" : "#e9eef2"} stopOpacity={dark ? 0.03 : 0.7} />
-              </linearGradient>
-            </defs>
-          )}
-          {layer.hexes.map((h, i) => (
-            <g key={i} opacity={h.o}>
-              {/* weicher Schatten als versetzte Fläche statt teurem SVG-Filter */}
-              <polygon points={hexPoints(h.x, h.y + 7, h.r)} fill={dark ? "#000" : "#24394a"} opacity={dark ? 0.25 : 0.07} />
-              <polygon points={hexPoints(h.x, h.y, h.r)} fill={`url(#hexfill-${id})`} stroke={dark ? "rgba(124,199,255,.35)" : "#fff"} strokeWidth={2} />
-              <polygon
-                points={hexPoints(h.x, h.y, h.r * 0.78)}
-                fill="none"
-                stroke={dark ? "rgba(124,199,255,.18)" : "rgba(19,32,43,.06)"}
-                strokeWidth={1.5}
-              />
-            </g>
-          ))}
-        </svg>
-      ))}
+      <div
+        className={still ? "hex-image" : "hex-image hex-layer"}
+        style={
+          {
+            backgroundImage: stageImage(Boolean(dark)),
+            "--dur": `${layer.dur}s`,
+            "--delay": `${layer.delay}s`,
+            "--dx": `${layer.dx}px`,
+            "--dy": `${layer.dy}px`,
+          } as React.CSSProperties
+        }
+      />
       {!still && <div className="stage-ray" />}
     </div>
   );

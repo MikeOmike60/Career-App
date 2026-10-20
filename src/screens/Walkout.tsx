@@ -44,19 +44,18 @@ export function Walkout({ data, age, onDone }: { data: CardData; age: number; on
   return (
     <motion.div className="overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => (stage < 3 ? setStage(3) : onDone())}>
       <HexBackground dark still />
-      {/* Lichtstrahlen */}
+      {/* Lichtstrahlen: bildschirmgroß und nur pulsierend – eine riesige rotierende
+          Fläche hat Safari auf dem iPhone auf ~3 fps gedrückt. */}
       <motion.div
         aria-hidden
         style={{
           position: "absolute",
-          width: "180vmax",
-          height: "180vmax",
-          background: `repeating-conic-gradient(from 0deg, ${glow}33 0deg 8deg, transparent 8deg 22deg)`,
-          borderRadius: "50%",
-          willChange: "transform",
+          inset: 0,
+          background: `repeating-conic-gradient(from 0deg at 50% 45%, ${glow}38 0deg 8deg, transparent 8deg 22deg)`,
+          willChange: "opacity",
         }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity }}
       />
       <motion.div
         aria-hidden
