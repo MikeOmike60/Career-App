@@ -85,7 +85,9 @@ export function careerStory(state: GameState, ctx: StoryContext): StoryChapter[]
     rise += `Ein schneller Durchbruch blieb aus. ${name} musste sich jeden Schritt erarbeiten – Saison für Saison, Training für Training. `;
   }
   if (firstTransfer) {
-    rise += `${firstTransfer.transferNote ?? ""} – mit ${firstTransfer.age} Jahren der erste große Schritt in die Fremde. `;
+    const to = state.seasons.find((x) => x.index > firstTransfer.index && x.clubId !== firstTransfer.clubId);
+    const abroad = to ? getClub(to.clubId).country !== getClub(firstTransfer.clubId).country : false;
+    rise += `${firstTransfer.transferNote ?? ""} – mit ${firstTransfer.age} Jahren ${abroad ? "der erste große Schritt in die Fremde" : "der erste große Wechsel seiner Laufbahn"}. `;
   }
   if (firstBig) {
     rise += `Mit ${firstBig.age} Jahren knackte er erstmals die 75 – ${firstBig.age <= 21 ? "in einem Alter, in dem andere noch auf der Bank sitzen." : "spät, aber umso verdienter."}`;
@@ -124,7 +126,7 @@ export function careerStory(state: GameState, ctx: StoryContext): StoryChapter[]
     scars.push(
       b.betrayedClubIds.length > 1
         ? `Mit ${b.age} Jahren der Wechsel zu ${club(b.toClubId)} – Doppelverrat an ${victims}. Für zwei Kurven wurde er an diesem Tag zum Feind.`
-        : `Mit ${b.age} Jahren ging er zu ${club(b.toClubId)}. ${b.label}. In ${victims} sprechen sie seinen Namen bis heute nicht aus.`,
+        : `Mit ${b.age} Jahren ging er zu ${club(b.toClubId)}. ${b.label}. Bei ${victims} sprechen sie seinen Namen bis heute nicht aus.`,
     );
   }
   if (state.player.majorInjuries > 0) {
@@ -161,7 +163,7 @@ export function careerStory(state: GameState, ctx: StoryContext): StoryChapter[]
   if (keyDecision) {
     chapters.push({
       title: "Die Weichenstellung",
-      text: `Mit ${keyDecision.age} Jahren stand er vor der Frage „${keyDecision.title}“. Er entschied sich: ${keyDecision.choice}. ${keyDecision.consequence.split(/(?<=[.!?])\s/)[0] ?? ""} Rückblickend sagte er, das sei der Moment gewesen, in dem er wusste, wer er als Fußballer sein wollte.`,
+      text: `Mit ${keyDecision.age} Jahren stand er vor der Frage „${keyDecision.title}“. Er entschied sich: ${keyDecision.choice}. Die Zeitungen schrieben damals: „${keyDecision.consequence.split(/(?<=[.!?])\s/)[0] ?? ""}“ Rückblickend sagte er, das sei der Moment gewesen, in dem er wusste, wer er als Fußballer sein wollte.`,
     });
   }
 

@@ -700,7 +700,7 @@ function rollInjury(
 ): { text?: string; monthsOut: number; major: boolean } {
   // Bewusst selten: etwa jede 6.–8. Saison eine nennenswerte Verletzung,
   // bei anfälligen oder älteren Spielern spürbar öfter.
-  const base = 0.04 + p.injuryRisk / 700 + p.injuryProneness / 800 + physInjury * 0.6 + Math.max(0, p.age - 31) / 220;
+  const base = 0.05 + p.injuryRisk / 700 + p.injuryProneness / 800 + physInjury * 0.6 + Math.max(0, p.age - 31) / 220;
   if (!rng.chance(clamp(base, 0.03, 0.32))) return { monthsOut: 0, major: false };
   const majorChance = clamp(0.03 + p.injuryProneness / 700 + Math.max(0, p.age - 32) / 300, 0.02, 0.14);
   if (rng.chance(majorChance)) {
@@ -1974,7 +1974,7 @@ function applyClubMove(s: GameState, offer: ClubOffer, rng: Rng): string {
     const names = hits.map((h) => getClub(h.clubId).name);
     const main = hits[0]!;
     if (tier === 1) {
-      consequence = `${main.label}: Du wechselst von ${oldClub.name} zu ${club.name}. In ${names[0]} wird dein Trikot aus dem Fanshop genommen, bei ${club.name} pfeifen sie dich beim ersten Training aus. Nur Leistung kann das drehen – vielleicht.`;
+      consequence = `${main.label}: Du wechselst von ${oldClub.name} zu ${club.name}. Bei ${names[0]} wird dein Trikot aus dem Fanshop genommen, bei ${club.name} pfeifen sie dich beim ersten Training aus. Nur Leistung kann das drehen – vielleicht.`;
     } else if (tier === 2) {
       consequence =
         hits.length > 1

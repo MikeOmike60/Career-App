@@ -27,7 +27,7 @@ export const GOSSIP_EVENTS: EventDef[] = [
     id: "rumor-rival",
     title: "Schlagzeile: Wechsel zum Erzrivalen?",
     intro: (s) =>
-      `„${lastName(s).toUpperCase()} VOR WECHSEL ZU ${rivalOf(s)!.name.toUpperCase()}!“ – die Zeitung will es aus „Vereinskreisen“ wissen. Vor dem Trainingsgelände stehen 200 aufgebrachte Fans.`,
+      `„${lastName(s).toUpperCase()} VOR WECHSEL ZU ${(rivalOf(s)?.name ?? "DEM ERZRIVALEN").toUpperCase()}!“ – die Zeitung will es aus „Vereinskreisen“ wissen. Vor dem Trainingsgelände stehen 200 aufgebrachte Fans.`,
     weight: 10,
     when: (s) => Boolean(rivalOf(s)) && s.seasons.length >= 2,
     traits: { loyal: 1.5, greedy: 1.4, showman: 1.2 },
@@ -408,7 +408,7 @@ export const GOSSIP_EVENTS: EventDef[] = [
     id: "stadium-return",
     title: "Rückkehr ins Stadion des Verrats",
     intro: (s) =>
-      `Zum ersten Mal seit deinem Wechsel spielst du wieder bei ${betrayedHere(s)!.name}. Im Gästeblock hängt ein Banner: „VERRÄTER“. Die Polizei hat die Einheiten verdoppelt.`,
+      `Zum ersten Mal seit deinem Wechsel spielst du wieder bei ${betrayedHere(s)?.name ?? "deinem Ex-Verein"}. Im Gästeblock hängt ein Banner: „VERRÄTER“. Die Polizei hat die Einheiten verdoppelt.`,
     weight: 14,
     when: (s) => Boolean(betrayedHere(s)),
     options: [
@@ -417,7 +417,9 @@ export const GOSSIP_EVENTS: EventDef[] = [
         label: "Wenn du triffst: provokant jubeln",
         hint: "Öl ins Feuer – oder Kultstatus bei den Neuen",
         apply: (s, rng) => {
-          const victim = betrayedHere(s)!;
+          // Die Lage kann sich seit dem Aufbau der Entscheidung geändert haben (z. B. Leihe).
+          const victim = betrayedHere(s);
+          if (!victim) return { consequence: "Das Spiel findet ohne dich statt – die Rückkehr muss warten.", deltas: [] };
           s.fanRelations[victim.id] = Math.max(0, (s.fanRelations[victim.id] ?? 30) - 15);
           return outcome(rng, [
             [{ consequence: `Du triffst – und legst den Finger an die Lippen. Die neuen Fans lieben dich, bei ${victim.name} bist du jetzt endgültig Staatsfeind Nummer eins.`, deltas: adjust(s, { fans: 16, morale: 10, reputation: 4 }) }, 50],
@@ -430,7 +432,8 @@ export const GOSSIP_EVENTS: EventDef[] = [
         label: "Nicht jubeln – Respekt zeigen",
         hint: "Eine Geste, die vielleicht Brücken baut",
         apply: (s) => {
-          const victim = betrayedHere(s)!;
+          const victim = betrayedHere(s);
+          if (!victim) return { consequence: "Das Spiel findet ohne dich statt – die Rückkehr muss warten.", deltas: [] };
           s.fanRelations[victim.id] = Math.min(100, (s.fanRelations[victim.id] ?? 20) + 8);
           return { consequence: `Du triffst und hebst entschuldigend die Hände. Ein paar Pfiffe bei ${victim.name} werden leiser.`, deltas: adjust(s, { mentality: 3, morale: -2 }) };
         },
@@ -441,7 +444,7 @@ export const GOSSIP_EVENTS: EventDef[] = [
     id: "heart-club-tv",
     title: "„Er kommt eines Tages zurück“",
     intro: (s) =>
-      `Der Präsident deines Herzensvereins ${getClub(s.heartClub!).name} sagt im Fernsehen: „Er kommt eines Tages zurück. Das weiß er auch.“ Bei ${club(s).name} hört man das gar nicht gern.`,
+      `Der Präsident deines Herzensvereins ${s.heartClub ? getClub(s.heartClub).name : club(s).name} sagt im Fernsehen: „Er kommt eines Tages zurück. Das weiß er auch.“ Bei ${club(s).name} hört man das gar nicht gern.`,
     weight: 7,
     when: (s) => Boolean(s.heartClub) && s.heartClub !== s.player.clubId && s.seasons.length >= 3,
     traits: { loyal: 2.2 },
@@ -451,7 +454,7 @@ export const GOSSIP_EVENTS: EventDef[] = [
         label: "Rückkehr öffentlich andeuten",
         hint: "Ehrlich zum Herzen – riskant beim Arbeitgeber",
         apply: (s, rng) => {
-          s.fanRelations[s.heartClub!] = Math.min(100, (s.fanRelations[s.heartClub!] ?? 55) + 12);
+          if (s.heartClub) s.fanRelations[s.heartClub] = Math.min(100, (s.fanRelations[s.heartClub] ?? 55) + 12);
           return outcome(rng, [
             [{ consequence: "Beide Fanlager respektieren deine Ehrlichkeit. Die Heimat freut sich schon.", deltas: adjust(s, { morale: 8, mentality: 4 }) }, 50],
             [{ consequence: "Dein aktueller Verein fühlt sich hintergangen. Kapitänsbinde weg, Stimmung kühl.", deltas: adjust(s, { relationship: -12, fans: -10 }) }, 50],
@@ -659,7 +662,7 @@ export const GOSSIP_EVENTS: EventDef[] = [
     id: "rival-shirt-photo",
     title: "Das Foto mit dem falschen Trikot",
     intro: (s) =>
-      `Ein altes Kinderfoto taucht auf: Du, acht Jahre alt, im Trikot von ${rivalOf(s)!.name}. Die Ultras von ${club(s).name} fordern eine Erklärung.`,
+      `Ein altes Kinderfoto taucht auf: Du, acht Jahre alt, im Trikot von ${rivalOf(s)?.name ?? "eurem Erzrivalen"}. Die Ultras von ${club(s).name} fordern eine Erklärung.`,
     weight: 6,
     when: (s) => Boolean(rivalOf(s)) && s.seasons.length >= 1,
     traits: { loyal: 1.4, hothead: 1.3 },

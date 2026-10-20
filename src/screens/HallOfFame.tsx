@@ -264,7 +264,7 @@ const CareerCard = forwardRef<HTMLDivElement, { state: GameState; onOpenTrophy: 
                   {c.title}
                 </div>
                 <p className="break" style={{ color: "var(--ink-2)", lineHeight: 1.65, margin: "4px 0 0", fontSize: exporting ? 15 : 14 }}>
-                  {i === 0 ? (
+                  {i === 0 && /^\p{L}/u.test(c.text) ? (
                     <>
                       <span className="h-display" style={{ float: "left", fontSize: 44, lineHeight: 0.9, marginRight: 6, color: "var(--blue)" }}>
                         {c.text.charAt(0)}
