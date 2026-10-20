@@ -17,6 +17,8 @@ import { AVATAR_PRESETS, Avatar } from "@/ui/Avatar";
 import { Flag } from "@/ui/Flag";
 import { Sheet, TopBar } from "@/ui/primitives";
 import { tap, useBackHandler, warn } from "@/ui/native";
+import { loadImage } from "@/ui/fifaFace";
+import { FaceStudio } from "./FaceStudio";
 
 export const POSITION_LABEL: Record<Position, string> = {
   TW: "Torwart",
@@ -174,6 +176,7 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
   const [activeProfileId, setActiveProfileId] = useState<string | undefined>(undefined);
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | undefined>(undefined);
   const fileRef = useRef<HTMLInputElement>(null);
+  const [studioPhoto, setStudioPhoto] = useState<string | null>(null);
 
   useEffect(() => {
     const res = loadProfiles();
@@ -208,21 +211,32 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
       setUploadError("Das Bild konnte nicht gelesen werden.");
       return;
     }
-    // Komprimieren auf 256 px – der Spielstand bleibt klein.
-    const img = new Image();
-    img.onload = () => {
+    // Foto für das FIFA-Studio vorbereiten (max. 1024 px).
+    try {
+      const img = await loadImage(dataUrl);
+      const scale = Math.min(1, 1024 / Math.max(img.naturalWidth, img.naturalHeight));
       const canvas = document.createElement("canvas");
-      const size = 256;
-      canvas.width = size;
-      canvas.height = size;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return setAvatar(dataUrl);
-      const min = Math.min(img.width, img.height);
-      ctx.drawImage(img, (img.width - min) / 2, (img.height - min) / 2, min, min, 0, 0, size, size);
-      setAvatar(canvas.toDataURL("image/jpeg", 0.82));
-    };
-    img.onerror = () => setUploadError("Das Bild konnte nicht verarbeitet werden.");
-    img.src = dataUrl;
+      canvas.width = Math.round(img.naturalWidth * scale);
+      canvas.height = Math.round(img.naturalHeight * scale);
+      canvas.getContext("2d")?.drawImage(img, 0, 0, canvas.width, canvas.height);
+      setStudioPhoto(canvas.toDataURL("image/jpeg", 0.9));
+    } catch {
+      setUploadError("Das Bild konnte nicht verarbeitet werden.");
+    }
+  };
+
+  /** Normales Foto: quadratisch auf 256 px – der Spielstand bleibt klein. */
+  const applyOriginalPhoto = async (dataUrl: string) => {
+    const img = await loadImage(dataUrl);
+    const canvas = document.createElement("canvas");
+    const size = 256;
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return setAvatar(dataUrl);
+    const min = Math.min(img.width, img.height);
+    ctx.drawImage(img, (img.width - min) / 2, (img.height - min) / 2, min, min, 0, 0, size, size);
+    setAvatar(canvas.toDataURL("image/jpeg", 0.82));
   };
 
   const validate = (): Record<string, string> => {
@@ -443,11 +457,12 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
                     onChange={(e) => {
                       const f = e.target.files?.[0];
                       if (f) void handleUpload(f);
+                      e.target.value = "";
                     }}
                   />
                   <div className="row" style={{ marginTop: 10 }}>
                     <button type="button" className="btn ghost small grow" onClick={() => fileRef.current?.click()}>
-                      <Upload size={16} /> Eigenes Bild
+                      <Upload size={16} /> Foto → FIFA-Gesicht
                     </button>
                     {avatar.startsWith("data:") && (
                       <button type="button" className="btn ghost small" onClick={() => setAvatar("preset:2")}>
@@ -722,6 +737,20 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
           )}
         </div>
       </div>
+
+      <FaceStudio
+        photo={studioPhoto}
+        name={name}
+        nat={nat1 ?? "DE"}
+        pos={pos ?? "ST"}
+        onClose={() => setStudioPhoto(null)}
+        onUse={(url) => {
+          const photo = studioPhoto;
+          setStudioPhoto(null);
+          if (url === photo) void applyOriginalPhoto(url).catch(() => setUploadError("Das Bild konnte nicht verarbeitet werden."));
+          else setAvatar(url);
+        }}
+      />
 
       <CountryPicker
         open={picker !== null}

@@ -22,6 +22,7 @@
     "@capacitor/status-bar": "^6.0.3",
     "@fontsource/barlow-condensed": "^5.3.0",
     "@fontsource/titillium-web": "^5.3.0",
+    "@mediapipe/tasks-vision": "^1.1.1",
     "canvas-confetti": "^1.9.3",
     "framer-motion": "^11.11.17",
     "html-to-image": "^1.11.13",

@@ -35,6 +35,15 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff,woff2}'],
+        // Gesichtserkennung (~17 MB) erst bei Nutzung laden und dann offline vorhalten.
+        globIgnores: ['mediapipe/**'],
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/mediapipe/') || url.hostname === 'cdn.jsdelivr.net',
+            handler: 'CacheFirst',
+            options: { cacheName: 'mediapipe', expiration: { maxEntries: 10 } },
+          },
+        ],
       },
     }),
   ],

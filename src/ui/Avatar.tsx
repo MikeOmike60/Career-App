@@ -1,4 +1,5 @@
 import { hashString } from "@/lib/sim/rng";
+import { isHeadCutout } from "./fifaFace";
 
 export const AVATAR_PRESETS = Array.from({ length: 12 }, (_, i) => `preset:${i}`);
 
@@ -23,13 +24,22 @@ export function Avatar({
   fluid?: boolean;
 }) {
   if (avatar.startsWith("data:")) {
+    const cutout = isHeadCutout(avatar);
     return (
       <img
         src={avatar}
         alt={name ? `Profilbild von ${name}` : "Profilbild"}
         width={size}
         height={size}
-        style={{ width: fluid ? "100%" : size, height: fluid ? "100%" : size, objectFit: "cover", borderRadius: transparent ? "50%" : 6, flex: "none" }}
+        style={{
+          width: fluid ? "100%" : size,
+          height: fluid ? "100%" : size,
+          objectFit: "cover",
+          // FIFA-Kopfbild: auf Weiß wie im Spiel, auf der Karte ohne Kasten.
+          borderRadius: transparent ? (cutout ? 0 : "50%") : 6,
+          background: transparent ? "transparent" : "#fff",
+          flex: "none",
+        }}
       />
     );
   }

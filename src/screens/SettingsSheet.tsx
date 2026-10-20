@@ -5,6 +5,7 @@ import { Sheet } from "@/ui/primitives";
 import { updateSettings, useSettings } from "@/ui/settings";
 import { tap } from "@/ui/native";
 import clubLogos from "@/data/club-logos.json";
+import { loadAiSettings, saveAiSettings, type AiSettings } from "@/ui/fifaFace";
 
 function Toggle({ label, hint, value, onChange }: { label: string; hint: string; value: boolean; onChange: (v: boolean) => void }) {
   return (
@@ -56,6 +57,12 @@ export function SettingsSheet({
 }) {
   const settings = useSettings();
   const [confirm, setConfirm] = useState(false);
+  const [ai, setAi] = useState<AiSettings>(() => loadAiSettings());
+  const [keyDraft, setKeyDraft] = useState("");
+  const updateAi = (next: AiSettings) => {
+    setAi(next);
+    saveAiSettings(next);
+  };
   const logoCount = Object.keys(clubLogos).length;
 
   return (
@@ -71,6 +78,48 @@ export function SettingsSheet({
       <div className="stack">
         <Toggle label="Vibration" hint="Kurzes haptisches Feedback bei Aktionen und Titeln." value={settings.haptics} onChange={(v) => updateSettings({ haptics: v })} />
         <Toggle label="Schnelle Animationen" hint="Anpfiff-Sequenz deutlich verkürzen." value={settings.fastAnimations} onChange={(v) => updateSettings({ fastAnimations: v })} />
+
+        <div className="panel pad">
+          <div className="label">KI für FIFA-Gesichter (optional)</div>
+          {ai.apiKey ? (
+            <div className="row">
+              <span className="chip lime grow">OpenAI-Schlüssel gespeichert · …{ai.apiKey.slice(-4)}</span>
+              <button type="button" className="btn ghost small" onClick={() => updateAi({ ...ai, apiKey: "" })}>
+                Löschen
+              </button>
+            </div>
+          ) : (
+            <div className="row">
+              <input
+                className="input grow"
+                type="password"
+                placeholder="OpenAI-API-Schlüssel (sk-…)"
+                autoComplete="off"
+                value={keyDraft}
+                onChange={(e) => setKeyDraft(e.target.value)}
+                aria-label="OpenAI-API-Schlüssel"
+              />
+              <button
+                type="button"
+                className="btn blue small"
+                disabled={keyDraft.trim().length < 20}
+                onClick={() => {
+                  updateAi({ ...ai, apiKey: keyDraft.trim() });
+                  setKeyDraft("");
+                }}
+              >
+                Speichern
+              </button>
+            </div>
+          )}
+          <label className="label" htmlFor="ai-model" style={{ marginTop: 10 }}>
+            Bildmodell
+          </label>
+          <input id="ai-model" className="input" value={ai.model} onChange={(e) => updateAi({ ...ai, model: e.target.value })} autoComplete="off" />
+          <p className="tiny muted" style={{ marginBottom: 0 }}>
+            Der Schlüssel bleibt nur auf diesem Gerät und landet nie im Spielstand. Beim Erzeugen wird dein Foto an OpenAI geschickt; die Kosten laufen über dein OpenAI-Konto.
+          </p>
+        </div>
 
         {state && state.phase === "career" && (
           <div className="panel pad">
