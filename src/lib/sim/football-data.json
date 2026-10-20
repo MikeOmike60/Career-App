@@ -1,0 +1,3047 @@
+{
+ "generatedAt": "2026-08-10",
+ "source": "de.wikipedia.org (Saisonartikel) + luukhopman/football-logos",
+ "note": "Privates, inoffizielles Fanprojekt. Keine offiziellen Daten.",
+ "countries": [
+  {
+   "country": "AT",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Bundesliga",
+     "officialName": "Bundesliga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "LASK",
+       "group": null
+      },
+      {
+       "name": "SK Rapid Wien",
+       "group": null
+      },
+      {
+       "name": "Wolfsberger AC",
+       "group": null
+      },
+      {
+       "name": "FC Red Bull Salzburg",
+       "group": null
+      },
+      {
+       "name": "SK Sturm Graz",
+       "group": null
+      },
+      {
+       "name": "SCR Altach",
+       "group": null
+      },
+      {
+       "name": "Grazer AK",
+       "group": null
+      },
+      {
+       "name": "SC Austria Lustenau",
+       "group": null
+      },
+      {
+       "name": "SV Ried",
+       "group": null
+      },
+      {
+       "name": "WSG Tirol",
+       "group": null
+      },
+      {
+       "name": "TSV Hartberg",
+       "group": null
+      },
+      {
+       "name": "FK Austria Wien",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "2. Liga",
+     "officialName": "2. Liga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Wacker Innsbruck",
+       "group": null
+      },
+      {
+       "name": "FC Liefering",
+       "group": null
+      },
+      {
+       "name": "First Vienna FC",
+       "group": null
+      },
+      {
+       "name": "FC Blau-Weiß Linz",
+       "group": null
+      },
+      {
+       "name": "SV Austria Salzburg",
+       "group": null
+      },
+      {
+       "name": "Floridsdorfer AC",
+       "group": null
+      },
+      {
+       "name": "SK Rapid Wien II",
+       "group": null
+      },
+      {
+       "name": "SKU Amstetten",
+       "group": null
+      },
+      {
+       "name": "ASK Voitsberg",
+       "group": null
+      },
+      {
+       "name": "Admira Wacker",
+       "group": null
+      },
+      {
+       "name": "SKN St. Pölten",
+       "group": null
+      },
+      {
+       "name": "FC Hertha Wels",
+       "group": null
+      },
+      {
+       "name": "Young Violets Austria Wien",
+       "group": null
+      },
+      {
+       "name": "Kapfenberger SV",
+       "group": null
+      },
+      {
+       "name": "SK Sturm Graz II",
+       "group": null
+      },
+      {
+       "name": "Schwarz-Weiß Bregenz",
+       "group": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "CH",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Super League",
+     "officialName": "Super League",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Lugano",
+       "group": null
+      },
+      {
+       "name": "BSC Young Boys",
+       "group": null
+      },
+      {
+       "name": "FC St. Gallen",
+       "group": null
+      },
+      {
+       "name": "FC Sion",
+       "group": null
+      },
+      {
+       "name": "FC Basel",
+       "group": null
+      },
+      {
+       "name": "FC Lausanne-Sport",
+       "group": null
+      },
+      {
+       "name": "Servette FC",
+       "group": null
+      },
+      {
+       "name": "FC Zürich",
+       "group": null
+      },
+      {
+       "name": "FC Thun",
+       "group": null
+      },
+      {
+       "name": "Grasshopper Club Zürich",
+       "group": null
+      },
+      {
+       "name": "FC Luzern",
+       "group": null
+      },
+      {
+       "name": "FC Vaduz",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "Challenge League",
+     "officialName": "Challenge League",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Neuchâtel Xamax",
+       "group": null
+      },
+      {
+       "name": "FC Stade Lausanne-Ouchy",
+       "group": null
+      },
+      {
+       "name": "Yverdon Sport FC",
+       "group": null
+      },
+      {
+       "name": "FC Winterthur",
+       "group": null
+      },
+      {
+       "name": "Étoile Carouge FC",
+       "group": null
+      },
+      {
+       "name": "FC Aarau",
+       "group": null
+      },
+      {
+       "name": "SC Kriens",
+       "group": null
+      },
+      {
+       "name": "FC Rapperswil-Jona",
+       "group": null
+      },
+      {
+       "name": "FC Wil",
+       "group": null
+      },
+      {
+       "name": "Stade Nyonnais",
+       "group": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "DE",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Bundesliga",
+     "officialName": "Bundesliga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Bayern München",
+       "group": null
+      },
+      {
+       "name": "Borussia Dortmund",
+       "group": null
+      },
+      {
+       "name": "RB Leipzig",
+       "group": null
+      },
+      {
+       "name": "VfB Stuttgart",
+       "group": null
+      },
+      {
+       "name": "TSG 1899 Hoffenheim",
+       "group": null
+      },
+      {
+       "name": "Bayer 04 Leverkusen",
+       "group": null
+      },
+      {
+       "name": "SC Freiburg",
+       "group": null
+      },
+      {
+       "name": "Eintracht Frankfurt",
+       "group": null
+      },
+      {
+       "name": "FC Augsburg",
+       "group": null
+      },
+      {
+       "name": "1. FSV Mainz 05",
+       "group": null
+      },
+      {
+       "name": "1. FC Union Berlin",
+       "group": null
+      },
+      {
+       "name": "Borussia Mönchengladbach",
+       "group": null
+      },
+      {
+       "name": "Hamburger SV",
+       "group": null
+      },
+      {
+       "name": "1. FC Köln",
+       "group": null
+      },
+      {
+       "name": "Werder Bremen",
+       "group": null
+      },
+      {
+       "name": "FC Schalke 04",
+       "group": null
+      },
+      {
+       "name": "SV Elversberg",
+       "group": null
+      },
+      {
+       "name": "SC Paderborn 07",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "2. Bundesliga",
+     "officialName": "2. Bundesliga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Eintracht Braunschweig",
+       "group": null
+      },
+      {
+       "name": "1. FC Nürnberg",
+       "group": null
+      },
+      {
+       "name": "Energie Cottbus",
+       "group": null
+      },
+      {
+       "name": "1. FC Heidenheim",
+       "group": null
+      },
+      {
+       "name": "Karlsruher SC",
+       "group": null
+      },
+      {
+       "name": "Hertha BSC",
+       "group": null
+      },
+      {
+       "name": "SV Darmstadt 98",
+       "group": null
+      },
+      {
+       "name": "Holstein Kiel",
+       "group": null
+      },
+      {
+       "name": "FC St. Pauli",
+       "group": null
+      },
+      {
+       "name": "SpVgg Greuther Fürth",
+       "group": null
+      },
+      {
+       "name": "VfL Wolfsburg",
+       "group": null
+      },
+      {
+       "name": "1. FC Kaiserslautern",
+       "group": null
+      },
+      {
+       "name": "VfL Osnabrück",
+       "group": null
+      },
+      {
+       "name": "Arminia Bielefeld",
+       "group": null
+      },
+      {
+       "name": "VfL Bochum",
+       "group": null
+      },
+      {
+       "name": "Hannover 96",
+       "group": null
+      },
+      {
+       "name": "Dynamo Dresden",
+       "group": null
+      },
+      {
+       "name": "1. FC Magdeburg",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 3,
+     "name": "3. Liga",
+     "officialName": "3. Liga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "SSV Jahn Regensburg",
+       "group": null
+      },
+      {
+       "name": "1. FC Saarbrücken",
+       "group": null
+      },
+      {
+       "name": "Alemannia Aachen",
+       "group": null
+      },
+      {
+       "name": "MSV Duisburg",
+       "group": null
+      },
+      {
+       "name": "Preußen Münster",
+       "group": null
+      },
+      {
+       "name": "VfB Stuttgart II",
+       "group": null
+      },
+      {
+       "name": "Hansa Rostock",
+       "group": null
+      },
+      {
+       "name": "SV Waldhof Mannheim",
+       "group": null
+      },
+      {
+       "name": "SG Sonnenhof Großaspach",
+       "group": null
+      },
+      {
+       "name": "FC Ingolstadt 04",
+       "group": null
+      },
+      {
+       "name": "Würzburger Kickers",
+       "group": null
+      },
+      {
+       "name": "TSV Havelse",
+       "group": null
+      },
+      {
+       "name": "TSG 1899 Hoffenheim II",
+       "group": null
+      },
+      {
+       "name": "Fortuna Düsseldorf",
+       "group": null
+      },
+      {
+       "name": "SC Fortuna Köln",
+       "group": null
+      },
+      {
+       "name": "SV Wehen Wiesbaden",
+       "group": null
+      },
+      {
+       "name": "Viktoria Köln",
+       "group": null
+      },
+      {
+       "name": "Rot-Weiss Essen",
+       "group": null
+      },
+      {
+       "name": "SC Verl",
+       "group": null
+      },
+      {
+       "name": "SV Meppen",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 4,
+     "name": "Regionalliga",
+     "officialName": "Regionalliga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "VfB Oldenburg",
+       "group": "Nord"
+      },
+      {
+       "name": "Hannover 96 II",
+       "group": "Nord"
+      },
+      {
+       "name": "SC Weiche Flensburg 08",
+       "group": "Nord"
+      },
+      {
+       "name": "SV Todesfelde",
+       "group": "Nord"
+      },
+      {
+       "name": "SV Atlas Delmenhorst",
+       "group": "Nord"
+      },
+      {
+       "name": "FSV Schöningen",
+       "group": "Nord"
+      },
+      {
+       "name": "Kickers Emden",
+       "group": "Nord"
+      },
+      {
+       "name": "1. FC Phönix Lübeck",
+       "group": "Nord"
+      },
+      {
+       "name": "SV Drochtersen/Assel",
+       "group": "Nord"
+      },
+      {
+       "name": "Bremer SV",
+       "group": "Nord"
+      },
+      {
+       "name": "Eintracht Norderstedt",
+       "group": "Nord"
+      },
+      {
+       "name": "HSC Hannover",
+       "group": "Nord"
+      },
+      {
+       "name": "VfB Lübeck",
+       "group": "Nord"
+      },
+      {
+       "name": "Werder Bremen II",
+       "group": "Nord"
+      },
+      {
+       "name": "Hamburger SV II",
+       "group": "Nord"
+      },
+      {
+       "name": "FC St. Pauli II",
+       "group": "Nord"
+      },
+      {
+       "name": "Eimsbütteler TV",
+       "group": "Nord"
+      },
+      {
+       "name": "SSV Jeddeloh",
+       "group": "Nord"
+      },
+      {
+       "name": "Chemnitzer FC",
+       "group": "Nordost"
+      },
+      {
+       "name": "FC Rot-Weiß Erfurt",
+       "group": "Nordost"
+      },
+      {
+       "name": "Greifswalder FC",
+       "group": "Nordost"
+      },
+      {
+       "name": "FC Erzgebirge Aue",
+       "group": "Nordost"
+      },
+      {
+       "name": "1. FC Lokomotive Leipzig",
+       "group": "Nordost"
+      },
+      {
+       "name": "FC Carl Zeiss Jena",
+       "group": "Nordost"
+      },
+      {
+       "name": "VSG Altglienicke",
+       "group": "Nordost"
+      },
+      {
+       "name": "Hallescher FC",
+       "group": "Nordost"
+      },
+      {
+       "name": "RSV Eintracht Stahnsdorf",
+       "group": "Nordost"
+      },
+      {
+       "name": "1. FC Magdeburg II",
+       "group": "Nordost"
+      },
+      {
+       "name": "SV Babelsberg 03",
+       "group": "Nordost"
+      },
+      {
+       "name": "BFC Dynamo",
+       "group": "Nordost"
+      },
+      {
+       "name": "FSV Zwickau",
+       "group": "Nordost"
+      },
+      {
+       "name": "FSV 63 Luckenwalde",
+       "group": "Nordost"
+      },
+      {
+       "name": "Hertha BSC II",
+       "group": "Nordost"
+      },
+      {
+       "name": "SV Tasmania Berlin",
+       "group": "Nordost"
+      },
+      {
+       "name": "BFC Preussen",
+       "group": "Nordost"
+      },
+      {
+       "name": "BSG Chemie Leipzig",
+       "group": "Nordost"
+      },
+      {
+       "name": "Borussia Mönchengladbach II",
+       "group": "West"
+      },
+      {
+       "name": "Westfalia Rhynern",
+       "group": "West"
+      },
+      {
+       "name": "FC Gütersloh",
+       "group": "West"
+      },
+      {
+       "name": "1. FC Köln II",
+       "group": "West"
+      },
+      {
+       "name": "Rot-Weiß Oberhausen",
+       "group": "West"
+      },
+      {
+       "name": "FC Schalke 04 II",
+       "group": "West"
+      },
+      {
+       "name": "SC Paderborn 07 II",
+       "group": "West"
+      },
+      {
+       "name": "SV Rödinghausen",
+       "group": "West"
+      },
+      {
+       "name": "Borussia Dortmund II",
+       "group": "West"
+      },
+      {
+       "name": "VfB 03 Hilden",
+       "group": "West"
+      },
+      {
+       "name": "SV Bergisch Gladbach 09",
+       "group": "West"
+      },
+      {
+       "name": "1. FC Bocholt",
+       "group": "West"
+      },
+      {
+       "name": "Sportfreunde Siegen",
+       "group": "West"
+      },
+      {
+       "name": "SG Wattenscheid 09",
+       "group": "West"
+      },
+      {
+       "name": "VfL Bochum II",
+       "group": "West"
+      },
+      {
+       "name": "SC Wiedenbrück",
+       "group": "West"
+      },
+      {
+       "name": "Sportfreunde Lotte",
+       "group": "West"
+      },
+      {
+       "name": "Bonner SC",
+       "group": "West"
+      },
+      {
+       "name": "SGV Heilbronn-Freiberg",
+       "group": "Südwest"
+      },
+      {
+       "name": "KSV Hessen Kassel",
+       "group": "Südwest"
+      },
+      {
+       "name": "Stuttgarter Kickers",
+       "group": "Südwest"
+      },
+      {
+       "name": "FC 08 Homburg",
+       "group": "Südwest"
+      },
+      {
+       "name": "Kickers Offenbach",
+       "group": "Südwest"
+      },
+      {
+       "name": "SG Barockstadt Fulda-Lehnerz",
+       "group": "Südwest"
+      },
+      {
+       "name": "FSV Frankfurt",
+       "group": "Südwest"
+      },
+      {
+       "name": "SV Sandhausen",
+       "group": "Südwest"
+      },
+      {
+       "name": "TSV Steinbach Haiger",
+       "group": "Südwest"
+      },
+      {
+       "name": "VfR Mannheim",
+       "group": "Südwest"
+      },
+      {
+       "name": "VfR Aalen",
+       "group": "Südwest"
+      },
+      {
+       "name": "SC Freiburg II",
+       "group": "Südwest"
+      },
+      {
+       "name": "1. FSV Mainz 05 II",
+       "group": "Südwest"
+      },
+      {
+       "name": "FC-Astoria Walldorf",
+       "group": "Südwest"
+      },
+      {
+       "name": "SV Eintracht Trier",
+       "group": "Südwest"
+      },
+      {
+       "name": "SSV Ulm 1846",
+       "group": "Südwest"
+      },
+      {
+       "name": "Eintracht Frankfurt II",
+       "group": "Südwest"
+      },
+      {
+       "name": "1. FC Kaiserslautern II",
+       "group": "Südwest"
+      },
+      {
+       "name": "FC Memmingen",
+       "group": "Bayern"
+      },
+      {
+       "name": "DJK Vilzing",
+       "group": "Bayern"
+      },
+      {
+       "name": "Wacker Burghausen",
+       "group": "Bayern"
+      },
+      {
+       "name": "TSV Buchbach",
+       "group": "Bayern"
+      },
+      {
+       "name": "FV Illertissen",
+       "group": "Bayern"
+      },
+      {
+       "name": "SpVgg Unterhaching",
+       "group": "Bayern"
+      },
+      {
+       "name": "SpVgg Bayreuth",
+       "group": "Bayern"
+      },
+      {
+       "name": "TSV Aubstadt",
+       "group": "Bayern"
+      },
+      {
+       "name": "SC Eltersdorf",
+       "group": "Bayern"
+      },
+      {
+       "name": "FC Augsburg II",
+       "group": "Bayern"
+      },
+      {
+       "name": "TSV 1860 München",
+       "group": "Bayern"
+      },
+      {
+       "name": "TSV Schwaben Augsburg",
+       "group": "Bayern"
+      },
+      {
+       "name": "1. FC Schweinfurt 05",
+       "group": "Bayern"
+      },
+      {
+       "name": "TSV Landsberg",
+       "group": "Bayern"
+      },
+      {
+       "name": "FC Bayern München II",
+       "group": "Bayern"
+      },
+      {
+       "name": "VfB Eichstätt",
+       "group": "Bayern"
+      },
+      {
+       "name": "SpVgg Greuther Fürth II",
+       "group": "Bayern"
+      },
+      {
+       "name": "1. FC Nürnberg II",
+       "group": "Bayern"
+      },
+      {
+       "name": "SpVgg Ansbach 09",
+       "group": "Bayern"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "ENG",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Premier League",
+     "officialName": "Premier League",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Arsenal",
+       "group": null
+      },
+      {
+       "name": "Manchester City",
+       "group": null
+      },
+      {
+       "name": "Manchester United",
+       "group": null
+      },
+      {
+       "name": "Aston Villa",
+       "group": null
+      },
+      {
+       "name": "FC Liverpool",
+       "group": null
+      },
+      {
+       "name": "AFC Bournemouth",
+       "group": null
+      },
+      {
+       "name": "AFC Sunderland",
+       "group": null
+      },
+      {
+       "name": "Brighton & Hove Albion",
+       "group": null
+      },
+      {
+       "name": "FC Brentford",
+       "group": null
+      },
+      {
+       "name": "FC Chelsea",
+       "group": null
+      },
+      {
+       "name": "FC Fulham",
+       "group": null
+      },
+      {
+       "name": "Newcastle United",
+       "group": null
+      },
+      {
+       "name": "FC Everton",
+       "group": null
+      },
+      {
+       "name": "Leeds United",
+       "group": null
+      },
+      {
+       "name": "Crystal Palace",
+       "group": null
+      },
+      {
+       "name": "Nottingham Forest",
+       "group": null
+      },
+      {
+       "name": "Tottenham Hotspur",
+       "group": null
+      },
+      {
+       "name": "Coventry City",
+       "group": null
+      },
+      {
+       "name": "Ipswich Town",
+       "group": null
+      },
+      {
+       "name": "Hull City",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "EFL Championship",
+     "officialName": "EFL Championship",
+     "season": "2026–27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Birmingham City",
+       "group": null
+      },
+      {
+       "name": "Blackburn Rovers",
+       "group": null
+      },
+      {
+       "name": "Bolton Wanderers",
+       "group": null
+      },
+      {
+       "name": "Bristol City",
+       "group": null
+      },
+      {
+       "name": "Burnley",
+       "group": null
+      },
+      {
+       "name": "Cardiff City",
+       "group": null
+      },
+      {
+       "name": "Charlton Athletic",
+       "group": null
+      },
+      {
+       "name": "Derby County",
+       "group": null
+      },
+      {
+       "name": "Lincoln City",
+       "group": null
+      },
+      {
+       "name": "Middlesbrough",
+       "group": null
+      },
+      {
+       "name": "Millwall",
+       "group": null
+      },
+      {
+       "name": "Norwich City",
+       "group": null
+      },
+      {
+       "name": "Portsmouth",
+       "group": null
+      },
+      {
+       "name": "Preston North End",
+       "group": null
+      },
+      {
+       "name": "Queens Park Rangers",
+       "group": null
+      },
+      {
+       "name": "Sheffield United",
+       "group": null
+      },
+      {
+       "name": "Stoke City",
+       "group": null
+      },
+      {
+       "name": "Swansea City",
+       "group": null
+      },
+      {
+       "name": "Watford",
+       "group": null
+      },
+      {
+       "name": "West Bromwich Albion",
+       "group": null
+      },
+      {
+       "name": "West Ham United",
+       "group": null
+      },
+      {
+       "name": "Wolverhampton Wanderers",
+       "group": null
+      },
+      {
+       "name": "Wrexham",
+       "group": null
+      },
+      {
+       "name": "Southampton",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 3,
+     "name": "EFL League One",
+     "officialName": "EFL League One",
+     "season": "2026–27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "AFC Wimbledon",
+       "group": null
+      },
+      {
+       "name": "Barnsley",
+       "group": null
+      },
+      {
+       "name": "Blackpool",
+       "group": null
+      },
+      {
+       "name": "Bradford City",
+       "group": null
+      },
+      {
+       "name": "Bromley",
+       "group": null
+      },
+      {
+       "name": "Burton Albion",
+       "group": null
+      },
+      {
+       "name": "Cambridge United",
+       "group": null
+      },
+      {
+       "name": "Doncaster Rovers",
+       "group": null
+      },
+      {
+       "name": "Huddersfield Town",
+       "group": null
+      },
+      {
+       "name": "Leicester City",
+       "group": null
+      },
+      {
+       "name": "Leyton Orient",
+       "group": null
+      },
+      {
+       "name": "Luton Town",
+       "group": null
+      },
+      {
+       "name": "Mansfield Town",
+       "group": null
+      },
+      {
+       "name": "Milton Keynes Dons",
+       "group": null
+      },
+      {
+       "name": "Notts County",
+       "group": null
+      },
+      {
+       "name": "Oxford United",
+       "group": null
+      },
+      {
+       "name": "Peterborough United",
+       "group": null
+      },
+      {
+       "name": "Plymouth Argyle",
+       "group": null
+      },
+      {
+       "name": "Reading",
+       "group": null
+      },
+      {
+       "name": "Sheffield Wednesday",
+       "group": null
+      },
+      {
+       "name": "Stevenage",
+       "group": null
+      },
+      {
+       "name": "Stockport County",
+       "group": null
+      },
+      {
+       "name": "Wigan Athletic",
+       "group": null
+      },
+      {
+       "name": "Wycombe Wanderers",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 4,
+     "name": "EFL League Two",
+     "officialName": "EFL League Two",
+     "season": "2026–27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Accrington Stanley",
+       "group": null
+      },
+      {
+       "name": "Barnet",
+       "group": null
+      },
+      {
+       "name": "Bristol Rovers",
+       "group": null
+      },
+      {
+       "name": "Cheltenham Town",
+       "group": null
+      },
+      {
+       "name": "Chesterfield",
+       "group": null
+      },
+      {
+       "name": "Colchester United",
+       "group": null
+      },
+      {
+       "name": "Crawley Town",
+       "group": null
+      },
+      {
+       "name": "Crewe Alexandra",
+       "group": null
+      },
+      {
+       "name": "Exeter City",
+       "group": null
+      },
+      {
+       "name": "Fleetwood Town",
+       "group": null
+      },
+      {
+       "name": "Gillingham",
+       "group": null
+      },
+      {
+       "name": "Grimsby Town",
+       "group": null
+      },
+      {
+       "name": "Newport County",
+       "group": null
+      },
+      {
+       "name": "Northampton Town",
+       "group": null
+      },
+      {
+       "name": "Oldham Athletic",
+       "group": null
+      },
+      {
+       "name": "Port Vale",
+       "group": null
+      },
+      {
+       "name": "Rochdale",
+       "group": null
+      },
+      {
+       "name": "Rotherham United",
+       "group": null
+      },
+      {
+       "name": "Salford City",
+       "group": null
+      },
+      {
+       "name": "Shrewsbury Town",
+       "group": null
+      },
+      {
+       "name": "Swindon Town",
+       "group": null
+      },
+      {
+       "name": "Tranmere Rovers",
+       "group": null
+      },
+      {
+       "name": "Walsall",
+       "group": null
+      },
+      {
+       "name": "York City",
+       "group": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "ES",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "LaLiga",
+     "officialName": "LaLiga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Barcelona",
+       "group": null
+      },
+      {
+       "name": "Real Madrid",
+       "group": null
+      },
+      {
+       "name": "FC Villarreal",
+       "group": null
+      },
+      {
+       "name": "Atlético Madrid",
+       "group": null
+      },
+      {
+       "name": "Betis Sevilla",
+       "group": null
+      },
+      {
+       "name": "Celta Vigo",
+       "group": null
+      },
+      {
+       "name": "FC Getafe",
+       "group": null
+      },
+      {
+       "name": "Rayo Vallecano",
+       "group": null
+      },
+      {
+       "name": "FC Valencia",
+       "group": null
+      },
+      {
+       "name": "Real Sociedad",
+       "group": null
+      },
+      {
+       "name": "Espanyol Barcelona",
+       "group": null
+      },
+      {
+       "name": "Athletic Bilbao",
+       "group": null
+      },
+      {
+       "name": "FC Sevilla",
+       "group": null
+      },
+      {
+       "name": "Deportivo Alavés",
+       "group": null
+      },
+      {
+       "name": "FC Elche",
+       "group": null
+      },
+      {
+       "name": "UD Levante",
+       "group": null
+      },
+      {
+       "name": "CA Osasuna",
+       "group": null
+      },
+      {
+       "name": "Racing Santander",
+       "group": null
+      },
+      {
+       "name": "Deportivo A Coruña",
+       "group": null
+      },
+      {
+       "name": "FC Málaga",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "Segunda División",
+     "officialName": "Segunda División",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "RCD Mallorca",
+       "group": null
+      },
+      {
+       "name": "FC Girona",
+       "group": null
+      },
+      {
+       "name": "Real Oviedo",
+       "group": null
+      },
+      {
+       "name": "UD Almería",
+       "group": null
+      },
+      {
+       "name": "UD Las Palmas",
+       "group": null
+      },
+      {
+       "name": "CD Castellón",
+       "group": null
+      },
+      {
+       "name": "Burgos CF",
+       "group": null
+      },
+      {
+       "name": "SD Eibar",
+       "group": null
+      },
+      {
+       "name": "FC Córdoba",
+       "group": null
+      },
+      {
+       "name": "Sporting Gijón",
+       "group": null
+      },
+      {
+       "name": "AD Ceuta FC",
+       "group": null
+      },
+      {
+       "name": "Albacete Balompié",
+       "group": null
+      },
+      {
+       "name": "FC Andorra",
+       "group": null
+      },
+      {
+       "name": "FC Granada",
+       "group": null
+      },
+      {
+       "name": "Real Sociedad B",
+       "group": null
+      },
+      {
+       "name": "CD Leganés",
+       "group": null
+      },
+      {
+       "name": "Real Valladolid",
+       "group": null
+      },
+      {
+       "name": "FC Cádiz",
+       "group": null
+      },
+      {
+       "name": "CD Teneriffa",
+       "group": null
+      },
+      {
+       "name": "CD Eldense",
+       "group": null
+      },
+      {
+       "name": "CE Sabadell",
+       "group": null
+      },
+      {
+       "name": "Celta Vigo B",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 3,
+     "name": "Primera Federación",
+     "officialName": "Primera Federación",
+     "season": "2026–27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Arenas",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Avilés",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Barakaldo",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Bilbao Athletic",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Cacereño",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Coria",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Cultural Leonesa",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Deportivo Fabril",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Extremadura",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "UD Logroñés",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Lugo",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Mérida",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Mirandés",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "UD Ourense",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Ponferradina",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Pontevedra",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Racing Ferrol",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Real Unión",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Unionistas",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Zamora",
+       "group": "Gruppe 1"
+      },
+      {
+       "name": "Águilas",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Alcorcón",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Algeciras",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Antequera",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Atlético Madrileño",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Cartagena",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Europa",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Gimnàstic",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Hércules",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Huesca",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Ibiza",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Jaén",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Juventud Torremolinos",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Murcia",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Rayo Majadahonda",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Real Madrid Castilla",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Sant Andreu",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Teruel",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Villarreal B",
+       "group": "Gruppe 2"
+      },
+      {
+       "name": "Zaragoza",
+       "group": "Gruppe 2"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "FR",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Ligue 1",
+     "officialName": "Ligue 1",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Paris Saint-Germain",
+       "group": null
+      },
+      {
+       "name": "RC Lens",
+       "group": null
+      },
+      {
+       "name": "OSC Lille",
+       "group": null
+      },
+      {
+       "name": "Olympique Lyon",
+       "group": null
+      },
+      {
+       "name": "Olympique Marseille",
+       "group": null
+      },
+      {
+       "name": "Stade Rennes",
+       "group": null
+      },
+      {
+       "name": "AS Monaco",
+       "group": null
+      },
+      {
+       "name": "Racing Straßburg",
+       "group": null
+      },
+      {
+       "name": "FC Lorient",
+       "group": null
+      },
+      {
+       "name": "FC Toulouse",
+       "group": null
+      },
+      {
+       "name": "Paris FC",
+       "group": null
+      },
+      {
+       "name": "Stade Brest",
+       "group": null
+      },
+      {
+       "name": "SCO Angers",
+       "group": null
+      },
+      {
+       "name": "Le Havre AC",
+       "group": null
+      },
+      {
+       "name": "AJ Auxerre",
+       "group": null
+      },
+      {
+       "name": "OGC Nizza",
+       "group": null
+      },
+      {
+       "name": "ES Troyes AC",
+       "group": null
+      },
+      {
+       "name": "Le Mans FC",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "Ligue 2",
+     "officialName": "Ligue 2",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Metz",
+       "group": null
+      },
+      {
+       "name": "FC Nantes",
+       "group": null
+      },
+      {
+       "name": "AS Saint-Étienne",
+       "group": null
+      },
+      {
+       "name": "Red Star Paris",
+       "group": null
+      },
+      {
+       "name": "AF Rodez",
+       "group": null
+      },
+      {
+       "name": "Stade Reims",
+       "group": null
+      },
+      {
+       "name": "FC Annecy",
+       "group": null
+      },
+      {
+       "name": "HSC Montpellier",
+       "group": null
+      },
+      {
+       "name": "FC Pau",
+       "group": null
+      },
+      {
+       "name": "USL Dunkerque",
+       "group": null
+      },
+      {
+       "name": "EA Guingamp",
+       "group": null
+      },
+      {
+       "name": "Grenoble Foot",
+       "group": null
+      },
+      {
+       "name": "Clermont Foot",
+       "group": null
+      },
+      {
+       "name": "AS Nancy",
+       "group": null
+      },
+      {
+       "name": "US Boulogne",
+       "group": null
+      },
+      {
+       "name": "Stade Laval",
+       "group": null
+      },
+      {
+       "name": "FC Sochaux",
+       "group": null
+      },
+      {
+       "name": "FCO Dijon",
+       "group": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "IT",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Serie A",
+     "officialName": "Serie A",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Inter Mailand",
+       "group": null
+      },
+      {
+       "name": "SSC Neapel",
+       "group": null
+      },
+      {
+       "name": "AS Rom",
+       "group": null
+      },
+      {
+       "name": "Como 1907",
+       "group": null
+      },
+      {
+       "name": "AC Mailand",
+       "group": null
+      },
+      {
+       "name": "Juventus Turin",
+       "group": null
+      },
+      {
+       "name": "Atalanta Bergamo",
+       "group": null
+      },
+      {
+       "name": "FC Bologna",
+       "group": null
+      },
+      {
+       "name": "Lazio Rom",
+       "group": null
+      },
+      {
+       "name": "Udinese Calcio",
+       "group": null
+      },
+      {
+       "name": "US Sassuolo Calcio",
+       "group": null
+      },
+      {
+       "name": "Parma Calcio 1913",
+       "group": null
+      },
+      {
+       "name": "FC Turin",
+       "group": null
+      },
+      {
+       "name": "Cagliari Calcio",
+       "group": null
+      },
+      {
+       "name": "AC Florenz",
+       "group": null
+      },
+      {
+       "name": "CFC Genua",
+       "group": null
+      },
+      {
+       "name": "US Lecce",
+       "group": null
+      },
+      {
+       "name": "FC Venedig",
+       "group": null
+      },
+      {
+       "name": "Frosinone Calcio",
+       "group": null
+      },
+      {
+       "name": "AC Monza",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "Serie B",
+     "officialName": "Serie B",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "US Cremonese",
+       "group": null
+      },
+      {
+       "name": "Hellas Verona",
+       "group": null
+      },
+      {
+       "name": "Pisa Sporting Club",
+       "group": null
+      },
+      {
+       "name": "FC Palermo",
+       "group": null
+      },
+      {
+       "name": "US Catanzaro 1929",
+       "group": null
+      },
+      {
+       "name": "FC Modena",
+       "group": null
+      },
+      {
+       "name": "SS Juve Stabia",
+       "group": null
+      },
+      {
+       "name": "US Avellino 1912",
+       "group": null
+      },
+      {
+       "name": "AC Mantova",
+       "group": null
+      },
+      {
+       "name": "Calcio Padova",
+       "group": null
+      },
+      {
+       "name": "FC Cesena",
+       "group": null
+      },
+      {
+       "name": "Carrarese Calcio",
+       "group": null
+      },
+      {
+       "name": "Sampdoria Genua",
+       "group": null
+      },
+      {
+       "name": "Virtus Entella",
+       "group": null
+      },
+      {
+       "name": "FC Empoli",
+       "group": null
+      },
+      {
+       "name": "FC Südtirol",
+       "group": null
+      },
+      {
+       "name": "L.R. Vicenza",
+       "group": null
+      },
+      {
+       "name": "SS Arezzo",
+       "group": null
+      },
+      {
+       "name": "Benevento Calcio",
+       "group": null
+      },
+      {
+       "name": "Ascoli Calcio",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 3,
+     "name": "Serie C",
+     "officialName": "Serie C",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Carpi",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "AC Ospitaletto",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "Union Brescia",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "Alcione Milano",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "AC Trento 1921",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "UC AlbinoLeffe",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "AC Renate",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "FC Lumezzane VGZ ASD",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "US Pergolettese 1932",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "Calcio Lecco",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "AS Giana Erminio",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "Dolomiti Bellunesi",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "FC Arzignano Valchiampo",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "Juventus Next Gen",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "AS Cittadella",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "Novara Calcio",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "FC Pro Vercelli",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "FC Treviso",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "US Folgore Caratese",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "Calcio Desenzano",
+       "group": "Gruppe A"
+      },
+      {
+       "name": "AC Reggiana",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "Spezia Calcio",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "Delfino Pescara 1936",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "FC Ravenna",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "US Sambenedettese",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "US Pianese",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "Forli FC",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "AS Gubbio 1910",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "Guidonia Montecelio 1937 FC",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "SSD Città di Campobasso",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "Latina Calcio 1932",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "Vis Pesaro",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "ASD Pineto Calcio",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "AC Perugia Calcio",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "Atalanta Bergamo U23",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "US Livorno 1915",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "SEF Torres 1903",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "FC Vado",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "AS Ostia Mare Lido Calcio",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "US Grosseto",
+       "group": "Gruppe B"
+      },
+      {
+       "name": "SSC Bari",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "US Salernitana",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Catania SSD",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Casarano Calcio",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "FC Crotone",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Cosenza Calcio",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Inter Mailand U23",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "FC Casertana",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Potenza Calcio",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "SS Monopoli 1966",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Sorrento 1945",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Team Altamura",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "SS Audace Cerignola",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "AZ Picerno",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Giugliano Calcio",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Cavese 1919",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Foggia Calcio",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "Scafatese Calcio",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "ASD US Savoia 1908",
+       "group": "Gruppe C"
+      },
+      {
+       "name": "ASD Barletta 1922",
+       "group": "Gruppe C"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "JP",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "J1 League",
+     "officialName": "J1 League",
+     "season": "2025",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Kashima Antlers",
+       "group": null
+      },
+      {
+       "name": "Kashiwa Reysol",
+       "group": null
+      },
+      {
+       "name": "Kyōto Sanga",
+       "group": null
+      },
+      {
+       "name": "Sanfrecce Hiroshima",
+       "group": null
+      },
+      {
+       "name": "Vissel Kōbe",
+       "group": null
+      },
+      {
+       "name": "FC Machida Zelvia",
+       "group": null
+      },
+      {
+       "name": "Urawa Red Diamonds",
+       "group": null
+      },
+      {
+       "name": "Kawasaki Frontale",
+       "group": null
+      },
+      {
+       "name": "Gamba Osaka",
+       "group": null
+      },
+      {
+       "name": "Cerezo Osaka",
+       "group": null
+      },
+      {
+       "name": "FC Tokyo",
+       "group": null
+      },
+      {
+       "name": "Avispa Fukuoka",
+       "group": null
+      },
+      {
+       "name": "Fagiano Okayama",
+       "group": null
+      },
+      {
+       "name": "Shimizu S-Pulse",
+       "group": null
+      },
+      {
+       "name": "Yokohama F. Marinos",
+       "group": null
+      },
+      {
+       "name": "Nagoya Grampus",
+       "group": null
+      },
+      {
+       "name": "Tokyo Verdy",
+       "group": null
+      },
+      {
+       "name": "Yokohama FC",
+       "group": null
+      },
+      {
+       "name": "Shonan Bellmare",
+       "group": null
+      },
+      {
+       "name": "Albirex Niigata",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "J2 League",
+     "officialName": "J2 League",
+     "season": "2025",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Mito Hollyhock",
+       "group": null
+      },
+      {
+       "name": "V-Varen Nagasaki",
+       "group": null
+      },
+      {
+       "name": "JEF United Ichihara Chiba",
+       "group": null
+      },
+      {
+       "name": "Tokushima Vortis",
+       "group": null
+      },
+      {
+       "name": "Júbilo Iwata",
+       "group": null
+      },
+      {
+       "name": "RB Ōmiya Ardija",
+       "group": null
+      },
+      {
+       "name": "Vegalta Sendai",
+       "group": null
+      },
+      {
+       "name": "Sagan Tosu",
+       "group": null
+      },
+      {
+       "name": "Iwaki FC",
+       "group": null
+      },
+      {
+       "name": "Montedio Yamagata",
+       "group": null
+      },
+      {
+       "name": "FC Imabari",
+       "group": null
+      },
+      {
+       "name": "Hokkaido Consadole Sapporo",
+       "group": null
+      },
+      {
+       "name": "Ventforet Kofu",
+       "group": null
+      },
+      {
+       "name": "Blaublitz Akita",
+       "group": null
+      },
+      {
+       "name": "Fujieda MYFC",
+       "group": null
+      },
+      {
+       "name": "Ōita Trinita",
+       "group": null
+      },
+      {
+       "name": "Kataller Toyama",
+       "group": null
+      },
+      {
+       "name": "Roasso Kumamoto",
+       "group": null
+      },
+      {
+       "name": "Renofa Yamaguchi FC",
+       "group": null
+      },
+      {
+       "name": "Ehime FC",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 3,
+     "name": "J3 League",
+     "officialName": "J3 League",
+     "season": "2025",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Tochigi City FC",
+       "group": null
+      },
+      {
+       "name": "Vanraure Hachinohe",
+       "group": null
+      },
+      {
+       "name": "FC Osaka",
+       "group": null
+      },
+      {
+       "name": "Tegevajaro Miyazaki",
+       "group": null
+      },
+      {
+       "name": "Kagoshima United FC",
+       "group": null
+      },
+      {
+       "name": "Zweigen Kanazawa",
+       "group": null
+      },
+      {
+       "name": "Tochigi SC",
+       "group": null
+      },
+      {
+       "name": "Giravanz Kitakyūshū",
+       "group": null
+      },
+      {
+       "name": "Nara Club",
+       "group": null
+      },
+      {
+       "name": "Fukushima United FC",
+       "group": null
+      },
+      {
+       "name": "Gainare Tottori",
+       "group": null
+      },
+      {
+       "name": "SC Sagamihara",
+       "group": null
+      },
+      {
+       "name": "FC Gifu",
+       "group": null
+      },
+      {
+       "name": "Thespakusatsu Gunma",
+       "group": null
+      },
+      {
+       "name": "Matsumoto Yamaga",
+       "group": null
+      },
+      {
+       "name": "FC Ryūkyū",
+       "group": null
+      },
+      {
+       "name": "Kamatamare Sanuki",
+       "group": null
+      },
+      {
+       "name": "Kōchi United SC",
+       "group": null
+      },
+      {
+       "name": "AC Nagano Parceiro",
+       "group": null
+      },
+      {
+       "name": "Azul Claro Numazu",
+       "group": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "PT",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Primeira Liga",
+     "officialName": "Primeira Liga",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "FC Porto",
+       "group": null
+      },
+      {
+       "name": "Sporting Lissabon",
+       "group": null
+      },
+      {
+       "name": "Benfica Lissabon",
+       "group": null
+      },
+      {
+       "name": "Sporting Braga",
+       "group": null
+      },
+      {
+       "name": "FC Famalicão",
+       "group": null
+      },
+      {
+       "name": "Gil Vicente FC",
+       "group": null
+      },
+      {
+       "name": "Moreirense FC",
+       "group": null
+      },
+      {
+       "name": "FC Arouca",
+       "group": null
+      },
+      {
+       "name": "Vitória Guimarães",
+       "group": null
+      },
+      {
+       "name": "GD Estoril Praia",
+       "group": null
+      },
+      {
+       "name": "FC Alverca",
+       "group": null
+      },
+      {
+       "name": "Rio Ave FC",
+       "group": null
+      },
+      {
+       "name": "CD Santa Clara",
+       "group": null
+      },
+      {
+       "name": "Nacional Funchal",
+       "group": null
+      },
+      {
+       "name": "CF Estrela Amadora",
+       "group": null
+      },
+      {
+       "name": "Casa Pia AC",
+       "group": null
+      },
+      {
+       "name": "Marítimo Funchal",
+       "group": null
+      },
+      {
+       "name": "Académico de Viseu FC",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "Liga Portugal 2",
+     "officialName": "Liga Portugal 2",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "CD Tondela",
+       "group": null
+      },
+      {
+       "name": "AVS Futebol SAD",
+       "group": null
+      },
+      {
+       "name": "SC União Torreense",
+       "group": null
+      },
+      {
+       "name": "FC Vizela",
+       "group": null
+      },
+      {
+       "name": "FC Porto B",
+       "group": null
+      },
+      {
+       "name": "União Leiria",
+       "group": null
+      },
+      {
+       "name": "Leixões SC",
+       "group": null
+      },
+      {
+       "name": "CD Feirense",
+       "group": null
+      },
+      {
+       "name": "GD Chaves",
+       "group": null
+      },
+      {
+       "name": "Benfica Lissabon B",
+       "group": null
+      },
+      {
+       "name": "FC Felgueiras",
+       "group": null
+      },
+      {
+       "name": "Lusitânia Lourosa",
+       "group": null
+      },
+      {
+       "name": "Sporting Lissabon B",
+       "group": null
+      },
+      {
+       "name": "FC Penafiel",
+       "group": null
+      },
+      {
+       "name": "Portimonense SC",
+       "group": null
+      },
+      {
+       "name": "SC Farense",
+       "group": null
+      },
+      {
+       "name": "Amarante FC",
+       "group": null
+      },
+      {
+       "name": "Académica de Coimbra",
+       "group": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "SCO",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Scottish Premiership",
+     "officialName": "Scottish Premiership",
+     "season": "2026/27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Celtic Glasgow",
+       "group": null
+      },
+      {
+       "name": "Heart of Midlothian",
+       "group": null
+      },
+      {
+       "name": "Glasgow Rangers",
+       "group": null
+      },
+      {
+       "name": "FC Motherwell",
+       "group": null
+      },
+      {
+       "name": "Hibernian Edinburgh",
+       "group": null
+      },
+      {
+       "name": "FC Falkirk",
+       "group": null
+      },
+      {
+       "name": "Dundee United",
+       "group": null
+      },
+      {
+       "name": "FC Dundee",
+       "group": null
+      },
+      {
+       "name": "FC Aberdeen",
+       "group": null
+      },
+      {
+       "name": "FC Kilmarnock",
+       "group": null
+      },
+      {
+       "name": "FC St. Mirren",
+       "group": null
+      },
+      {
+       "name": "FC St. Johnstone",
+       "group": null
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "Scottish Championship",
+     "officialName": "Scottish Championship",
+     "season": "2026–27",
+     "promotionSystem": "pyramid",
+     "clubs": [
+      {
+       "name": "Partick Thistle",
+       "group": null
+      },
+      {
+       "name": "Ayr United",
+       "group": null
+      },
+      {
+       "name": "Stenhousemuir",
+       "group": null
+      },
+      {
+       "name": "Raith Rovers",
+       "group": null
+      },
+      {
+       "name": "Livingston",
+       "group": null
+      },
+      {
+       "name": "Dunfermline Athletic",
+       "group": null
+      },
+      {
+       "name": "Inverness Caledonian Thistle",
+       "group": null
+      },
+      {
+       "name": "Arbroath",
+       "group": null
+      },
+      {
+       "name": "Queen's Park",
+       "group": null
+      },
+      {
+       "name": "Greenock Morton",
+       "group": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "US",
+   "leagues": [
+    {
+     "division": 1,
+     "name": "Major League Soccer",
+     "officialName": "Major League Soccer",
+     "season": "2026",
+     "promotionSystem": "closed",
+     "clubs": [
+      {
+       "name": "Nashville SC",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Inter Miami",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "New England Revolution",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Chicago Fire",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "New York City FC",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "FC Cincinnati",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Charlotte FC",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "New York Red Bulls",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "D.C. United",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Orlando City",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Columbus Crew",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Toronto FC",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Philadelphia Union",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "CF Montreal",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Atlanta United",
+       "group": "Eastern Conference"
+      },
+      {
+       "name": "Vancouver Whitecaps",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Los Angeles FC",
+       "group": "Western Conference"
+      },
+      {
+       "name": "San José Earthquakes",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Houston Dynamo",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Real Salt Lake",
+       "group": "Western Conference"
+      },
+      {
+       "name": "FC Dallas",
+       "group": "Western Conference"
+      },
+      {
+       "name": "St. Louis City",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Portland Timbers",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Seattle Sounders",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Minnesota United",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Colorado Rapids",
+       "group": "Western Conference"
+      },
+      {
+       "name": "LA Galaxy",
+       "group": "Western Conference"
+      },
+      {
+       "name": "San Diego FC",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Austin FC",
+       "group": "Western Conference"
+      },
+      {
+       "name": "Sporting Kansas City",
+       "group": "Western Conference"
+      }
+     ]
+    },
+    {
+     "division": 2,
+     "name": "USL Championship",
+     "officialName": "USL Championship",
+     "season": "2026",
+     "promotionSystem": "closed",
+     "clubs": [
+      {
+       "name": "Birmingham Legion FC",
+       "group": null
+      },
+      {
+       "name": "Brooklyn FC",
+       "group": null
+      },
+      {
+       "name": "Charleston Battery",
+       "group": null
+      },
+      {
+       "name": "Colorado Springs Switchbacks FC",
+       "group": null
+      },
+      {
+       "name": "Detroit City FC",
+       "group": null
+      },
+      {
+       "name": "El Paso Locomotive FC",
+       "group": null
+      },
+      {
+       "name": "Monterey Bay FC",
+       "group": null
+      },
+      {
+       "name": "Hartford Athletic",
+       "group": null
+      },
+      {
+       "name": "Indy Eleven",
+       "group": null
+      },
+      {
+       "name": "Sporting Club Jacksonville",
+       "group": null
+      },
+      {
+       "name": "Las Vegas Lights FC",
+       "group": null
+      },
+      {
+       "name": "Lexington SC",
+       "group": null
+      },
+      {
+       "name": "Loudoun United FC",
+       "group": null
+      },
+      {
+       "name": "Louisville City FC",
+       "group": null
+      },
+      {
+       "name": "Miami FC",
+       "group": null
+      },
+      {
+       "name": "New Mexico United",
+       "group": null
+      },
+      {
+       "name": "Oakland Roots SC",
+       "group": null
+      },
+      {
+       "name": "OKC Energy FC",
+       "group": null
+      },
+      {
+       "name": "Orange County SC",
+       "group": null
+      },
+      {
+       "name": "Phoenix Rising FC",
+       "group": null
+      },
+      {
+       "name": "Pittsburgh Riverhounds SC",
+       "group": null
+      },
+      {
+       "name": "Rhode Island FC",
+       "group": null
+      },
+      {
+       "name": "Sacramento Republic FC",
+       "group": null
+      },
+      {
+       "name": "San Antonio FC",
+       "group": null
+      },
+      {
+       "name": "Tampa Bay Rowdies",
+       "group": null
+      },
+      {
+       "name": "FC Tulsa",
+       "group": null
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
