@@ -26,10 +26,12 @@ function Scanner({ src, label }: { src: string; label: string }) {
         </polygon>
       </svg>
       <motion.div
-        style={{ position: "absolute", left: 0, right: 0, height: 3, background: "#8fd134", boxShadow: "0 0 14px 4px rgba(143,209,52,.7)" }}
-        animate={{ top: ["0%", "100%", "0%"] }}
+        style={{ position: "absolute", inset: 0, willChange: "transform" }}
+        animate={{ y: ["0%", "100%", "0%"] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-      />
+      >
+        <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 3, background: "#8fd134", boxShadow: "0 0 14px 4px rgba(143,209,52,.7)" }} />
+      </motion.div>
       <div className="h-section" style={{ position: "absolute", left: 0, right: 0, bottom: 8, textAlign: "center", color: "#fff", fontSize: 14, textShadow: "0 1px 3px #000" }}>
         {label}
       </div>

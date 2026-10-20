@@ -78,6 +78,12 @@ export function SettingsSheet({
       <div className="stack">
         <Toggle label="Vibration" hint="Kurzes haptisches Feedback bei Aktionen und Titeln." value={settings.haptics} onChange={(v) => updateSettings({ haptics: v })} />
         <Toggle label="Schnelle Animationen" hint="Anpfiff-Sequenz deutlich verkürzen." value={settings.fastAnimations} onChange={(v) => updateSettings({ fastAnimations: v })} />
+        <Toggle
+          label="Effekte reduzieren"
+          hint="Schwebende Hexagons, Glanz und Pulsieren aus – für ältere oder langsame Handys."
+          value={settings.reduceEffects}
+          onChange={(v) => updateSettings({ reduceEffects: v })}
+        />
 
         <div className="panel pad">
           <div className="label">KI für FIFA-Gesichter (optional)</div>

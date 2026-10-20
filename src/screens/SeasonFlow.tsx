@@ -44,7 +44,7 @@ export function Kickoff({ label, seasons, onDone }: { label: string; seasons: nu
 
   return (
     <motion.div className="overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={finish}>
-      <HexBackground dark />
+      <HexBackground dark still />
       <div style={{ position: "relative", width: "100%", maxWidth: 420, textAlign: "center" }}>
         <motion.div initial={{ x: -120, opacity: 0, skewX: -12 }} animate={{ x: 0, opacity: 1, skewX: 0 }} transition={{ type: "spring", damping: 16 }}>
           <div className="eyebrow" style={{ color: "#8fd134" }}>
@@ -76,13 +76,15 @@ export function Kickoff({ label, seasons, onDone }: { label: string; seasons: nu
               </g>
             </svg>
             <motion.div
-              style={{ position: "absolute", width: 14, height: 14, marginLeft: -7, marginTop: -7, borderRadius: "50%", background: "radial-gradient(circle at 35% 35%,#fff,#cfd8df)", boxShadow: "0 4px 6px rgba(0,0,0,.5)" }}
+              style={{ position: "absolute", inset: 0, willChange: "transform" }}
               animate={{
-                left: ["50%", "68%", "40%", "85%", "60%", "20%", "35%", "92%", "50%"],
-                top: ["50%", "30%", "70%", "45%", "20%", "55%", "80%", "50%", "50%"],
+                x: ["50%", "68%", "40%", "85%", "60%", "20%", "35%", "92%", "50%"],
+                y: ["50%", "30%", "70%", "45%", "20%", "55%", "80%", "50%", "50%"],
               }}
               transition={{ duration: total / 1000, ease: "easeInOut" }}
-            />
+            >
+              <div style={{ position: "absolute", left: -7, top: -7, width: 14, height: 14, borderRadius: "50%", background: "radial-gradient(circle at 35% 35%,#fff,#cfd8df)", boxShadow: "0 4px 6px rgba(0,0,0,.5)" }} />
+            </motion.div>
           </div>
         </div>
 
@@ -178,7 +180,7 @@ export function SeasonRecap({ seasons, isGk, onDone }: { seasons: SeasonRecord[]
 
   return (
     <motion.div className="overlay" style={{ justifyContent: "flex-start", overflowY: "auto" }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <HexBackground dark />
+      <HexBackground dark still />
       <AnimatePresence mode="wait">
         <motion.div
           key={s.index}

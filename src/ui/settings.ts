@@ -5,10 +5,12 @@ export interface Settings {
   haptics: boolean;
   /** Anpfiff- und Saisonanimationen kurz halten. */
   fastAnimations: boolean;
+  /** Dauer-Effekte (schwebende Hexagons, Glanz, Pulsieren) aus – für ältere Handys. */
+  reduceEffects: boolean;
 }
 
 const KEY = "legendenweg:settings:v1";
-const DEFAULTS: Settings = { haptics: true, fastAnimations: false };
+const DEFAULTS: Settings = { haptics: true, fastAnimations: false, reduceEffects: false };
 
 let current: Settings = read();
 const listeners = new Set<() => void>();
@@ -21,6 +23,7 @@ function read(): Settings {
     return {
       haptics: typeof parsed.haptics === "boolean" ? parsed.haptics : DEFAULTS.haptics,
       fastAnimations: typeof parsed.fastAnimations === "boolean" ? parsed.fastAnimations : DEFAULTS.fastAnimations,
+      reduceEffects: typeof parsed.reduceEffects === "boolean" ? parsed.reduceEffects : DEFAULTS.reduceEffects,
     };
   } catch {
     return DEFAULTS;

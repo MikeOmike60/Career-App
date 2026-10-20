@@ -7,6 +7,7 @@ import { clearState, loadState, saveState } from "@/lib/sim/storage";
 import { HexBackground, Sheet } from "@/ui/primitives";
 import { Crest } from "@/ui/Crest";
 import { celebrate, setRootBackHandler } from "@/ui/native";
+import { useSettings } from "@/ui/settings";
 import { Title } from "@/screens/Title";
 import { Setup } from "@/screens/Setup";
 import { Offers } from "@/screens/Offers";
@@ -32,7 +33,7 @@ function Welcome({ clubName, onDone }: { clubName: string; onDone: () => void })
   }, [onDone]);
   return (
     <motion.div className="overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onDone}>
-      <HexBackground dark />
+      <HexBackground dark still />
       <motion.div initial={{ scale: 3, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", damping: 12 }} style={{ position: "relative" }}>
         <Crest name={clubName} size={130} />
       </motion.div>
@@ -65,6 +66,11 @@ export function App() {
   useEffect(() => {
     setRootBackHandler(view === "game" ? () => setView("title") : null);
   }, [view]);
+
+  const { reduceEffects } = useSettings();
+  useEffect(() => {
+    document.documentElement.classList.toggle("lite", reduceEffects);
+  }, [reduceEffects]);
 
   const reset = () => {
     clearState();

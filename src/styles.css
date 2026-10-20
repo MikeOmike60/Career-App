@@ -10,7 +10,7 @@
   --muted: #687886;
   --line: #d6dee5;
   --line-strong: #b9c5cf;
-  --panel: rgba(255, 255, 255, 0.9);
+  --panel: rgba(255, 255, 255, 0.95);
   --panel-solid: #ffffff;
   --panel-soft: #f3f6f8;
   --stage-1: #f7f9fb;
@@ -159,6 +159,7 @@ img {
   transform: rotate(18deg);
   animation: ray 9s ease-in-out infinite;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .stage-dark .stage-ray {
@@ -177,25 +178,30 @@ img {
   }
 }
 
-.hex-float {
+/* Jede Ebene wird einmal gerastert und dann nur noch per GPU verschoben. */
+.stage .hex-layer {
+  position: absolute;
+  inset: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
   animation: hexFloat var(--dur, 18s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
-  transform-box: fill-box;
-  transform-origin: center;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 @keyframes hexFloat {
   0%,
   100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate(var(--dx, 12px), var(--dy, -18px)) rotate(var(--rot, 6deg));
+    transform: translate3d(var(--dx, 12px), var(--dy, -18px), 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hex-float,
+  .hex-layer,
   .stage-ray,
   .shine::after,
   .pulse {
@@ -445,8 +451,6 @@ img {
   border: 1px solid #fff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   min-width: 0;
 }
 
@@ -622,39 +626,49 @@ img {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -60%;
+  left: 0;
   width: 40%;
   background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
-  transform: skewX(-18deg);
+  transform: translate3d(-150%, 0, 0) skewX(-18deg);
   animation: shine 3.8s ease-in-out infinite;
   pointer-events: none;
+  will-change: transform;
 }
 
 @keyframes shine {
   0% {
-    left: -60%;
+    transform: translate3d(-150%, 0, 0) skewX(-18deg);
   }
   55%,
   100% {
-    left: 140%;
+    transform: translate3d(350%, 0, 0) skewX(-18deg);
   }
 }
 
 .pulse {
-  animation: pulse 1.6s ease-in-out infinite;
+  position: relative;
+  overflow: visible !important;
+}
+
+.pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 3px rgba(143, 209, 52, 0.85);
+  animation: pulse 1.6s ease-out infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
 @keyframes pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 0 rgba(143, 209, 52, 0.65),
-      var(--shadow);
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
   }
-  50% {
-    box-shadow:
-      0 0 0 8px rgba(143, 209, 52, 0),
-      var(--shadow);
+  100% {
+    transform: scale(1.04, 1.12);
+    opacity: 0;
   }
 }
 
@@ -933,9 +947,7 @@ img {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(8, 16, 22, 0.55);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background: rgba(8, 16, 22, 0.62);
 }
 
 .sheet {
@@ -1091,7 +1103,17 @@ img {
   aspect-ratio: 0.7;
   flex: none;
   color: #2b1d00;
-  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.35));
+}
+
+.pcard::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -6px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 70%);
 }
 
 .pcard-shape {
@@ -1104,19 +1126,23 @@ img {
 .pcard-shape::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.45) 45%, rgba(255, 255, 255, 0) 60%);
-  background-size: 250% 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 80%);
+  transform: translate3d(-120%, 0, 0);
   animation: cardGloss 5s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes cardGloss {
   0% {
-    background-position: 120% 0;
+    transform: translate3d(-120%, 0, 0);
   }
   50%,
   100% {
-    background-position: -120% 0;
+    transform: translate3d(220%, 0, 0);
   }
 }
 
@@ -1306,4 +1332,19 @@ img {
   .step-label:not(.current) {
     display: none;
   }
+}
+
+/* Effekte reduzieren (Einstellung): alle Daueranimationen aus */
+.lite .hex-layer,
+.lite .stage-ray,
+.lite .shine::after,
+.lite .pulse::before,
+.lite .pcard-shape::after {
+  animation: none !important;
+}
+
+.lite .stage-ray,
+.lite .shine::after,
+.lite .pcard-shape::after {
+  display: none;
 }

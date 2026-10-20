@@ -264,12 +264,12 @@ export function GambleReveal({ consequence, instant }: { consequence: DecisionLo
   useEffect(() => {
     let cancelled = false;
     if (instant) {
-      void controls.set({ left: `${final}%` });
+      void controls.set({ x: `${final}%` });
       return;
     }
     void controls
       .start({
-        left: ["0%", "96%", "8%", "88%", "20%", `${final}%`],
+        x: ["0%", "96%", "8%", "88%", "20%", `${final}%`],
         transition: { duration: 2.1, ease: "easeInOut", times: [0, 0.22, 0.45, 0.65, 0.82, 1] },
       })
       .then(() => {
@@ -308,12 +308,11 @@ export function GambleReveal({ consequence, instant }: { consequence: DecisionLo
             <span>{100 - g.successChance}%</span>
           </motion.div>
         </div>
-        <motion.div
-          animate={controls}
-          initial={{ left: "0%" }}
-          style={{ position: "absolute", top: -8, bottom: -8, width: 4, marginLeft: -2, background: "#13202b", borderRadius: 2, boxShadow: "0 0 0 2px #fff" }}
-        >
-          <div style={{ position: "absolute", top: -6, left: -6, width: 16, height: 10, background: "#13202b", clipPath: "polygon(0 0,100% 0,50% 100%)" }} />
+        {/* Träger in voller Breite: x in Prozent entspricht der Balkenbreite (nur GPU). */}
+        <motion.div animate={controls} initial={{ x: "0%" }} style={{ position: "absolute", top: -8, bottom: -8, left: 0, right: 0, pointerEvents: "none", willChange: "transform" }}>
+          <div style={{ position: "absolute", top: 0, bottom: 0, left: -2, width: 4, background: "#13202b", borderRadius: 2, boxShadow: "0 0 0 2px #fff" }}>
+            <div style={{ position: "absolute", top: -6, left: -6, width: 16, height: 10, background: "#13202b", clipPath: "polygon(0 0,100% 0,50% 100%)" }} />
+          </div>
         </motion.div>
       </div>
       <motion.div

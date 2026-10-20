@@ -43,7 +43,7 @@ export function Walkout({ data, age, onDone }: { data: CardData; age: number; on
 
   return (
     <motion.div className="overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => (stage < 3 ? setStage(3) : onDone())}>
-      <HexBackground dark />
+      <HexBackground dark still />
       {/* Lichtstrahlen */}
       <motion.div
         aria-hidden
@@ -53,6 +53,7 @@ export function Walkout({ data, age, onDone }: { data: CardData; age: number; on
           height: "180vmax",
           background: `repeating-conic-gradient(from 0deg, ${glow}33 0deg 8deg, transparent 8deg 22deg)`,
           borderRadius: "50%",
+          willChange: "transform",
         }}
         animate={{ rotate: 360 }}
         transition={{ duration: 30, ease: "linear", repeat: Infinity }}

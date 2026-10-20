@@ -25,16 +25,30 @@ export function ovrGradient(ovr: number): string {
 
 /* ---------------------------------------------------- Hexagon-Hintergrund */
 
-const HEXES: { x: number; y: number; r: number; o: number; dur: number; dx: number; dy: number; rot: number }[] = [
-  { x: 330, y: 90, r: 120, o: 0.75, dur: 22, dx: -14, dy: 18, rot: 5 },
-  { x: 60, y: 220, r: 70, o: 0.55, dur: 17, dx: 12, dy: -16, rot: -6 },
-  { x: 250, y: 330, r: 46, o: 0.5, dur: 15, dx: -10, dy: -12, rot: 8 },
-  { x: 380, y: 470, r: 95, o: 0.6, dur: 24, dx: -16, dy: 10, rot: -4 },
-  { x: 40, y: 560, r: 110, o: 0.65, dur: 26, dx: 14, dy: -10, rot: 4 },
-  { x: 220, y: 690, r: 64, o: 0.5, dur: 19, dx: 10, dy: -16, rot: -7 },
-  { x: 150, y: 120, r: 30, o: 0.45, dur: 13, dx: 8, dy: 12, rot: 9 },
-  { x: 300, y: 610, r: 34, o: 0.4, dur: 14, dx: -8, dy: -10, rot: -9 },
-  { x: 120, y: 420, r: 22, o: 0.5, dur: 12, dx: 6, dy: -8, rot: 10 },
+type Hex = { x: number; y: number; r: number; o: number };
+
+/**
+ * Eine gemeinsame Ebene mit langsamem Drift. Drei getrennte Vollbild-Ebenen
+ * kosteten auf älteren Handys spürbar mehr Rechenzeit (gemessen ~3×).
+ */
+const LAYERS: { hexes: Hex[]; dur: number; dx: number; dy: number; delay: number }[] = [
+  {
+    dur: 20,
+    dx: -12,
+    dy: 14,
+    delay: 0,
+    hexes: [
+      { x: 330, y: 90, r: 120, o: 0.75 },
+      { x: 40, y: 560, r: 110, o: 0.65 },
+      { x: 120, y: 420, r: 22, o: 0.5 },
+      { x: 60, y: 220, r: 70, o: 0.55 },
+      { x: 380, y: 470, r: 95, o: 0.6 },
+      { x: 300, y: 610, r: 34, o: 0.4 },
+      { x: 250, y: 330, r: 46, o: 0.5 },
+      { x: 220, y: 690, r: 64, o: 0.5 },
+      { x: 150, y: 120, r: 30, o: 0.45 },
+    ],
+  },
 ];
 
 function hexPoints(cx: number, cy: number, r: number): string {
@@ -44,52 +58,54 @@ function hexPoints(cx: number, cy: number, r: number): string {
   }).join(" ");
 }
 
-/** FIFA-13-Bühne: weiße, schwebende Hexagons auf silbrigem Grund. */
-export function HexBackground({ dark }: { dark?: boolean }) {
+/**
+ * FIFA-13-Bühne: weiße, schwebende Hexagons auf silbrigem Grund.
+ * Die Ebene wird einmal gerastert und danach nur per GPU verschoben –
+ * so bleibt es auch auf älteren iPhones flüssig.
+ */
+export function HexBackground({ dark, still }: { dark?: boolean; still?: boolean }) {
+  const id = dark ? "d" : "l";
   return (
     <div className={`stage ${dark ? "stage-dark" : ""}`} aria-hidden>
-      <svg viewBox="0 0 420 800" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="hexfill" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#fff" stopOpacity={dark ? 0.16 : 1} />
-            <stop offset="1" stopColor={dark ? "#7cc7ff" : "#e9eef2"} stopOpacity={dark ? 0.03 : 0.7} />
-          </linearGradient>
-          <filter id="hexshadow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="0" dy="8" stdDeviation="9" floodColor="#24394a" floodOpacity={dark ? 0.5 : 0.16} />
-          </filter>
-        </defs>
-        {HEXES.map((h, i) => (
-          <g
-            key={i}
-            className="hex-float"
-            style={
-              {
-                "--dur": `${h.dur}s`,
-                "--delay": `${-i * 2.3}s`,
-                "--dx": `${h.dx}px`,
-                "--dy": `${h.dy}px`,
-                "--rot": `${h.rot}deg`,
-              } as React.CSSProperties
-            }
-          >
-            <polygon
-              points={hexPoints(h.x, h.y, h.r)}
-              fill="url(#hexfill)"
-              opacity={h.o}
-              filter="url(#hexshadow)"
-              stroke={dark ? "rgba(124,199,255,.35)" : "#fff"}
-              strokeWidth={2}
-            />
-            <polygon
-              points={hexPoints(h.x, h.y, h.r * 0.78)}
-              fill="none"
-              stroke={dark ? "rgba(124,199,255,.18)" : "rgba(19,32,43,.06)"}
-              strokeWidth={1.5}
-            />
-          </g>
-        ))}
-      </svg>
-      <div className="stage-ray" />
+      {LAYERS.map((layer, li) => (
+        <svg
+          key={li}
+          className={still ? undefined : "hex-layer"}
+          viewBox="0 0 420 800"
+          preserveAspectRatio="xMidYMid slice"
+          style={
+            {
+              "--dur": `${layer.dur}s`,
+              "--delay": `${layer.delay}s`,
+              "--dx": `${layer.dx}px`,
+              "--dy": `${layer.dy}px`,
+            } as React.CSSProperties
+          }
+        >
+          {li === 0 && (
+            <defs>
+              <linearGradient id={`hexfill-${id}`} x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#fff" stopOpacity={dark ? 0.16 : 1} />
+                <stop offset="1" stopColor={dark ? "#7cc7ff" : "#e9eef2"} stopOpacity={dark ? 0.03 : 0.7} />
+              </linearGradient>
+            </defs>
+          )}
+          {layer.hexes.map((h, i) => (
+            <g key={i} opacity={h.o}>
+              {/* weicher Schatten als versetzte Fläche statt teurem SVG-Filter */}
+              <polygon points={hexPoints(h.x, h.y + 7, h.r)} fill={dark ? "#000" : "#24394a"} opacity={dark ? 0.25 : 0.07} />
+              <polygon points={hexPoints(h.x, h.y, h.r)} fill={`url(#hexfill-${id})`} stroke={dark ? "rgba(124,199,255,.35)" : "#fff"} strokeWidth={2} />
+              <polygon
+                points={hexPoints(h.x, h.y, h.r * 0.78)}
+                fill="none"
+                stroke={dark ? "rgba(124,199,255,.18)" : "rgba(19,32,43,.06)"}
+                strokeWidth={1.5}
+              />
+            </g>
+          ))}
+        </svg>
+      ))}
+      {!still && <div className="stage-ray" />}
     </div>
   );
 }
@@ -305,7 +321,7 @@ export function Spark({ values, color, height = 36 }: { values: number[]; color:
 
 /* ---------------------------------------------------------- Animationen */
 
-/** Zählt sanft von `from` auf `to` hoch. */
+/** Zählt sanft von `from` auf `to` hoch – schreibt direkt in den Text, ohne React-Render pro Frame. */
 export function CountUp({
   to,
   from = 0,
@@ -321,20 +337,22 @@ export function CountUp({
   decimals?: number;
   prefix?: string;
 }) {
-  const [value, setValue] = useState(from);
+  const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     const controls = animate(from, to, {
       duration,
       delay,
       ease: "easeOut",
-      onUpdate: (v) => setValue(v),
+      onUpdate: (v) => {
+        if (ref.current) ref.current.textContent = `${prefix}${v.toFixed(decimals)}`;
+      },
     });
     return () => controls.stop();
-  }, [from, to, duration, delay]);
+  }, [from, to, duration, delay, decimals, prefix]);
   return (
-    <span className="tnum">
+    <span ref={ref} className="tnum">
       {prefix}
-      {value.toFixed(decimals)}
+      {from.toFixed(decimals)}
     </span>
   );
 }
