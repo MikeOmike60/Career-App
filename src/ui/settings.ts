@@ -7,10 +7,12 @@ export interface Settings {
   fastAnimations: boolean;
   /** Dauer-Effekte (schwebende Hexagons, Glanz, Pulsieren) aus – für ältere Handys. */
   reduceEffects: boolean;
+  /** true = die Person hat „Effekte reduzieren“ selbst gesetzt; dann keine Automatik mehr. */
+  effectsChosen: boolean;
 }
 
 const KEY = "legendenweg:settings:v1";
-const DEFAULTS: Settings = { haptics: true, fastAnimations: false, reduceEffects: false };
+const DEFAULTS: Settings = { haptics: true, fastAnimations: false, reduceEffects: false, effectsChosen: false };
 
 let current: Settings = read();
 const listeners = new Set<() => void>();
@@ -24,6 +26,7 @@ function read(): Settings {
       haptics: typeof parsed.haptics === "boolean" ? parsed.haptics : DEFAULTS.haptics,
       fastAnimations: typeof parsed.fastAnimations === "boolean" ? parsed.fastAnimations : DEFAULTS.fastAnimations,
       reduceEffects: typeof parsed.reduceEffects === "boolean" ? parsed.reduceEffects : DEFAULTS.reduceEffects,
+      effectsChosen: typeof parsed.effectsChosen === "boolean" ? parsed.effectsChosen : DEFAULTS.effectsChosen,
     };
   } catch {
     return DEFAULTS;

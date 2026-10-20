@@ -4,10 +4,11 @@ import type { GameState, Profile } from "@/lib/sim/types";
 import { createInitialState, rerollOffers, signWithClub } from "@/lib/sim/engine";
 import { getClub } from "@/lib/sim/data";
 import { clearState, loadState, saveState } from "@/lib/sim/storage";
-import { HexBackground, Sheet } from "@/ui/primitives";
+import { HexBackground, Sheet, Toasts, type ToastItem } from "@/ui/primitives";
 import { Crest } from "@/ui/Crest";
 import { celebrate, setRootBackHandler } from "@/ui/native";
 import { useSettings } from "@/ui/settings";
+import { watchFrameRate } from "@/ui/frameWatch";
 import { Title } from "@/screens/Title";
 import { Setup } from "@/screens/Setup";
 import { Offers } from "@/screens/Offers";
@@ -71,6 +72,17 @@ export function App() {
   useEffect(() => {
     document.documentElement.classList.toggle("lite", reduceEffects);
   }, [reduceEffects]);
+
+  // Ruckelt das Gerät, schalten wir die Dauer-Effekte selbst ab und sagen es.
+  const [toasts, setToasts] = useState<ToastItem[]>([]);
+  useEffect(
+    () =>
+      watchFrameRate(() => {
+        setToasts([{ key: "lite", tone: "info", title: "Effekte reduziert", subtitle: "Für flüssigeres Spielen – änderbar in den Einstellungen." }]);
+        window.setTimeout(() => setToasts([]), 4500);
+      }),
+    [],
+  );
 
   const reset = () => {
     clearState();
@@ -164,6 +176,7 @@ export function App() {
         </div>
       </Sheet>
       <SettingsSheet open={settingsOpen} onClose={() => setSettingsOpen(false)} state={state} setState={setState} onReset={reset} />
+      <Toasts items={toasts} onDismiss={() => setToasts([])} />
       <AnimatePresence>{welcome && <Welcome key="welcome" clubName={welcome} onDone={() => setWelcome(null)} />}</AnimatePresence>
     </div>
   );

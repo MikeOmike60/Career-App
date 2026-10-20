@@ -82,7 +82,7 @@ export function SettingsSheet({
           label="Effekte reduzieren"
           hint="Schwebende Hexagons, Glanz und Pulsieren aus – für ältere oder langsame Handys."
           value={settings.reduceEffects}
-          onChange={(v) => updateSettings({ reduceEffects: v })}
+          onChange={(v) => updateSettings({ reduceEffects: v, effectsChosen: true })}
         />
 
         <div className="panel pad">
