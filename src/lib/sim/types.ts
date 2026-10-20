@@ -73,6 +73,8 @@ export interface Profile {
   avatar: string; // preset id "preset:3" oder data-url
   pace: Pace;
   seed: number;
+  /** Optionale Selbstbeschreibung („loyal, ehrgeizig …“) – steuert Charakterzüge. */
+  personality?: string | undefined;
 }
 
 
@@ -232,7 +234,21 @@ export interface ClubOffer {
    * "step-up"  = ein stärkerer Verein leiht ein junges Talent aus.
    */
   loanRoute?: "playtime" | "step-up" | undefined;
+  /** Sichtbare Warnung, z. B. „Rivale von Schalke – dort bist du Legende“. */
+  warning?: string | undefined;
+}
 
+/** Ein Wechsel zu einem Rivalen eines früheren Vereins – bleibt dauerhaft im Gedächtnis. */
+export interface Betrayal {
+  seasonIndex: number;
+  age: number;
+  /** Verein, zu dem gewechselt wurde. */
+  toClubId: string;
+  /** Frühere Vereine, deren Rivale das Ziel ist. */
+  betrayedClubIds: string[];
+  /** Summe der gewichteten Rivalitäts-Intensitäten. */
+  severity: number;
+  label: string;
 }
 
 /** Ein bereits verpflichteter Weltstar eines Investorenprojekts (fiktiv). */
@@ -586,5 +602,7 @@ export interface GameState {
   investorOffered?: boolean | undefined;
   /** Dauerhafte finanzielle Lage (Karriereeinnahmen, Absicherung). */
   wealth?: PlayerWealth | undefined;
+  /** Rivalen-Wechsel der Karriere (Ruf, Fanhass, Story). */
+  betrayals?: Betrayal[] | undefined;
 }
 

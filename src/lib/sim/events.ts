@@ -2,6 +2,7 @@ import type { GameState } from "./types";
 import { getClub, countryName } from "./data";
 import { adjust, logDecision, outcome, type EventDef, type EventOptionDef } from "./events-core";
 import { SCENE_EVENTS } from "./events-scene";
+import { GOSSIP_EVENTS } from "./events-gossip";
 
 export { adjust, logDecision, outcome };
 export type { EventDef, EventOptionDef };
@@ -14,8 +15,9 @@ const BASE_EVENTS: EventDef[] = [
     id: "injury",
     title: "Medizinischer Bericht: ein Schlag zur Unzeit",
     intro: () => "Ein Tritt lässt dich vor der englischen Woche angeschlagen zurück. Die Ärzte raten zur Ruhe, der Trainer hofft auf dich.",
-    weight: 14,
-    when: (s) => s.player.fitness < 92 || s.player.injuryRisk > 20,
+    weight: 7,
+    // Nur wenn der Körper wirklich angeschlagen ist – nicht jede Saison.
+    when: (s) => s.player.fitness < 72 || s.player.injuryRisk > 40 || s.player.monthsOut >= 1,
     options: [
       {
         id: "rush",
@@ -398,7 +400,8 @@ const BASE_EVENTS: EventDef[] = [
     title: "Reha-Entscheidung",
     intro: () => "Nach einer langen Verletzung stehen zwei Wege offen: klassische Reha im Verein oder ein teures Spezialprogramm im Ausland.",
     weight: 6,
-    when: (s) => s.player.fitness < 78,
+    // Reha nur nach einer echten, längeren Verletzung.
+    when: (s) => s.player.monthsOut >= 3,
     options: [
       {
         id: "special",
@@ -455,7 +458,7 @@ const BASE_EVENTS: EventDef[] = [
   },
 ];
 
-export const EVENTS: EventDef[] = [...BASE_EVENTS, ...SCENE_EVENTS];
+export const EVENTS: EventDef[] = [...BASE_EVENTS, ...SCENE_EVENTS, ...GOSSIP_EVENTS];
 
 export function eventById(id: string): EventDef | undefined {
   return EVENTS.find((e) => e.id === id);

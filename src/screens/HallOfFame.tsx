@@ -8,7 +8,7 @@ import type { GameState, Trophy } from "@/lib/sim/types";
 import { careerTotals, clubHistory } from "@/lib/sim/engine";
 import { getClub, countryName } from "@/lib/sim/data";
 import { formatMoney, formatNumber } from "@/lib/sim/format";
-import { careerNarrative, careerSeasonRows, legendHighlights, legendStatus } from "@/lib/sim/legend";
+import { careerChapters, careerSeasonRows, legendHighlights, legendStatus } from "@/lib/sim/legend";
 import { bodyWearLabel } from "@/lib/sim/body";
 import { Avatar } from "@/ui/Avatar";
 import { Crest } from "@/ui/Crest";
@@ -74,7 +74,7 @@ const CareerCard = forwardRef<HTMLDivElement, { state: GameState; onOpenTrophy: 
   const last = state.seasons[state.seasons.length - 1];
   const legend = legendStatus(state);
   const highlights = legendHighlights(state);
-  const narrative = careerNarrative(state);
+  const chapters = careerChapters(state);
   const seasonRows = careerSeasonRows(state);
   const stations = clubStations(state);
   const clubs = clubHistory(state);
@@ -255,13 +255,29 @@ const CareerCard = forwardRef<HTMLDivElement, { state: GameState; onOpenTrophy: 
         </Chapter>
       )}
 
-      {narrative.length > 0 && (
-        <Chapter index="06" title="Karriereerzählung">
-          {narrative.map((para, i) => (
-            <p key={i} className="small break" style={{ color: "var(--ink-2)", lineHeight: 1.55, margin: "0 0 8px" }}>
-              {para}
-            </p>
-          ))}
+      {chapters.length > 0 && (
+        <Chapter index="06" title="Die Geschichte" subtitle={`Das Leben von ${state.profile.name}`}>
+          <div style={{ display: "grid", gap: 14 }}>
+            {chapters.map((c, i) => (
+              <div key={i}>
+                <div className="h-section" style={{ fontSize: exporting ? 20 : 16, color: "var(--blue-2)" }}>
+                  {c.title}
+                </div>
+                <p className="break" style={{ color: "var(--ink-2)", lineHeight: 1.65, margin: "4px 0 0", fontSize: exporting ? 15 : 14 }}>
+                  {i === 0 ? (
+                    <>
+                      <span className="h-display" style={{ float: "left", fontSize: 44, lineHeight: 0.9, marginRight: 6, color: "var(--blue)" }}>
+                        {c.text.charAt(0)}
+                      </span>
+                      {c.text.slice(1)}
+                    </>
+                  ) : (
+                    c.text
+                  )}
+                </p>
+              </div>
+            ))}
+          </div>
         </Chapter>
       )}
 

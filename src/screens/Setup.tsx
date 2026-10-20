@@ -19,6 +19,7 @@ import { Sheet, TopBar } from "@/ui/primitives";
 import { tap, useBackHandler, warn } from "@/ui/native";
 import { loadImage } from "@/ui/fifaFace";
 import { FaceStudio } from "./FaceStudio";
+import { TRAITS, parseTraits } from "@/lib/sim/personality";
 
 export const POSITION_LABEL: Record<Position, string> = {
   TW: "Torwart",
@@ -60,6 +61,7 @@ const PACES: { value: Pace; title: string; text: string }[] = [
 const STEPS = ["Profil", "Herkunft", "Position", "Karriere"] as const;
 const STEP_OF_FIELD: Record<string, number> = {
   name: 0,
+  personality: 0,
   birthDate: 0,
   height: 0,
   weight: 0,
@@ -166,6 +168,8 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
   const [posMode, setPosMode] = useState<"main" | "second">("main");
   const [avatar, setAvatar] = useState<string>("preset:2");
   const [pace, setPace] = useState<Pace>(1);
+  const [personality, setPersonality] = useState("");
+  const detectedTraits = parseTraits(personality);
   const [seed, setSeed] = useState<number>(() => randomSeed());
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [uploadError, setUploadError] = useState("");
@@ -258,6 +262,7 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
     if (!pos) e["pos"] = "Bitte wähle eine Hauptposition.";
     if (pos2 && pos2 === pos) e["pos2"] = "Die Nebenposition muss sich von der Hauptposition unterscheiden.";
     if (!Number.isFinite(seed) || seed <= 0) e["seed"] = "Der Seed muss eine positive Zahl sein.";
+    if (personality.trim().length > 160) e["personality"] = "Bitte höchstens 160 Zeichen.";
     return e;
   };
 
@@ -297,6 +302,7 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
       avatar,
       pace,
       seed,
+      ...(personality.trim() ? { personality: personality.trim() } : {}),
     };
   };
 
@@ -345,6 +351,7 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
     setAvatar(pr.avatar);
     setPace(pr.pace);
     setSeed(pr.seed);
+    setPersonality(pr.personality ?? "");
     setErrors({});
     setActiveProfileId(entry.id);
     setProfileNotice(`Profil „${pr.name}“ geladen · neuer Seed ${pr.seed}`);
@@ -488,6 +495,41 @@ export function Setup({ onStart, onExit }: { onStart: (profile: Profile) => void
                       <input id="weight" className="input tnum" type="number" inputMode="numeric" min={50} max={120} value={weight} onChange={(e) => setWeight(Number(e.target.value))} />
                     </Field>
                   </div>
+                </div>
+
+                <div className="panel pad">
+                  <Field
+                    label="Persönlichkeit (optional)"
+                    error={errors["personality"]}
+                    htmlFor="personality"
+                    hint="Beschreib dich in ein paar Worten. Das Spiel erkennt z. B. loyal, ehrgeizig, geldgierig, Hitzkopf, Partylöwe, Führungsspieler, bescheiden oder Vollprofi – und deine Karriere reagiert darauf."
+                  >
+                    <textarea
+                      id="personality"
+                      className="input"
+                      rows={2}
+                      maxLength={160}
+                      value={personality}
+                      onChange={(e) => setPersonality(e.target.value)}
+                      placeholder="z. B. Loyal bis in die Knochen, aber ein echter Hitzkopf auf dem Platz"
+                      style={{ resize: "none", minHeight: 64 }}
+                    />
+                  </Field>
+                  {detectedTraits.length > 0 && (
+                    <div style={{ display: "grid", gap: 6, marginTop: 10 }}>
+                      {detectedTraits.map((t) => (
+                        <motion.div key={t} className="row" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} style={{ alignItems: "flex-start", gap: 8 }}>
+                          <span className="chip lime" style={{ flex: "none" }}>
+                            {TRAITS[t].label}
+                          </span>
+                          <span className="tiny muted">{TRAITS[t].effect}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+                  {personality.trim() && detectedTraits.length === 0 && (
+                    <p className="hint">Noch kein Charakterzug erkannt – deine Beschreibung erscheint trotzdem in deiner Lebensgeschichte.</p>
+                  )}
                 </div>
 
                 <div className="panel pad">

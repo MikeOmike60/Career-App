@@ -48,6 +48,18 @@ import {
 
 import { buildRetirementDecision } from "./retirement";
 import { buildInvestorDecision, formatInvestorMoney } from "./investor";
+import { marketValue, weeklyWage } from "./economy";
+import { hasTrait, traitWeight, type Trait } from "./personality";
+import {
+  applyLingeringReputation,
+  betrayalTier,
+  clubWillCall,
+  currentTenure,
+  makeBetrayal,
+  offerWarning,
+  rivalHits,
+  rivalSeverity,
+} from "./reputation";
 import { buildLegendMoment } from "./legend";
 
 import {
@@ -686,9 +698,11 @@ function rollInjury(
   rng: Rng,
   physInjury: number,
 ): { text?: string; monthsOut: number; major: boolean } {
-  const base = 0.1 + p.injuryRisk / 300 + p.injuryProneness / 420 + physInjury + Math.max(0, p.age - 30) / 160;
-  if (!rng.chance(clamp(base, 0.05, 0.6))) return { monthsOut: 0, major: false };
-  const majorChance = clamp(0.05 + p.injuryProneness / 500 + Math.max(0, p.age - 31) / 260, 0.03, 0.22);
+  // Bewusst selten: etwa jede 6.–8. Saison eine nennenswerte Verletzung,
+  // bei anfälligen oder älteren Spielern spürbar öfter.
+  const base = 0.04 + p.injuryRisk / 700 + p.injuryProneness / 800 + physInjury * 0.6 + Math.max(0, p.age - 31) / 220;
+  if (!rng.chance(clamp(base, 0.03, 0.32))) return { monthsOut: 0, major: false };
+  const majorChance = clamp(0.03 + p.injuryProneness / 700 + Math.max(0, p.age - 32) / 300, 0.02, 0.14);
   if (rng.chance(majorChance)) {
     const months = rng.int(5, 12);
     return { text: `${rng.pick(MAJOR_INJURIES)} – ${months} Monate Ausfall`, monthsOut: months, major: true };
@@ -1004,10 +1018,9 @@ function simulateSeason(state: GameState): SeasonRecord {
   setFanValue(s, club.id, fanValue(s, club.id) + fanDelta);
 
   /* ---------- Wert & Vertrag */
-  const ageFactor = p.age <= 24 ? 1.5 : p.age <= 29 ? 1.2 : p.age <= 33 ? 0.7 : 0.3;
-  p.value = round(Math.pow(Math.max(1, p.ovr - 45), 3.05) * 22 * ageFactor);
-  p.wage = round(Math.max(600, Math.pow(Math.max(1, p.ovr - 45), 2.35) * 3.4 * (0.6 + club.finances / 120)));
+  p.wage = weeklyWage(p.ovr, club.finances);
   p.contractYears = Math.max(0, p.contractYears - 1);
+  p.value = marketValue({ ovr: p.ovr, age: p.age, reputation: p.reputation, contractYears: p.contractYears });
   p.playtimeModifier = clamp(p.playtimeModifier + (1 - p.playtimeModifier) * 0.5, 0.5, 1.35);
   p.age += 1;
 
@@ -1088,6 +1101,7 @@ function simulateSeason(state: GameState): SeasonRecord {
       .join(" ") || undefined,
   };
   if (missedSeason) record.eventNote = "Saison verletzungsbedingt nahezu komplett verpasst.";
+  applyLingeringReputation(s, record);
 
   s.seasons.push(record);
   s.seasonIndex += 1;
@@ -1115,7 +1129,8 @@ function syncTimeline(s: GameState): void {
 /** Kleiner Bonus/Malus auf die Erfolgschance aus Mentalität und Form. */
 function gambleBias(state: GameState): number {
   const p = state.player;
-  return clamp(Math.round((p.mentality - 55) / 6 + (p.form - 55) / 12), -8, 8);
+  const trait = (hasTrait(state, "professional") ? 3 : 0) + (hasTrait(state, "ambitious") ? 2 : 0) - (hasTrait(state, "showman") ? 1 : 0);
+  return clamp(Math.round((p.mentality - 55) / 6 + (p.form - 55) / 12) + trait, -8, 10);
 }
 
 function gambleFor(state: GameState, decisionId: string, optionId: string) {
@@ -1208,7 +1223,8 @@ function buildOffers(state: GameState, rng: Rng, loan: boolean, route: LoanRoute
   const parentId = p.parentClubId;
   const stepUp = loan && route === "step-up";
   const homeStrength = dynamicStrength(state.world, getClub(parentId ?? currentId).id);
-  let pool = candidateClubs(state).filter((c) => c.id !== currentId && c.id !== parentId);
+  // Verbrannte Brücken: Vereine, die du verraten hast, rufen nicht mehr an.
+  let pool = candidateClubs(state).filter((c) => c.id !== currentId && c.id !== parentId && clubWillCall(state, c.id));
   if (stepUp) {
     /**
      * Ein Leihangebot „nach oben“ muss vom Zielclub her plausibel sein: er ist
@@ -1249,10 +1265,45 @@ function buildOffers(state: GameState, rng: Rng, loan: boolean, route: LoanRoute
   }
   if (picks.length < 3) return [];
 
+  /**
+   * Lockruf des Rivalen: Ab und zu meldet sich ausgerechnet der Erzrivale.
+   * Wer sich als geldorientiert oder ehrgeizig beschreibt, hört öfter davon.
+   */
+  let lure: string | undefined;
+  if (!loan) {
+    const lureChance = 0.22 * traitWeight(state, { greedy: 1.5, ambitious: 1.3, hothead: 1.2, loyal: 1.3 });
+    if (rng.chance(Math.min(0.5, lureChance))) {
+      const rivals = relationsOf(currentId)
+        .filter((r) => r.type === "rivalry")
+        .map((r) => getClub(r.b))
+        .filter((c) => {
+          if (picks.some((x) => x.club.id === c.id) || !clubWillCall(state, c.id)) return false;
+          const st = dynamicStrength(state.world, c.id);
+          return st >= p.ovr - 12 && st <= p.ovr + 10;
+        });
+      if (rivals.length) {
+        const c = rng.pick(rivals);
+        ensureCountryWorld(state.world, c.country);
+        const strength = dynamicStrength(state.world, c.id);
+        picks[picks.length - 1] = {
+          club: c,
+          strength,
+          division: dynamicDivision(state.world, c.id),
+          role: expectedRoleFor(p.ovr, strength),
+          distance: 0,
+        };
+        lure = c.id;
+      }
+    }
+  }
+
   return picks.map(({ club, strength, division, role }) => {
     const rel = relationBetween(currentId, club.id);
+    const warning = offerWarning(state, club.id);
     const reason =
-      club.id === state.heartClub
+      club.id === lure
+        ? `Lockruf vom Rivalen: ${club.name} will dich unbedingt – und bietet mehr, als du je verdient hast. Die Frage ist nur, was du dafür verlierst.`
+        : club.id === state.heartClub
         ? "Herzensverein – dort begann alles."
         : rel?.type === "rivalry"
           ? `${rel.label} – ein Schritt mit Sprengkraft.`
@@ -1275,6 +1326,7 @@ function buildOffers(state: GameState, rng: Rng, loan: boolean, route: LoanRoute
       reason,
       country: club.country,
       loanRoute: loan ? (stepUp ? "step-up" : "playtime") : undefined,
+      warning,
     };
     return offer;
   });
@@ -1519,6 +1571,29 @@ function buildNationDecision(state: GameState, rng: Rng): PendingNationDecision 
   return null;
 }
 
+/** Charakterzüge verschieben, welche bestehenden Ereignisse auftauchen. */
+const EVENT_TRAITS: Record<string, Partial<Record<Trait, number>>> = {
+  captain: { leader: 2.5, humble: 0.7 },
+  mentor: { leader: 2, humble: 1.3 },
+  media: { showman: 2, hothead: 1.5, humble: 0.5 },
+  moneymove: { greedy: 2.5, loyal: 0.6 },
+  agent: { greedy: 1.5 },
+  "contract-dispute": { greedy: 2, loyal: 0.6 },
+  burnout: { professional: 0.6, showman: 1.3 },
+  injury: { professional: 0.6 },
+  "social-media": { showman: 2.5, humble: 0.4 },
+  "away-whistles": { hothead: 1.5 },
+  "derby-pressure": { hothead: 1.5, leader: 1.3 },
+  "fan-protest": { hothead: 1.4 },
+  "form-crisis": { professional: 0.7 },
+  "mental-block": { professional: 0.7 },
+  youngster: { leader: 1.4 },
+  "youth-competition": { leader: 1.4 },
+  family: { loyal: 1.5, humble: 1.4 },
+  "fan-favourite": { humble: 1.5, loyal: 1.4 },
+  "derby-shirt": { loyal: 1.6 },
+};
+
 function buildEventDecision(state: GameState, rng: Rng): PendingOvrDecision | null {
   const pool = EVENTS.filter(
     (e) =>
@@ -1527,7 +1602,7 @@ function buildEventDecision(state: GameState, rng: Rng): PendingOvrDecision | nu
       (state.cooldowns[e.id] ?? -1) <= state.seasonIndex,
   );
   if (!pool.length) return null;
-  const def = rng.weighted(pool.map((e) => [e, e.weight] as const));
+  const def = rng.weighted(pool.map((e) => [e, e.weight * traitWeight(state, e.traits ?? EVENT_TRAITS[e.id])] as const));
   // Option 0 ist stets der mutige Weg (Gamble), Option 1 der sichere.
   const risky = def.options[0]!;
   const safe = def.options[1] ?? def.options[0]!;
@@ -1848,6 +1923,10 @@ function applyClubMove(s: GameState, offer: ClubOffer, rng: Rng): string {
   const last = s.seasons[s.seasons.length - 1];
   const rel = relationBetween(oldId, offer.clubId);
   const isHeart = offer.clubId === s.heartClub;
+  // Vor dem Vereinswechsel prüfen: welche Ex-Klubs wären verraten?
+  const hits = rivalHits(s, offer.clubId);
+  const tenure = currentTenure(s);
+  const oldStrength = dynamicStrength(s.world, oldId);
 
   if (offer.deal === "loan") {
     // Stammverein bleibt erhalten, nur der Einsatzort wechselt.
@@ -1875,13 +1954,39 @@ function applyClubMove(s: GameState, offer: ClubOffer, rng: Rng): string {
   s.player.role = offer.expectedRole;
 
   let consequence: string;
-  if (rel?.type === "rivalry") {
-    setFanValue(s, oldId, fanValue(s, oldId) - (18 + rel.intensity * 6));
-    setFanValue(s, offer.clubId, 32 - rel.intensity * 2);
-    adjust(s, { morale: -6, form: -8, reputation: 4, relationship: -10 });
-    s.player.mentality = clamp(s.player.mentality - rng.int(2, 7), 0, 100);
-    consequence = `${rel.label}: Der Wechsel von ${oldClub.name} zu ${club.name} bleibt nicht folgenlos. Die alte Kurve ist enttäuscht, die neue skeptisch – Leistung kann das drehen.`;
-    if (last) last.relationNote = `${rel.label}: Wechsel zum Rivalen ${club.name}`;
+  const earlier = s.betrayals?.length ?? 0;
+  const severity = hits.length ? rivalSeverity(s, hits) : 0;
+  const tier = betrayalTier(severity, hits.length, earlier);
+  if (tier > 0) {
+    // Jeder verratene Ex-Klub verliert dich – je heftiger, desto dauerhafter.
+    for (const h of hits) {
+      setFanValue(s, h.clubId, fanValue(s, h.clubId) - (14 + h.intensity * 7) * (tier >= 2 ? 1.4 : 1));
+    }
+    setFanValue(s, offer.clubId, clamp(36 - severity * 1.5, 8, 40));
+    adjust(s, {
+      morale: -(5 + tier * 4),
+      form: -(4 + tier * 3),
+      relationship: -10,
+      reputation: tier === 1 ? 3 : tier === 2 ? -4 : -10,
+    });
+    s.player.mentality = clamp(s.player.mentality - rng.int(2, 5) * tier, 0, 100);
+    s.betrayals = [...(s.betrayals ?? []), makeBetrayal(s, offer.clubId, hits, severity)];
+    const names = hits.map((h) => getClub(h.clubId).name);
+    const main = hits[0]!;
+    if (tier === 1) {
+      consequence = `${main.label}: Du wechselst von ${oldClub.name} zu ${club.name}. In ${names[0]} wird dein Trikot aus dem Fanshop genommen, bei ${club.name} pfeifen sie dich beim ersten Training aus. Nur Leistung kann das drehen – vielleicht.`;
+    } else if (tier === 2) {
+      consequence =
+        hits.length > 1
+          ? `Doppelverrat! Mit dem Wechsel zu ${club.name} bringst du gleich ${names.join(" und ")} gegen dich auf. Die Boulevardpresse titelt „Der Mann ohne Wappen“, beide Kurven zeigen dasselbe Spruchband: „Nie wieder“.`
+          : `Schon wieder. Nach deinem ersten Rivalen-Wechsel gehst du jetzt auch noch zu ${club.name} – ${main.label} gegen ${names[0]}. Die Fanclubs veröffentlichen ein gemeinsames Statement. Darin kommt dein Name nicht mehr vor.`;
+    } else {
+      consequence = `Die Fußballwelt steht kopf. ${club.name} – Erzrivale von ${names.join(", ")}. Fanclubs lösen sich auf, dein Wandbild vor dem alten Stadion wird übermalt, beim ersten Auswärtsspiel brauchst du Begleitschutz bis zum Bus. Du bist jetzt offiziell die meistgehasste Figur dieser Rivalität.`;
+    }
+    if (hasTrait(s, "loyal")) {
+      consequence += ` Und das Schlimmste: Du hast dich selbst immer als loyal beschrieben. Jedes Interview von früher wird jetzt gegen dich zitiert.`;
+    }
+    if (last) last.relationNote = tier >= 2 ? `${hits.length > 1 ? "Doppelverrat" : "Wiederholungstäter"}: Wechsel zu ${club.name}` : `${main.label}: Wechsel zum Rivalen ${club.name}`;
   } else if (rel?.type === "fanFriendship") {
     setFanValue(s, offer.clubId, 65);
     adjust(s, { morale: 10, reputation: 4 });
@@ -1895,6 +2000,24 @@ function applyClubMove(s: GameState, offer: ClubOffer, rng: Rng): string {
     setFanValue(s, offer.clubId, 50);
     adjust(s, { morale: 8, form: -4, reputation: club.prestige > 70 ? 6 : 0 });
     consequence = `Du unterschreibst bei ${club.name} in der ${club.league}.`;
+  }
+
+  // Persönlichkeit: Treue, Ehrgeiz und Geld färben jeden Wechsel.
+  if (!isHeart && hasTrait(s, "loyal") && tenure > 0 && tenure < 3) {
+    adjust(s, { morale: -10, mentality: -5 });
+    setFanValue(s, oldId, fanValue(s, oldId) - 15);
+    consequence += ` Nach nur ${tenure} ${tenure === 1 ? "Saison" : "Saisons"} bei ${oldClub.name} gehst du schon wieder – ausgerechnet du, der sich als treue Seele sieht. Das Gewissen spielt ab jetzt mit.`;
+  } else if (!isHeart && hasTrait(s, "loyal") && tenure >= 6) {
+    adjust(s, { morale: -6 });
+    consequence += ` Nach ${tenure} Jahren bei ${oldClub.name} ist es ein Abschied unter Tränen – auf beiden Seiten.`;
+  }
+  if (hasTrait(s, "ambitious") && dynamicStrength(s.world, offer.clubId) >= oldStrength + 4) {
+    adjust(s, { morale: 6, form: 3 });
+    consequence += " Endlich ein Schritt nach oben – genau dafür trainierst du.";
+  }
+  if (hasTrait(s, "greedy") && club.finances >= getClub(oldId).finances + 15) {
+    adjust(s, { morale: 5, fans: -6 });
+    consequence += " Das Gehalt hat bei der Entscheidung sicher nicht geschadet – das wissen auch die Fans.";
   }
   if (last) last.transferNote = `Wechsel zu ${club.name} (${leagueLabelFor(s.world, club.id)})`;
   return consequence;
@@ -1937,7 +2060,8 @@ export function applyDecision(state: GameState, optionId: string): GameState {
     if (def && option) {
       const result = option.apply(s, rng);
       if (!s.eventsSeen.includes(def.id)) s.eventsSeen.push(def.id);
-      s.cooldowns[def.id] = s.seasonIndex + 3;
+      // Längere Pause, damit sich Ereignisse nicht ständig wiederholen.
+      s.cooldowns[def.id] = s.seasonIndex + 6;
       s.lastConsequence = logDecision(s, def.title, option.label, result.consequence, result.deltas);
       if (last) last.decisionNote = `${def.title}: ${option.label}`;
     } else {
@@ -2018,6 +2142,11 @@ export function applyDecision(state: GameState, optionId: string): GameState {
       );
       setFanValue(s, s.player.clubId, fanValue(s, s.player.clubId) + (loyal ? 16 : 6));
       if (loyal) deltas.push("Fanbindung +16", "Treuebekenntnis");
+      if (hasTrait(s, "loyal")) {
+        deltas.push(...adjust(s, { morale: 6, fans: 6 }));
+      } else if (hasTrait(s, "ambitious") && dynamicStrength(s.world, s.player.clubId) < s.player.ovr - 4) {
+        deltas.push(...adjust(s, { morale: -6 }));
+      }
       s.lastConsequence = logDecision(
         s,
         pending.title,

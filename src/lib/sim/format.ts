@@ -45,7 +45,7 @@ export function ovrHex(ovr: number): string {
 }
 
 export function formatMoney(value: number): string {
-  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(value >= 10_000_000 ? 0 : 1)} Mio. €`;
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(value >= 10_000_000 ? 0 : 1).replace(".", ",")} Mio. €`;
   if (value >= 1000) return `${Math.round(value / 1000)} Tsd. €`;
   return `${Math.round(value)} €`;
 }

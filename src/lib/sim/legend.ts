@@ -8,6 +8,7 @@
 import type { GameState, Position, SeasonRecord, Trophy } from "./types";
 import type { Rng } from "./rng";
 import { getClub, countryName } from "./data";
+import { careerStory, type StoryChapter } from "./story";
 
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
 
@@ -273,7 +274,7 @@ export function legendHighlights(state: GameState): string[] {
 
 /* ----------------------------------------------------------- Narrative */
 
-function biggestTrophy(state: GameState): Trophy | undefined {
+export function biggestTrophy(state: GameState): Trophy | undefined {
   const rank = (t: Trophy): number => {
     if (t.kind === "national") return t.refId === "fifa-wc" ? 100 : 80;
     if (t.kind === "award" && t.refId && MAJOR_AWARD_IDS.has(t.refId)) return 70;
@@ -295,83 +296,22 @@ export function mainClubs(state: GameState): Array<{ clubId: string; seasons: nu
 }
 
 /**
- * Deterministische deutsche Karriere-Zusammenfassung in 1–3 Absätzen.
- * Nutzt ausschließlich echte Werte aus dem Spielstand.
+ * Die Lebensgeschichte in Kapiteln (siehe story.ts). Nutzt ausschließlich
+ * echte Werte aus dem Spielstand und erfindet keine Erfolge.
  */
-export function careerNarrative(state: GameState): string[] {
-  const seasons = state.seasons;
-  if (seasons.length === 0) {
-    return [`${state.profile.name} hat noch keine Profisaison abgeschlossen.`];
-  }
-  const first = seasons[0]!;
-  const last = seasons[seasons.length - 1]!;
-  const name = state.profile.name;
-  const peakOvr = Math.max(state.peakOvr, state.player.ovr);
-  const peakSeason = [...seasons].sort((a, b) => b.endOvr - a.endOvr || a.index - b.index)[0]!;
-  const clubs = mainClubs(state);
+export function careerChapters(state: GameState): StoryChapter[] {
   const status = legendStatus(state);
-  const paragraphs: string[] = [];
+  return careerStory(state, {
+    biggest: biggestTrophy(state),
+    tierName: status.tier.name,
+    tierKey: status.tier.key,
+    score: status.score,
+  });
+}
 
-  /* -------- Absatz 1: Start und Weg */
-  const startClub = getClub(first.clubId);
-  const clubList = clubs
-    .slice(0, 3)
-    .map((c) => `${getClub(c.clubId).name} (${c.seasons} ${c.seasons === 1 ? "Saison" : "Saisons"})`)
-    .join(", ");
-  paragraphs.push(
-    `${name} begann ${first.seasonLabel} mit ${first.age} Jahren bei ${startClub.name} und beendete die Karriere ` +
-      `${last.seasonLabel} mit ${last.age} Jahren bei ${getClub(last.clubId).name}. ` +
-      `In ${seasons.length} ${seasons.length === 1 ? "Profisaison" : "Profisaisons"} prägten ihn vor allem ${clubList}. ` +
-      `Das höchste Rating erreichte er ${peakSeason.seasonLabel} mit ${peakOvr} OVR.`,
-  );
-
-  /* -------- Absatz 2: Titel, Underdog- und Nationalmoment (nur belegte Fakten) */
-  const clubTitles = state.trophies.filter((t) => t.kind === "club");
-  const nationalTitles = state.trophies.filter((t) => t.kind === "national");
-  const awards = state.trophies.filter((t) => t.kind === "award");
-  const underdogs = clubTitles.filter(isUnderdogTrophy);
-  const big = biggestTrophy(state);
-  const moment = seasons.find((s) => s.legendMoment)?.legendMoment;
-
-  if (state.trophies.length === 0) {
-    const apps = seasons.reduce((a, s) => a + s.apps, 0);
-    const avg = (seasons.reduce((a, s) => a + s.rating, 0) / seasons.length).toFixed(2);
-    paragraphs.push(
-      `Titel blieben aus. Was bleibt, sind ${apps} Pflichtspiele, eine Durchschnittsnote von ${avg} und eine Karriere, ` +
-        `die ohne Trophäe erzählt werden muss – die aber stattgefunden hat, Saison für Saison.`,
-    );
-  } else {
-    const parts: string[] = [];
-    if (big) {
-      parts.push(
-        `Der größte Erfolg war ${big.name} ${big.season}${big.clubId ? ` mit ${getClub(big.clubId).name}` : ""}`,
-      );
-    }
-    if (clubTitles.length) parts.push(`insgesamt ${clubTitles.length} Vereinstitel`);
-    if (nationalTitles.length) parts.push(`${nationalTitles.length} Titel mit der Nationalmannschaft`);
-    if (awards.length) parts.push(`${awards.length} individuelle Auszeichnungen`);
-    let text = `${parts.join(", ")}.`;
-    if (underdogs.length) {
-      const u = underdogs[0]!;
-      text += ` Besonders in Erinnerung bleibt ${u.name} ${u.season} mit ${u.clubId ? getClub(u.clubId).name : "einem Außenseiter"} – ein Verein, dem das niemand zugetraut hatte.`;
-    }
-    if (moment) text += ` ${moment}`;
-    paragraphs.push(text);
-  }
-
-  /* -------- Absatz 3: Ende, Langlebigkeit, Status */
-  const causeText =
-    state.retirementCause === "body"
-      ? `Am Ende gab der Körper das Urteil ab: Nach ${last.age} Jahren war keine weitere Saison mehr möglich.`
-      : state.player.retirementExtensions > 0
-        ? `${state.player.retirementExtensions === 1 ? "Eine Saison" : `${state.player.retirementExtensions} Saisons`} hängte er freiwillig an, bevor er mit ${last.age} Jahren aufhörte.`
-        : `Mit ${last.age} Jahren beendete er seine Laufbahn aus eigener Entscheidung.`;
-  paragraphs.push(
-    `${causeText} ${state.comebacks > 0 ? `Nach einem Comeback kehrte er noch einmal auf den Platz zurück. ` : ""}` +
-      `Global gilt ${name} damit als ${status.tier.name} – ${status.tier.blurb} (Legendenscore ${status.score}).`,
-  );
-
-  return paragraphs;
+/** Erzählung als Absätze (Kapiteltexte) – für Export und Tests. */
+export function careerNarrative(state: GameState): string[] {
+  return careerChapters(state).map((c) => c.text);
 }
 
 /* -------------------------------------------------- Endscreen-Jahreszeilen */

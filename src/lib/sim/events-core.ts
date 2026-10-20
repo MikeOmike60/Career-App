@@ -15,6 +15,8 @@ export interface EventDef {
   weight: number;
   when: (state: GameState) => boolean;
   once?: boolean;
+  /** Gewichtsfaktoren je Charakterzug (z. B. { showman: 2 }). */
+  traits?: Partial<Record<import("./personality").Trait, number>>;
   options: EventOptionDef[];
 }
 

@@ -27,6 +27,7 @@ import type {
   Position,
 } from "./types";
 import type { Rng } from "./rng";
+import { traitWeight } from "./personality";
 import { COUNTRY_BY_CODE, COUNTRIES, clubsOf, countryName, getClub } from "./data";
 import {
   adjustClubStrength,
@@ -178,7 +179,7 @@ const INFRA_AFTER = [
 ];
 
 export function formatInvestorMoney(value: number): string {
-  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(value >= 10_000_000 ? 0 : 1)} Mio. €`;
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(value >= 10_000_000 ? 0 : 1).replace(".", ",")} Mio. €`;
   if (value >= 1000) return `${Math.round(value / 1000)} Tsd. €`;
   return `${Math.round(value)} €`;
 }
@@ -280,7 +281,9 @@ export function buildInvestorDecision(
   yearLabel: string,
 ): PendingClubDecision | null {
   if (!investorEligible(state)) return null;
-  if (!rng.chance(investorChance(state.player.ovr))) return null;
+  // Geldorientierte Spieler hören das Telefon öfter, loyale seltener.
+  const factor = traitWeight(state, { greedy: 1.6, loyal: 0.5, showman: 1.2 });
+  if (!rng.chance(Math.min(0.6, investorChance(state.player.ovr) * factor))) return null;
   const project = buildInvestorProject(state, rng, yearLabel);
   if (!project) return null;
   // Die Übernahme ist ab jetzt Weltgeschichte – unabhängig von der Antwort.

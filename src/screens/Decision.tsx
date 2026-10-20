@@ -137,6 +137,11 @@ function OfferCard({ offer, onChoose, currentStrength }: { offer: ClubOffer; onC
       <p className="small muted break" style={{ margin: "8px 0 0" }}>
         {offer.reason}
       </p>
+      {offer.warning ? (
+        <p className="notice error small break" style={{ marginTop: 8, fontWeight: 700 }}>
+          ⚠ {offer.warning}
+        </p>
+      ) : null}
     </motion.button>
   );
 }

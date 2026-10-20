@@ -12,6 +12,8 @@ import { Flag } from "@/ui/Flag";
 import { PlayerCard, cardDataFrom } from "@/ui/PlayerCard";
 import { Bar, HexMark, SectionTitle, Spark, Stat, ovrColor, useNarrow } from "@/ui/primitives";
 import { decisionEyebrow } from "./Decision";
+import { TRAITS, traitsOfProfile } from "@/lib/sim/personality";
+import { reputationTags } from "@/lib/sim/reputation";
 
 type FieldStatus = "now" | "next" | "done" | "closed";
 const STATUS_LABEL: Record<FieldStatus, string> = {
@@ -121,6 +123,8 @@ export function Hub({
   const injuryLabel =
     p.monthsOut > 0 ? `${p.monthsOut} Mon. Ausfall` : p.majorInjuries > 0 ? `${p.majorInjuries} schwere Verl.` : "fit";
   const project = state.investorProject;
+  const traits = traitsOfProfile(state.profile);
+  const repTags = reputationTags(state);
   const projectClub = project ? getClub(project.clubId) : undefined;
 
   return (
@@ -256,6 +260,32 @@ export function Hub({
           </motion.button>
         )}
       </div>
+
+      {(traits.length > 0 || repTags.length > 0) && (
+        <>
+          <SectionTitle>Ruf &amp; Charakter</SectionTitle>
+          <div className="panel pad" style={{ display: "grid", gap: 8 }}>
+            {repTags.map((t) => (
+              <div key={t.key} className="row" style={{ alignItems: "flex-start", gap: 8 }}>
+                <span className={`chip ${t.tone === "down" ? "down" : t.tone === "gold" ? "gold" : t.tone === "up" ? "up" : "blue"}`} style={{ flex: "none" }}>
+                  {t.label}
+                </span>
+                <span className="tiny muted">{t.text}</span>
+              </div>
+            ))}
+            {traits.length > 0 && (
+              <div className="row" style={{ flexWrap: "wrap", gap: 6 }}>
+                <span className="stat-label">Charakter:</span>
+                {traits.map((t) => (
+                  <span key={t} className="chip lime">
+                    {TRAITS[t].label}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </>
+      )}
 
       <SectionTitle>Spielerdetails</SectionTitle>
       <div className="grid-3">
