@@ -39,6 +39,15 @@ export default defineConfig({
         globIgnores: ['mediapipe/**'],
         runtimeCaching: [
           {
+            urlPattern: ({ url }) => url.hostname === 'assets.football-logos.cc',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'club-logos',
+              expiration: { maxEntries: 800, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             urlPattern: ({ url }) => url.pathname.includes('/mediapipe/') || url.hostname === 'cdn.jsdelivr.net',
             handler: 'CacheFirst',
             options: { cacheName: 'mediapipe', expiration: { maxEntries: 10 } },

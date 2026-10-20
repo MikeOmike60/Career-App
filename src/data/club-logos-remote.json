@@ -1,0 +1,2212 @@
+{
+ "1. FC Bocholt": [
+  "germany",
+  "fc-bocholt",
+  "6ea4be94"
+ ],
+ "1. FC Kaiserslautern": [
+  "germany",
+  "fc-kaiserslautern",
+  "ee2d7f41"
+ ],
+ "1. FC Kaiserslautern II": [
+  "germany",
+  "fc-kaiserslautern",
+  "ee2d7f41"
+ ],
+ "1. FC Lokomotive Leipzig": [
+  "germany",
+  "1-fc-lokomotive-leipzig",
+  "c822f3a1"
+ ],
+ "1. FC Magdeburg": [
+  "germany",
+  "1-fc-magdeburg",
+  "214e033c"
+ ],
+ "1. FC Magdeburg II": [
+  "germany",
+  "1-fc-magdeburg",
+  "214e033c"
+ ],
+ "1. FC Nürnberg": [
+  "germany",
+  "fc-nurnberg",
+  "02fdda16"
+ ],
+ "1. FC Nürnberg II": [
+  "germany",
+  "fc-nurnberg",
+  "02fdda16"
+ ],
+ "1. FC Phönix Lübeck": [
+  "germany",
+  "1-fc-phonix-lubeck",
+  "03679114"
+ ],
+ "1. FC Saarbrücken": [
+  "germany",
+  "saarbrucken",
+  "ce244187"
+ ],
+ "1. FC Schweinfurt 05": [
+  "germany",
+  "1-fc-schweinfurt-05",
+  "cd813715"
+ ],
+ "AC Mantova": [
+  "italy",
+  "mantova-1911",
+  "f0c9b5b4"
+ ],
+ "AC Nagano Parceiro": [
+  "japan",
+  "ac-nagano-parceiro",
+  "0f2e76ec"
+ ],
+ "AC Ospitaletto": [
+  "italy",
+  "ospitaletto",
+  "b07144c7"
+ ],
+ "AC Perugia Calcio": [
+  "italy",
+  "perugia",
+  "72367752"
+ ],
+ "AC Reggiana": [
+  "italy",
+  "reggiana",
+  "0bb421e7"
+ ],
+ "AC Renate": [
+  "italy",
+  "renate",
+  "3aadca3a"
+ ],
+ "AC Trento 1921": [
+  "italy",
+  "trento",
+  "c752c22f"
+ ],
+ "AD Ceuta FC": [
+  "spain",
+  "ceuta",
+  "f3027f8d"
+ ],
+ "AF Rodez": [
+  "france",
+  "rodez-af",
+  "2c3b5d7c"
+ ],
+ "AFC Wimbledon": [
+  "england",
+  "afc-wimbledon",
+  "a950c036"
+ ],
+ "AS Cittadella": [
+  "italy",
+  "cittadella",
+  "07635d9c"
+ ],
+ "AS Giana Erminio": [
+  "italy",
+  "giana-erminio",
+  "28e1be45"
+ ],
+ "AS Gubbio 1910": [
+  "italy",
+  "gubbio",
+  "db042b84"
+ ],
+ "AS Nancy": [
+  "france",
+  "nancy",
+  "69db3dfb"
+ ],
+ "AS Ostia Mare Lido Calcio": [
+  "italy",
+  "ostiamare",
+  "57894e75"
+ ],
+ "ASD Barletta 1922": [
+  "italy",
+  "barletta-1922",
+  "9ed53cfe"
+ ],
+ "ASD Pineto Calcio": [
+  "italy",
+  "pineto",
+  "434971de"
+ ],
+ "ASD US Savoia 1908": [
+  "italy",
+  "savoia-1908",
+  "f3b858a5"
+ ],
+ "ASK Voitsberg": [
+  "austria",
+  "ask-voitsberg",
+  "0930e82a"
+ ],
+ "AZ Picerno": [
+  "italy",
+  "az-picerno",
+  "84c9e925"
+ ],
+ "Académica de Coimbra": [
+  "portugal",
+  "academica-de-coimbra",
+  "ec457901"
+ ],
+ "Accrington Stanley": [
+  "england",
+  "accrington",
+  "0580509e"
+ ],
+ "Albacete Balompié": [
+  "spain",
+  "albacete",
+  "335c5ae5"
+ ],
+ "Albirex Niigata": [
+  "japan",
+  "albirex-niigata",
+  "c76b3101"
+ ],
+ "Alcorcón": [
+  "spain",
+  "alcorcon",
+  "f216ddad"
+ ],
+ "Alemannia Aachen": [
+  "germany",
+  "alemannia-aachen",
+  "a8ae9f24"
+ ],
+ "Algeciras": [
+  "spain",
+  "algeciras",
+  "9bb2744d"
+ ],
+ "Amarante FC": [
+  "portugal",
+  "amarante",
+  "513dc84a"
+ ],
+ "Antequera": [
+  "spain",
+  "antequera",
+  "7983c299"
+ ],
+ "Arbroath": [
+  "scotland",
+  "arbroath",
+  "a777d254"
+ ],
+ "Arenas": [
+  "spain",
+  "arenas-club",
+  "41e8daa8"
+ ],
+ "Ascoli Calcio": [
+  "italy",
+  "ascoli",
+  "bff7c602"
+ ],
+ "Atlanta United": [
+  "usa",
+  "atlanta-united",
+  "38b01e72"
+ ],
+ "Atlético Madrileño": [
+  "spain",
+  "atletico-madrid",
+  "0e6714cc"
+ ],
+ "Austin FC": [
+  "usa",
+  "austins-fc",
+  "0068b1f8"
+ ],
+ "Avilés": [
+  "spain",
+  "real-aviles-industrial",
+  "d3368032"
+ ],
+ "Avispa Fukuoka": [
+  "japan",
+  "avispa-fukuoka",
+  "62b97f21"
+ ],
+ "Ayr United": [
+  "scotland",
+  "ayr",
+  "44c02eec"
+ ],
+ "BFC Dynamo": [
+  "germany",
+  "bfc-dynamo",
+  "bf15386a"
+ ],
+ "BFC Preussen": [
+  "germany",
+  "bfc-preussen",
+  "e069e718"
+ ],
+ "BSG Chemie Leipzig": [
+  "germany",
+  "bsg-chemie-leipzig",
+  "bddc745f"
+ ],
+ "Barakaldo": [
+  "spain",
+  "barakaldo",
+  "6dde9afa"
+ ],
+ "Barnet": [
+  "england",
+  "barnet",
+  "3de75949"
+ ],
+ "Barnsley": [
+  "england",
+  "barnsley",
+  "ec98274a"
+ ],
+ "Benevento Calcio": [
+  "italy",
+  "benevento",
+  "1c994611"
+ ],
+ "Birmingham City": [
+  "england",
+  "birmingham",
+  "01ee7d16"
+ ],
+ "Birmingham Legion FC": [
+  "usa",
+  "birmingham-legion-fc",
+  "5f7528af"
+ ],
+ "Blackburn Rovers": [
+  "england",
+  "blackburn-rovers",
+  "ee76cacd"
+ ],
+ "Blackpool": [
+  "england",
+  "blackpool",
+  "c1655dde"
+ ],
+ "Blaublitz Akita": [
+  "japan",
+  "blaublitz-akita",
+  "07e389d9"
+ ],
+ "Bolton Wanderers": [
+  "england",
+  "bolton",
+  "2325da44"
+ ],
+ "Bonner SC": [
+  "germany",
+  "bonner-sc",
+  "3fde85a0"
+ ],
+ "Bradford City": [
+  "england",
+  "bradford",
+  "3b81b49c"
+ ],
+ "Bremer SV": [
+  "germany",
+  "bremer-sv",
+  "92a662e8"
+ ],
+ "Bristol City": [
+  "england",
+  "bristol-city",
+  "e2a1b10c"
+ ],
+ "Bristol Rovers": [
+  "england",
+  "bristol-rovers",
+  "c9dd65b3"
+ ],
+ "Bromley": [
+  "england",
+  "bromley",
+  "d58af6e6"
+ ],
+ "Brooklyn FC": [
+  "usa",
+  "brooklyn",
+  "081b951e"
+ ],
+ "Burgos CF": [
+  "spain",
+  "burgos",
+  "64e32f72"
+ ],
+ "Burton Albion": [
+  "england",
+  "burton",
+  "56206a7c"
+ ],
+ "CD Castellón": [
+  "spain",
+  "castellon",
+  "f3b2d32f"
+ ],
+ "CD Eldense": [
+  "spain",
+  "eldense",
+  "4806e787"
+ ],
+ "CD Feirense": [
+  "portugal",
+  "feirense",
+  "ebb76786"
+ ],
+ "CD Teneriffa": [
+  "spain",
+  "tenerife",
+  "21185f77"
+ ],
+ "CE Sabadell": [
+  "spain",
+  "sabadell",
+  "7d6c0d34"
+ ],
+ "CF Montreal": [
+  "usa",
+  "cf-montreal",
+  "eae64e32"
+ ],
+ "Cacereño": [
+  "spain",
+  "cacereno",
+  "63027a75"
+ ],
+ "Calcio Desenzano": [
+  "italy",
+  "desenzano",
+  "1deb2035"
+ ],
+ "Calcio Lecco": [
+  "italy",
+  "lecco",
+  "4812392a"
+ ],
+ "Calcio Padova": [
+  "italy",
+  "padova",
+  "3576b2f0"
+ ],
+ "Cambridge United": [
+  "england",
+  "cambridge-united",
+  "e2e1d138"
+ ],
+ "Cardiff City": [
+  "england",
+  "cardiff-city",
+  "9d2e831b"
+ ],
+ "Carrarese Calcio": [
+  "italy",
+  "carrarese",
+  "d5428b8d"
+ ],
+ "Cartagena": [
+  "spain",
+  "fc-cartagena",
+  "55c34435"
+ ],
+ "Casarano Calcio": [
+  "italy",
+  "casarano",
+  "84720863"
+ ],
+ "Catania SSD": [
+  "italy",
+  "catania",
+  "760b0b09"
+ ],
+ "Cavese 1919": [
+  "italy",
+  "cavese",
+  "e3f34370"
+ ],
+ "Cerezo Osaka": [
+  "japan",
+  "cerezo-osaka",
+  "9d03f592"
+ ],
+ "Charleston Battery": [
+  "usa",
+  "charleston-battery",
+  "4151f83d"
+ ],
+ "Charlotte FC": [
+  "usa",
+  "charlotte-fc",
+  "08fb5295"
+ ],
+ "Charlton Athletic": [
+  "england",
+  "charlton",
+  "b2fc09ca"
+ ],
+ "Cheltenham Town": [
+  "england",
+  "cheltenham",
+  "b277aeb1"
+ ],
+ "Chemnitzer FC": [
+  "germany",
+  "chemnitzer",
+  "ad36ef18"
+ ],
+ "Chesterfield": [
+  "england",
+  "chesterfield",
+  "8b84fda3"
+ ],
+ "Chicago Fire": [
+  "usa",
+  "chicago-fire-fc",
+  "b8147c78"
+ ],
+ "Colchester United": [
+  "england",
+  "colchester",
+  "501b67b9"
+ ],
+ "Colorado Rapids": [
+  "usa",
+  "colorado-rapids",
+  "bbd70da2"
+ ],
+ "Colorado Springs Switchbacks FC": [
+  "usa",
+  "colorado-springs-switchbacks-fc",
+  "604a9e1d"
+ ],
+ "Columbus Crew": [
+  "usa",
+  "columbus-crew",
+  "96ba8a6f"
+ ],
+ "Coria": [
+  "spain",
+  "cd-coria",
+  "f0ad828d"
+ ],
+ "Cosenza Calcio": [
+  "italy",
+  "cosenza",
+  "420f4c03"
+ ],
+ "Crawley Town": [
+  "england",
+  "crawley-town",
+  "3a7dc933"
+ ],
+ "Crewe Alexandra": [
+  "england",
+  "crewe",
+  "fdea6f6a"
+ ],
+ "Cultural Leonesa": [
+  "spain",
+  "cultural-leonesa",
+  "1d712ee5"
+ ],
+ "D.C. United": [
+  "usa",
+  "dc-united",
+  "66d8b347"
+ ],
+ "DJK Vilzing": [
+  "germany",
+  "djk-vilzing",
+  "cce4a9b6"
+ ],
+ "Delfino Pescara 1936": [
+  "italy",
+  "pescara",
+  "c58977bd"
+ ],
+ "Deportivo Fabril": [
+  "spain",
+  "deportivo-la-coruna",
+  "2a147b0c"
+ ],
+ "Derby County": [
+  "england",
+  "derby-county",
+  "a5de8e7f"
+ ],
+ "Detroit City FC": [
+  "usa",
+  "detroit-city-fc",
+  "200ced8c"
+ ],
+ "Dolomiti Bellunesi": [
+  "italy",
+  "dolomiti-bellunesi",
+  "f4a901ec"
+ ],
+ "Doncaster Rovers": [
+  "england",
+  "doncaster-rovers",
+  "a03682f1"
+ ],
+ "Dunfermline Athletic": [
+  "scotland",
+  "dunfermline",
+  "dbaa76c1"
+ ],
+ "Dynamo Dresden": [
+  "germany",
+  "dynamo-dresden",
+  "050805b5"
+ ],
+ "EA Guingamp": [
+  "france",
+  "guingamp",
+  "58078315"
+ ],
+ "Ehime FC": [
+  "japan",
+  "ehime-fc",
+  "e0b76c0b"
+ ],
+ "Eimsbütteler TV": [
+  "germany",
+  "eimsbutteler-tv",
+  "3b2cebd6"
+ ],
+ "Eintracht Braunschweig": [
+  "germany",
+  "eintracht-braunschweig",
+  "4db56b40"
+ ],
+ "Eintracht Norderstedt": [
+  "germany",
+  "eintracht-norderstedt",
+  "1d3ef1b9"
+ ],
+ "El Paso Locomotive FC": [
+  "usa",
+  "el-paso-locomotive-fc",
+  "fab99292"
+ ],
+ "Energie Cottbus": [
+  "germany",
+  "energie-cottbus",
+  "c854e5f5"
+ ],
+ "Europa": [
+  "spain",
+  "ce-europa",
+  "0cd7fddd"
+ ],
+ "Exeter City": [
+  "england",
+  "exeter",
+  "fedc7d73"
+ ],
+ "Extremadura": [
+  "spain",
+  "cd-extremadura",
+  "acfdc3e0"
+ ],
+ "FC 08 Homburg": [
+  "germany",
+  "fc-08-homburg",
+  "b08e3312"
+ ],
+ "FC Aarau": [
+  "switzerland",
+  "aarau",
+  "72bf6e4e"
+ ],
+ "FC Andorra": [
+  "spain",
+  "fc-andorra",
+  "ad6f34ea"
+ ],
+ "FC Annecy": [
+  "france",
+  "annecy",
+  "05ddfc7b"
+ ],
+ "FC Arzignano Valchiampo": [
+  "italy",
+  "arzignano-valchiampo",
+  "15a30df8"
+ ],
+ "FC Carl Zeiss Jena": [
+  "germany",
+  "jena",
+  "7d896103"
+ ],
+ "FC Carpi": [
+  "italy",
+  "carpi",
+  "c6bfb97d"
+ ],
+ "FC Casertana": [
+  "italy",
+  "casertana",
+  "58b18156"
+ ],
+ "FC Cesena": [
+  "italy",
+  "cesena",
+  "ff0b9df5"
+ ],
+ "FC Cincinnati": [
+  "usa",
+  "fc-cincinnati",
+  "77e97594"
+ ],
+ "FC Crotone": [
+  "italy",
+  "crotone",
+  "a2aa5d36"
+ ],
+ "FC Córdoba": [
+  "spain",
+  "cordoba",
+  "33ef49b8"
+ ],
+ "FC Dallas": [
+  "usa",
+  "fc-dallas",
+  "04bdf6de"
+ ],
+ "FC Erzgebirge Aue": [
+  "germany",
+  "erzgebirge",
+  "e2738044"
+ ],
+ "FC Felgueiras": [
+  "portugal",
+  "felgueiras",
+  "1c8a7ea3"
+ ],
+ "FC Gifu": [
+  "japan",
+  "fc-gifu",
+  "a14dc6ea"
+ ],
+ "FC Gütersloh": [
+  "germany",
+  "fc-gutersloh",
+  "89b319b5"
+ ],
+ "FC Hertha Wels": [
+  "austria",
+  "fc-hertha-wels",
+  "ef3298bb"
+ ],
+ "FC Imabari": [
+  "japan",
+  "fc-imabari",
+  "58917656"
+ ],
+ "FC Ingolstadt 04": [
+  "germany",
+  "ingolstadt",
+  "942f1a54"
+ ],
+ "FC Liefering": [
+  "austria",
+  "fc-liefering",
+  "e7b92672"
+ ],
+ "FC Lumezzane VGZ ASD": [
+  "italy",
+  "lumezzane",
+  "16d724e9"
+ ],
+ "FC Machida Zelvia": [
+  "japan",
+  "machida-zelvia",
+  "8c1d555c"
+ ],
+ "FC Memmingen": [
+  "germany",
+  "fc-memmingen",
+  "efddc79a"
+ ],
+ "FC Modena": [
+  "italy",
+  "modena",
+  "91ad3089"
+ ],
+ "FC Osaka": [
+  "japan",
+  "fc-osaka",
+  "5d28b235"
+ ],
+ "FC Palermo": [
+  "italy",
+  "palermo",
+  "91059a99"
+ ],
+ "FC Pau": [
+  "france",
+  "pau",
+  "4c7d716a"
+ ],
+ "FC Penafiel": [
+  "portugal",
+  "penafiel",
+  "7a28d902"
+ ],
+ "FC Pro Vercelli": [
+  "italy",
+  "pro-vercelli",
+  "45439111"
+ ],
+ "FC Rapperswil-Jona": [
+  "switzerland",
+  "fc-rapperswil-jona",
+  "9a8de1b1"
+ ],
+ "FC Ravenna": [
+  "italy",
+  "ravenna",
+  "a31a7829"
+ ],
+ "FC Rot-Weiß Erfurt": [
+  "germany",
+  "rot-weiss-erfurt",
+  "ff104f16"
+ ],
+ "FC Ryūkyū": [
+  "japan",
+  "fc-ryukyu",
+  "b182db78"
+ ],
+ "FC Sochaux": [
+  "france",
+  "sochaux",
+  "c7197654"
+ ],
+ "FC Südtirol": [
+  "italy",
+  "suditrol",
+  "50b698e8"
+ ],
+ "FC Tokyo": [
+  "japan",
+  "fc-tokyo",
+  "ed5e5480"
+ ],
+ "FC Treviso": [
+  "italy",
+  "treviso",
+  "1abb3e01"
+ ],
+ "FC Tulsa": [
+  "usa",
+  "fc-tulsa",
+  "411eac75"
+ ],
+ "FC Vado": [
+  "italy",
+  "vado",
+  "c4057b10"
+ ],
+ "FC Wacker Innsbruck": [
+  "austria",
+  "fc-wacker-innsbruck",
+  "5659fb48"
+ ],
+ "FC Wil": [
+  "switzerland",
+  "wil",
+  "82a0a7dc"
+ ],
+ "FC-Astoria Walldorf": [
+  "germany",
+  "fc-astoria-walldorf",
+  "d5b643fe"
+ ],
+ "FCO Dijon": [
+  "france",
+  "dijon",
+  "ba492737"
+ ],
+ "FSV 63 Luckenwalde": [
+  "germany",
+  "fsv-luckenwalde",
+  "af785a13"
+ ],
+ "FSV Frankfurt": [
+  "germany",
+  "fsv-frankfurt",
+  "ed1df31b"
+ ],
+ "FSV Schöningen": [
+  "germany",
+  "fsv-schoningen-2011",
+  "6493437b"
+ ],
+ "FSV Zwickau": [
+  "germany",
+  "fsv-zwickau",
+  "28e182ff"
+ ],
+ "FV Illertissen": [
+  "germany",
+  "fv-illertissen",
+  "9c0196a6"
+ ],
+ "Fagiano Okayama": [
+  "japan",
+  "fagiano-okayama",
+  "7b703037"
+ ],
+ "First Vienna FC": [
+  "austria",
+  "first-vienna",
+  "8d8ffaea"
+ ],
+ "Fleetwood Town": [
+  "england",
+  "fleetwood-town",
+  "53eceee2"
+ ],
+ "Floridsdorfer AC": [
+  "austria",
+  "floridsdorfer-ac",
+  "01caec76"
+ ],
+ "Foggia Calcio": [
+  "italy",
+  "foggia",
+  "fe4e0abc"
+ ],
+ "Forli FC": [
+  "italy",
+  "forli-fc",
+  "8cbd0608"
+ ],
+ "Fortuna Düsseldorf": [
+  "germany",
+  "fortuna-dusseldorf",
+  "bbbf2d40"
+ ],
+ "Fujieda MYFC": [
+  "japan",
+  "fujieda-myfc",
+  "3bfe1b70"
+ ],
+ "Fukushima United FC": [
+  "japan",
+  "fukushima-united",
+  "c940277d"
+ ],
+ "Gainare Tottori": [
+  "japan",
+  "gainare-tottori",
+  "30a50907"
+ ],
+ "Gamba Osaka": [
+  "japan",
+  "gamba-osaka",
+  "9d303e05"
+ ],
+ "Gillingham": [
+  "england",
+  "gillingham",
+  "01dc4e87"
+ ],
+ "Gimnàstic": [
+  "spain",
+  "gimnastic-de-tarragona",
+  "678219bf"
+ ],
+ "Giravanz Kitakyūshū": [
+  "japan",
+  "giravanz-kitakyushu",
+  "6e50a6f6"
+ ],
+ "Giugliano Calcio": [
+  "italy",
+  "giugliano",
+  "af7b3c8d"
+ ],
+ "Greenock Morton": [
+  "scotland",
+  "morton",
+  "19f34a61"
+ ],
+ "Greifswalder FC": [
+  "germany",
+  "greifswalder",
+  "e13acd54"
+ ],
+ "Grenoble Foot": [
+  "france",
+  "grenoble-foot-38",
+  "9bf44782"
+ ],
+ "Grimsby Town": [
+  "england",
+  "grimsby",
+  "9576a6a0"
+ ],
+ "Guidonia Montecelio 1937 FC": [
+  "italy",
+  "guidonia-montecelio",
+  "988a3efd"
+ ],
+ "HSC Hannover": [
+  "germany",
+  "hsc-hannover",
+  "ec965d74"
+ ],
+ "Hallescher FC": [
+  "germany",
+  "hallescher",
+  "cd2de2f3"
+ ],
+ "Hannover 96": [
+  "germany",
+  "hannover-96",
+  "80091d52"
+ ],
+ "Hannover 96 II": [
+  "germany",
+  "hannover-96",
+  "80091d52"
+ ],
+ "Hansa Rostock": [
+  "germany",
+  "hansa-rostock",
+  "0bcf57e1"
+ ],
+ "Hartford Athletic": [
+  "usa",
+  "hartford-athletic",
+  "336b2c20"
+ ],
+ "Hokkaido Consadole Sapporo": [
+  "japan",
+  "hokkaido-consadole-sapporo",
+  "4ab71df9"
+ ],
+ "Houston Dynamo": [
+  "usa",
+  "houston-dynamo",
+  "d83f7da8"
+ ],
+ "Huddersfield Town": [
+  "england",
+  "huddersfield",
+  "38e991c2"
+ ],
+ "Huesca": [
+  "spain",
+  "huesca",
+  "24001649"
+ ],
+ "Hércules": [
+  "spain",
+  "hercules",
+  "70820446"
+ ],
+ "Ibiza": [
+  "spain",
+  "ud-ibiza",
+  "00658e46"
+ ],
+ "Indy Eleven": [
+  "usa",
+  "indy-eleven",
+  "8afab35b"
+ ],
+ "Inter Miami": [
+  "usa",
+  "inter-miami-cf",
+  "a3f76de3"
+ ],
+ "Inverness Caledonian Thistle": [
+  "scotland",
+  "inverness",
+  "bfcbf7f7"
+ ],
+ "Iwaki FC": [
+  "japan",
+  "iwaki-fc",
+  "67aeb2a1"
+ ],
+ "JEF United Ichihara Chiba": [
+  "japan",
+  "jef-united-chiba",
+  "e9853e90"
+ ],
+ "Jaén": [
+  "spain",
+  "real-jaen-cf",
+  "74578e9d"
+ ],
+ "Juventud Torremolinos": [
+  "spain",
+  "juventud-torremolinos",
+  "dce27490"
+ ],
+ "Júbilo Iwata": [
+  "japan",
+  "jubilo-iwata",
+  "1479db89"
+ ],
+ "KSV Hessen Kassel": [
+  "germany",
+  "ksv-hessen-kassel",
+  "17275f87"
+ ],
+ "Kagoshima United FC": [
+  "japan",
+  "kagoshima-united",
+  "f977c2d8"
+ ],
+ "Kamatamare Sanuki": [
+  "japan",
+  "kamatamare-sanuki",
+  "5744522d"
+ ],
+ "Kapfenberger SV": [
+  "austria",
+  "kapfenberg",
+  "1042e612"
+ ],
+ "Karlsruher SC": [
+  "germany",
+  "karlsruher",
+  "a36bdb13"
+ ],
+ "Kashima Antlers": [
+  "japan",
+  "kashima-antlers",
+  "8a7ef9b6"
+ ],
+ "Kashiwa Reysol": [
+  "japan",
+  "kashiwa-reysol",
+  "4e97ae65"
+ ],
+ "Kataller Toyama": [
+  "japan",
+  "kataller-toyama",
+  "a6d66404"
+ ],
+ "Kawasaki Frontale": [
+  "japan",
+  "kawasaki-frontale",
+  "e6589bb5"
+ ],
+ "Kickers Emden": [
+  "germany",
+  "kickers-emden",
+  "63e83e87"
+ ],
+ "Kickers Offenbach": [
+  "germany",
+  "kickers-offenbach",
+  "c023a630"
+ ],
+ "Kyōto Sanga": [
+  "japan",
+  "kyoto-sanga",
+  "52b9c7e9"
+ ],
+ "Kōchi United SC": [
+  "japan",
+  "kochi-united",
+  "85602c04"
+ ],
+ "L.R. Vicenza": [
+  "italy",
+  "vicenza",
+  "1165834e"
+ ],
+ "LA Galaxy": [
+  "usa",
+  "la-galaxy",
+  "9de2c882"
+ ],
+ "Las Vegas Lights FC": [
+  "usa",
+  "las-vegas-lights-fc",
+  "ddebd213"
+ ],
+ "Latina Calcio 1932": [
+  "italy",
+  "latina",
+  "95ea811f"
+ ],
+ "Leixões SC": [
+  "portugal",
+  "leixoes",
+  "f73ab5b7"
+ ],
+ "Lexington SC": [
+  "usa",
+  "lexington-sc",
+  "2b7d06dc"
+ ],
+ "Leyton Orient": [
+  "england",
+  "leyton-orient",
+  "1d142d9c"
+ ],
+ "Lincoln City": [
+  "england",
+  "lincoln-city",
+  "e378c6ba"
+ ],
+ "Los Angeles FC": [
+  "usa",
+  "los-angeles-fc",
+  "58183d43"
+ ],
+ "Loudoun United FC": [
+  "usa",
+  "loudoun-united-fc",
+  "6796b4fc"
+ ],
+ "Louisville City FC": [
+  "usa",
+  "louisville-city-fc",
+  "0f3af73a"
+ ],
+ "Lugo": [
+  "spain",
+  "lugo",
+  "2825f6dd"
+ ],
+ "Lusitânia Lourosa": [
+  "portugal",
+  "lusitania",
+  "3e8fc427"
+ ],
+ "MSV Duisburg": [
+  "germany",
+  "msv-duisburg",
+  "a0e500e9"
+ ],
+ "Mansfield Town": [
+  "england",
+  "mansfield",
+  "24d6e796"
+ ],
+ "Matsumoto Yamaga": [
+  "japan",
+  "matsumoto-yamaga",
+  "988e5f1b"
+ ],
+ "Miami FC": [
+  "usa",
+  "miami-fc",
+  "44086487"
+ ],
+ "Middlesbrough": [
+  "england",
+  "middlesbrough",
+  "0d854b0d"
+ ],
+ "Millwall": [
+  "england",
+  "millwall",
+  "85df2ce1"
+ ],
+ "Milton Keynes Dons": [
+  "england",
+  "mk-dons",
+  "b2775141"
+ ],
+ "Minnesota United": [
+  "usa",
+  "minnesota-united-fc",
+  "898e57ea"
+ ],
+ "Mirandés": [
+  "spain",
+  "mirandes",
+  "4ee1f0f3"
+ ],
+ "Mito Hollyhock": [
+  "japan",
+  "mito-hollyhock",
+  "ee62dfd7"
+ ],
+ "Montedio Yamagata": [
+  "japan",
+  "montedio-yamagata",
+  "b9f9ac60"
+ ],
+ "Monterey Bay FC": [
+  "usa",
+  "monterey-bay-fc",
+  "8c219b7a"
+ ],
+ "Murcia": [
+  "spain",
+  "murcia",
+  "3adcc9f0"
+ ],
+ "Mérida": [
+  "spain",
+  "ad-merida",
+  "2fa2c784"
+ ],
+ "Nagoya Grampus": [
+  "japan",
+  "nagoya-grampus",
+  "627e921e"
+ ],
+ "Nara Club": [
+  "japan",
+  "nara-club",
+  "e69c6844"
+ ],
+ "Nashville SC": [
+  "usa",
+  "nashville-sc",
+  "12de8742"
+ ],
+ "Neuchâtel Xamax": [
+  "switzerland",
+  "xamax",
+  "904b406d"
+ ],
+ "New England Revolution": [
+  "usa",
+  "new-england-revolution",
+  "e4ca7924"
+ ],
+ "New Mexico United": [
+  "usa",
+  "new-mexico-united",
+  "306dc6cd"
+ ],
+ "New York City FC": [
+  "usa",
+  "new-york-city-fc",
+  "4c764572"
+ ],
+ "New York Red Bulls": [
+  "usa",
+  "new-york-red-bulls",
+  "755ecb1b"
+ ],
+ "Newport County": [
+  "england",
+  "newport",
+  "347c0533"
+ ],
+ "Northampton Town": [
+  "england",
+  "northampton",
+  "0cadc12f"
+ ],
+ "Notts County": [
+  "england",
+  "notts-county",
+  "94fa0080"
+ ],
+ "Novara Calcio": [
+  "italy",
+  "novara",
+  "091d80ba"
+ ],
+ "Oakland Roots SC": [
+  "usa",
+  "oakland-roots-sc",
+  "6fe716f5"
+ ],
+ "Oldham Athletic": [
+  "england",
+  "oldham",
+  "1c42f515"
+ ],
+ "Orange County SC": [
+  "usa",
+  "orange-county-sc",
+  "67a14fb3"
+ ],
+ "Orlando City": [
+  "usa",
+  "orlando-city",
+  "fab6258a"
+ ],
+ "Oxford United": [
+  "england",
+  "oxford-united",
+  "a0d84f90"
+ ],
+ "Partick Thistle": [
+  "scotland",
+  "partick",
+  "be3b8416"
+ ],
+ "Peterborough United": [
+  "england",
+  "peterborough",
+  "8886d0d9"
+ ],
+ "Philadelphia Union": [
+  "usa",
+  "philadelphia-union",
+  "8efc6825"
+ ],
+ "Phoenix Rising FC": [
+  "usa",
+  "phoenix-rising-fc",
+  "6ced3c58"
+ ],
+ "Pittsburgh Riverhounds SC": [
+  "usa",
+  "pittsburgh-riverhounds-sc",
+  "42ec6163"
+ ],
+ "Plymouth Argyle": [
+  "england",
+  "plymouth-argyle",
+  "7de2ffcd"
+ ],
+ "Ponferradina": [
+  "spain",
+  "ponferradina",
+  "6b49fa83"
+ ],
+ "Pontevedra": [
+  "spain",
+  "pontevedra-cf",
+  "c9ed0335"
+ ],
+ "Port Vale": [
+  "england",
+  "port-vale",
+  "0a8c7769"
+ ],
+ "Portland Timbers": [
+  "usa",
+  "portland-timbers",
+  "b4d71f64"
+ ],
+ "Portsmouth": [
+  "england",
+  "portsmouth",
+  "7c77b912"
+ ],
+ "Potenza Calcio": [
+  "italy",
+  "potenza",
+  "d54ca888"
+ ],
+ "Preston North End": [
+  "england",
+  "preston-north-end",
+  "38d5b86b"
+ ],
+ "Preußen Münster": [
+  "germany",
+  "preussen-munster",
+  "6ea1b7ef"
+ ],
+ "Queen's Park": [
+  "scotland",
+  "queen-s-park",
+  "75104826"
+ ],
+ "Queens Park Rangers": [
+  "england",
+  "queens-park-rangers",
+  "b0cd3c55"
+ ],
+ "RB Ōmiya Ardija": [
+  "japan",
+  "rb-omiya-ardija",
+  "7566a859"
+ ],
+ "Racing Ferrol": [
+  "spain",
+  "racing-club-ferrol",
+  "2fd51ace"
+ ],
+ "Raith Rovers": [
+  "scotland",
+  "raith",
+  "c0fa6cdd"
+ ],
+ "Rayo Majadahonda": [
+  "spain",
+  "rayo-majadahonda",
+  "d26fb41f"
+ ],
+ "Reading": [
+  "england",
+  "reading",
+  "c23ba703"
+ ],
+ "Real Salt Lake": [
+  "usa",
+  "real-salt-lake",
+  "06e4cbcc"
+ ],
+ "Real Unión": [
+  "spain",
+  "real-union",
+  "acbfb81d"
+ ],
+ "Red Star Paris": [
+  "france",
+  "red-star-fc",
+  "29d0b954"
+ ],
+ "Renofa Yamaguchi FC": [
+  "japan",
+  "renofa-yamaguchi",
+  "d9cd2247"
+ ],
+ "Rhode Island FC": [
+  "usa",
+  "rhode-island",
+  "5e9292c4"
+ ],
+ "Roasso Kumamoto": [
+  "japan",
+  "roasso-kumamoto",
+  "867ed3a1"
+ ],
+ "Rochdale": [
+  "england",
+  "rochdale",
+  "099369ab"
+ ],
+ "Rot-Weiss Essen": [
+  "germany",
+  "essen",
+  "2192fffa"
+ ],
+ "Rot-Weiß Oberhausen": [
+  "germany",
+  "rot-weiss-oberhausen",
+  "4d2aac9d"
+ ],
+ "Rotherham United": [
+  "england",
+  "rotherham",
+  "9d61351c"
+ ],
+ "SC Eltersdorf": [
+  "germany",
+  "sc-eltersdorf",
+  "da2cbc61"
+ ],
+ "SC Fortuna Köln": [
+  "germany",
+  "fortuna-koln",
+  "b067149c"
+ ],
+ "SC Kriens": [
+  "switzerland",
+  "sc-kriens",
+  "77c630e4"
+ ],
+ "SC Sagamihara": [
+  "japan",
+  "sc-sagamihara",
+  "4b85b946"
+ ],
+ "SC União Torreense": [
+  "portugal",
+  "torreense",
+  "fdcc5fe6"
+ ],
+ "SC Verl": [
+  "germany",
+  "sc-verl",
+  "5a054625"
+ ],
+ "SC Weiche Flensburg 08": [
+  "germany",
+  "sc-weiche-flensburg-08",
+  "5d02f864"
+ ],
+ "SC Wiedenbrück": [
+  "germany",
+  "sc-wiedenbruck",
+  "834b981a"
+ ],
+ "SD Eibar": [
+  "spain",
+  "eibar",
+  "a2adb79a"
+ ],
+ "SEF Torres 1903": [
+  "italy",
+  "torres",
+  "e6bce807"
+ ],
+ "SG Barockstadt Fulda-Lehnerz": [
+  "germany",
+  "sg-barockstadt-fulda-lehnerz",
+  "52fe643e"
+ ],
+ "SG Sonnenhof Großaspach": [
+  "germany",
+  "sg-sonnenhof-grossaspach",
+  "5f216dc0"
+ ],
+ "SG Wattenscheid 09": [
+  "germany",
+  "wattenscheid-09",
+  "e635e7ea"
+ ],
+ "SGV Heilbronn-Freiberg": [
+  "germany",
+  "sgv-freiberg",
+  "6107fedc"
+ ],
+ "SK Rapid Wien II": [
+  "austria",
+  "rapid-vienna",
+  "765127d7"
+ ],
+ "SKN St. Pölten": [
+  "austria",
+  "st-polten",
+  "b9e4f49b"
+ ],
+ "SKU Amstetten": [
+  "austria",
+  "amstetten",
+  "85d3dba3"
+ ],
+ "SS Arezzo": [
+  "italy",
+  "arezzo",
+  "b8412f09"
+ ],
+ "SS Audace Cerignola": [
+  "italy",
+  "audace-cerignola",
+  "03111d43"
+ ],
+ "SS Juve Stabia": [
+  "italy",
+  "juve-stabia",
+  "1a3bf91e"
+ ],
+ "SS Monopoli 1966": [
+  "italy",
+  "monopoli",
+  "dd44a059"
+ ],
+ "SSC Bari": [
+  "italy",
+  "bari",
+  "1470b7ae"
+ ],
+ "SSD Città di Campobasso": [
+  "italy",
+  "campobasso",
+  "dbb702d1"
+ ],
+ "SSV Jahn Regensburg": [
+  "germany",
+  "jahn",
+  "bdbca521"
+ ],
+ "SSV Jeddeloh": [
+  "germany",
+  "ssv-jeddeloh-ii",
+  "ad9eb36b"
+ ],
+ "SSV Ulm 1846": [
+  "germany",
+  "ssv-ulm-1846",
+  "86c4bb3b"
+ ],
+ "SV Atlas Delmenhorst": [
+  "germany",
+  "atlas-delmenhorst",
+  "91e4bd8b"
+ ],
+ "SV Austria Salzburg": [
+  "austria",
+  "sv-austria-salzburg",
+  "c32633e7"
+ ],
+ "SV Babelsberg 03": [
+  "germany",
+  "sv-babelsberg-03",
+  "59d43761"
+ ],
+ "SV Bergisch Gladbach 09": [
+  "germany",
+  "bergisch-gladbach-09",
+  "245b7028"
+ ],
+ "SV Drochtersen/Assel": [
+  "germany",
+  "sv-drochtersen-assel",
+  "252bbd90"
+ ],
+ "SV Eintracht Trier": [
+  "germany",
+  "eintracht-trier",
+  "5fce40c3"
+ ],
+ "SV Meppen": [
+  "germany",
+  "meppen",
+  "8a999fa6"
+ ],
+ "SV Rödinghausen": [
+  "germany",
+  "sv-rodinghausen",
+  "547f2b1a"
+ ],
+ "SV Sandhausen": [
+  "germany",
+  "sv-sandhausen",
+  "32b455b3"
+ ],
+ "SV Tasmania Berlin": [
+  "germany",
+  "tasmania-berlin",
+  "a93fdad8"
+ ],
+ "SV Todesfelde": [
+  "germany",
+  "sv-todesfelde",
+  "c7c7bd72"
+ ],
+ "SV Waldhof Mannheim": [
+  "germany",
+  "sv-waldhof-mannheim",
+  "ec293c53"
+ ],
+ "SV Wehen Wiesbaden": [
+  "germany",
+  "wiesbaden",
+  "03df5025"
+ ],
+ "Sacramento Republic FC": [
+  "usa",
+  "sacramento-republic-fc",
+  "ce2f2599"
+ ],
+ "Sagan Tosu": [
+  "japan",
+  "sagan-tosu",
+  "59e9afd8"
+ ],
+ "Salford City": [
+  "england",
+  "salford-city",
+  "d77e5e1b"
+ ],
+ "San Antonio FC": [
+  "usa",
+  "san-antonio-fc",
+  "0be6eee4"
+ ],
+ "San Diego FC": [
+  "usa",
+  "san-diego-fc",
+  "7d70d736"
+ ],
+ "San José Earthquakes": [
+  "usa",
+  "san-jose-earthquakes",
+  "481388a7"
+ ],
+ "Sanfrecce Hiroshima": [
+  "japan",
+  "sanfrecce-hiroshima",
+  "58899603"
+ ],
+ "Sant Andreu": [
+  "spain",
+  "sant-andreu",
+  "53cb0765"
+ ],
+ "Scafatese Calcio": [
+  "italy",
+  "scafatese-calcio-1922",
+  "cdaf1075"
+ ],
+ "Schwarz-Weiß Bregenz": [
+  "austria",
+  "sw-bregenz",
+  "ec81ab5a"
+ ],
+ "Seattle Sounders": [
+  "usa",
+  "seattle-sounders-fc",
+  "2caa9511"
+ ],
+ "Sheffield Wednesday": [
+  "england",
+  "sheffield-wednesday",
+  "7ad23c20"
+ ],
+ "Shimizu S-Pulse": [
+  "japan",
+  "shimizu-s-pulse",
+  "603b19ef"
+ ],
+ "Shonan Bellmare": [
+  "japan",
+  "shonan-bellmare",
+  "b81c4e13"
+ ],
+ "Shrewsbury Town": [
+  "england",
+  "shrewsbury",
+  "41248d2c"
+ ],
+ "Sorrento 1945": [
+  "italy",
+  "sorrento",
+  "0bf61b81"
+ ],
+ "SpVgg Ansbach 09": [
+  "germany",
+  "spvgg-ansbach",
+  "132bb1f5"
+ ],
+ "SpVgg Bayreuth": [
+  "germany",
+  "spvgg-bayreuth",
+  "1167caea"
+ ],
+ "SpVgg Unterhaching": [
+  "germany",
+  "spvgg-unterhaching",
+  "7a3a36b3"
+ ],
+ "Sportfreunde Lotte": [
+  "germany",
+  "sportfreunde-lotte",
+  "2addb7ed"
+ ],
+ "Sportfreunde Siegen": [
+  "germany",
+  "sportfreunde-siegen",
+  "a1b09f64"
+ ],
+ "Sporting Gijón": [
+  "spain",
+  "sporting-gijon",
+  "f20304c6"
+ ],
+ "Sporting Kansas City": [
+  "usa",
+  "sporting-kansas-city",
+  "0cf0bcfd"
+ ],
+ "St. Louis City": [
+  "usa",
+  "st-louis-city-sc",
+  "67e9f585"
+ ],
+ "Stade Laval": [
+  "france",
+  "stade-lavallois",
+  "64f428f6"
+ ],
+ "Stade Nyonnais": [
+  "switzerland",
+  "fc-stade-nyonnais",
+  "810e3627"
+ ],
+ "Stenhousemuir": [
+  "scotland",
+  "stenhousemuir",
+  "176b95e7"
+ ],
+ "Stevenage": [
+  "england",
+  "stevenage",
+  "7f8ae196"
+ ],
+ "Stockport County": [
+  "england",
+  "stockport-county",
+  "1c90fcc8"
+ ],
+ "Stoke City": [
+  "england",
+  "stoke-city",
+  "7a85b65b"
+ ],
+ "Swansea City": [
+  "england",
+  "swansea-city",
+  "8428b77a"
+ ],
+ "Swindon Town": [
+  "england",
+  "swindon-town",
+  "6a6cc94e"
+ ],
+ "TSV 1860 München": [
+  "germany",
+  "tsv-1860-munchen",
+  "ee38107d"
+ ],
+ "TSV Aubstadt": [
+  "germany",
+  "tsv-aubstadt",
+  "fdd8e958"
+ ],
+ "TSV Buchbach": [
+  "germany",
+  "tsv-buchbach",
+  "1b07f3a0"
+ ],
+ "TSV Havelse": [
+  "germany",
+  "tsv-havelse",
+  "20fd5075"
+ ],
+ "TSV Landsberg": [
+  "germany",
+  "tsv-landsberg",
+  "a75e2db6"
+ ],
+ "TSV Steinbach Haiger": [
+  "germany",
+  "tsv-steinbach-haiger",
+  "5faebca3"
+ ],
+ "Tampa Bay Rowdies": [
+  "usa",
+  "tampa-bay-rowdies",
+  "3870cea4"
+ ],
+ "Team Altamura": [
+  "italy",
+  "team-altamura",
+  "c13509e3"
+ ],
+ "Tegevajaro Miyazaki": [
+  "japan",
+  "tegevajaro-miyazaki",
+  "3050de72"
+ ],
+ "Teruel": [
+  "spain",
+  "teruel",
+  "37ed2893"
+ ],
+ "Thespakusatsu Gunma": [
+  "japan",
+  "thespa-gunma",
+  "599942df"
+ ],
+ "Tochigi City FC": [
+  "japan",
+  "tochigi-city",
+  "f9c8d448"
+ ],
+ "Tochigi SC": [
+  "japan",
+  "tochigi-sc",
+  "c93f604b"
+ ],
+ "Tokushima Vortis": [
+  "japan",
+  "tokushima-vortis",
+  "3fc226c4"
+ ],
+ "Tokyo Verdy": [
+  "japan",
+  "tokyo-verdy",
+  "76aa8899"
+ ],
+ "Toronto FC": [
+  "usa",
+  "toronto-fc",
+  "db548c91"
+ ],
+ "Tranmere Rovers": [
+  "england",
+  "tranmere",
+  "bc3814a5"
+ ],
+ "UC AlbinoLeffe": [
+  "italy",
+  "albinoleffe",
+  "06854d07"
+ ],
+ "UD Logroñés": [
+  "spain",
+  "ud-logrones",
+  "3a7b958c"
+ ],
+ "UD Ourense": [
+  "spain",
+  "ud-ourense",
+  "d7044740"
+ ],
+ "US Avellino 1912": [
+  "italy",
+  "us-avellino-1912",
+  "8b089b88"
+ ],
+ "US Boulogne": [
+  "france",
+  "boulogne",
+  "1cf882eb"
+ ],
+ "US Catanzaro 1929": [
+  "italy",
+  "catanzaro",
+  "e56ee508"
+ ],
+ "US Folgore Caratese": [
+  "italy",
+  "folgore-caratese",
+  "753fe7b7"
+ ],
+ "US Grosseto": [
+  "italy",
+  "grosseto",
+  "87f00bf3"
+ ],
+ "US Livorno 1915": [
+  "italy",
+  "livorno",
+  "f8ccce99"
+ ],
+ "US Pergolettese 1932": [
+  "italy",
+  "pergolettese",
+  "54268a5b"
+ ],
+ "US Pianese": [
+  "italy",
+  "pianese",
+  "578b907e"
+ ],
+ "US Sambenedettese": [
+  "italy",
+  "sambenedettese",
+  "6054f3d0"
+ ],
+ "USL Dunkerque": [
+  "france",
+  "dunkerque",
+  "211836d1"
+ ],
+ "Union Brescia": [
+  "italy",
+  "union-brescia",
+  "c34f4a88"
+ ],
+ "Unionistas": [
+  "spain",
+  "unionistas-de-salamanca",
+  "b5046006"
+ ],
+ "União Leiria": [
+  "portugal",
+  "leiria",
+  "b1713c87"
+ ],
+ "Urawa Red Diamonds": [
+  "japan",
+  "urawa-reds",
+  "255e38d4"
+ ],
+ "V-Varen Nagasaki": [
+  "japan",
+  "v-varen-nagasaki",
+  "561bc3bc"
+ ],
+ "VSG Altglienicke": [
+  "germany",
+  "vsg-altglienicke",
+  "8ffec13b"
+ ],
+ "Vancouver Whitecaps": [
+  "usa",
+  "vancouver-whitecaps-fc",
+  "49fe2bdd"
+ ],
+ "Vanraure Hachinohe": [
+  "japan",
+  "vanraure-hachinohe",
+  "1d2b8e63"
+ ],
+ "Vegalta Sendai": [
+  "japan",
+  "vegalta-sendai",
+  "1b77749f"
+ ],
+ "Ventforet Kofu": [
+  "japan",
+  "ventforet-kofu",
+  "36f8e096"
+ ],
+ "VfB 03 Hilden": [
+  "germany",
+  "vfb-hilden",
+  "d26ecbc0"
+ ],
+ "VfB Eichstätt": [
+  "germany",
+  "vfb-eichstatt",
+  "e9a5aeef"
+ ],
+ "VfB Lübeck": [
+  "germany",
+  "vfb-lubeck",
+  "6ad22f88"
+ ],
+ "VfB Oldenburg": [
+  "germany",
+  "vfb-oldenburg",
+  "55e177d1"
+ ],
+ "VfL Osnabrück": [
+  "germany",
+  "osnabruck",
+  "c7ff5d9f"
+ ],
+ "VfR Aalen": [
+  "germany",
+  "vfr-aalen",
+  "12da71e4"
+ ],
+ "VfR Mannheim": [
+  "germany",
+  "vfr-mannheim",
+  "9aab1f0e"
+ ],
+ "Viktoria Köln": [
+  "germany",
+  "fc-viktoria-koln",
+  "5bf26e4d"
+ ],
+ "Virtus Entella": [
+  "italy",
+  "virtus-entella",
+  "a5312c88"
+ ],
+ "Vis Pesaro": [
+  "italy",
+  "vis-pesaro",
+  "7b11bb2a"
+ ],
+ "Vissel Kōbe": [
+  "japan",
+  "vissel-kobe",
+  "c4083472"
+ ],
+ "Wacker Burghausen": [
+  "germany",
+  "wacker-burghausen",
+  "4aac37c5"
+ ],
+ "Walsall": [
+  "england",
+  "walsall",
+  "44782539"
+ ],
+ "West Bromwich Albion": [
+  "england",
+  "west-bromwich-albion",
+  "5b44749d"
+ ],
+ "Westfalia Rhynern": [
+  "germany",
+  "westfalia-rhynern",
+  "dd073dc8"
+ ],
+ "Wigan Athletic": [
+  "england",
+  "wigan",
+  "b29a239b"
+ ],
+ "Wrexham": [
+  "england",
+  "wrexham",
+  "d83ddbbd"
+ ],
+ "Wycombe Wanderers": [
+  "england",
+  "wycombe",
+  "f629e0bd"
+ ],
+ "Würzburger Kickers": [
+  "germany",
+  "wurzburger-kickers",
+  "46fe39cb"
+ ],
+ "Yokohama F. Marinos": [
+  "japan",
+  "yokohama-f-marinos",
+  "85e43725"
+ ],
+ "Yokohama FC": [
+  "japan",
+  "yokohama-fc",
+  "71c92da8"
+ ],
+ "York City": [
+  "england",
+  "york",
+  "6e5989bf"
+ ],
+ "Young Violets Austria Wien": [
+  "austria",
+  "austria-wien",
+  "24f7ffd5"
+ ],
+ "Zamora": [
+  "spain",
+  "zamora",
+  "b13494e3"
+ ],
+ "Zaragoza": [
+  "spain",
+  "zaragoza",
+  "966d5396"
+ ],
+ "Zweigen Kanazawa": [
+  "japan",
+  "zweigen-kanazawa",
+  "d91a67ec"
+ ],
+ "Águilas": [
+  "spain",
+  "aguilas-fc",
+  "1a2727aa"
+ ],
+ "Étoile Carouge FC": [
+  "switzerland",
+  "etoile-carouge-fc",
+  "d76c062a"
+ ],
+ "Ōita Trinita": [
+  "japan",
+  "oita-trinita",
+  "5936eb5a"
+ ]
+}

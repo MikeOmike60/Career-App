@@ -5,6 +5,7 @@ import { Sheet } from "@/ui/primitives";
 import { updateSettings, useSettings } from "@/ui/settings";
 import { tap } from "@/ui/native";
 import clubLogos from "@/data/club-logos.json";
+import { LOGO_COUNTS } from "@/ui/Crest";
 import { loadAiSettings, saveAiSettings, type AiSettings } from "@/ui/fifaFace";
 
 function Toggle({ label, hint, value, onChange }: { label: string; hint: string; value: boolean; onChange: (v: boolean) => void }) {
@@ -186,7 +187,7 @@ export function SettingsSheet({
         )}
 
         <div className="notice tiny muted" style={{ lineHeight: 1.5 }}>
-          Privates, inoffizielles Fanprojekt. Keine Verbindung zu Vereinen, Ligen oder Verbänden. Reale Vereinsnamen für {REAL_DATA_INFO.realNamesCountries} Verbände ({REAL_DATA_INFO.realClubs} Vereine, Stand {REAL_DATA_INFO.generatedAt}). {logoCount} Vereinslogos aus der Sammlung luukhopman/football-logos; alle übrigen Vereine erhalten ein generiertes Wappen. Logos sind Marken der jeweiligen Vereine.
+          Privates, inoffizielles Fanprojekt. Keine Verbindung zu Vereinen, Ligen oder Verbänden. Reale Vereinsnamen für {REAL_DATA_INFO.realNamesCountries} Verbände ({REAL_DATA_INFO.realClubs} Vereine, Stand {REAL_DATA_INFO.generatedAt}). {logoCount} Vereinslogos sind in der App enthalten (Sammlung luukhopman/football-logos), weitere {LOGO_COUNTS.remote} werden bei Bedarf von football-logos.cc geladen und zwischengespeichert. Vereine ohne Logo und alle fiktiven Vereine erhalten ein generiertes Wappen. Logos sind Marken der jeweiligen Vereine.
         </div>
       </div>
     </Sheet>

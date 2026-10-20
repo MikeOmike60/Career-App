@@ -1,14 +1,27 @@
 import { useId, useState } from "react";
 import { hashString } from "@/lib/sim/rng";
 import clubLogos from "@/data/club-logos.json";
+import remoteLogos from "@/data/club-logos-remote.json";
 
 const LOGOS = clubLogos as Record<string, string>;
+const REMOTE = remoteLogos as unknown as Record<string, [string, string, string]>;
 
-/** Pfad zum echten Vereinslogo (falls vorhanden). Relativ, damit es in Capacitor und auf GitHub Pages funktioniert. */
+/** Logo-CDN des football-logos.cc-Katalogs (nur 512 px verfügbar). */
+const REMOTE_BASE = "https://assets.football-logos.cc/logos";
+
+/** Mitgeliefertes Logo (offline verfügbar). Relativ, damit es in Capacitor und auf GitHub Pages funktioniert. */
 export function logoFor(name: string): string | undefined {
   const file = LOGOS[name];
   return file ? `crests/${file}` : undefined;
 }
+
+/** Logo aus dem Online-Katalog; wird beim ersten Laden zwischengespeichert. */
+export function remoteLogoFor(name: string): string | undefined {
+  const entry = REMOTE[name];
+  return entry ? `${REMOTE_BASE}/${entry[0]}/512x512/${entry[1]}.${entry[2]}.png` : undefined;
+}
+
+export const LOGO_COUNTS = { local: Object.keys(LOGOS).length, remote: Object.keys(REMOTE).length };
 
 /** Typische Vereinsfarben-Paare für generierte Wappen. */
 const COLORWAYS: [string, string][] = [
@@ -148,15 +161,26 @@ export function GeneratedCrest({ name, size }: { name: string; size: number }) {
 }
 
 /** Vereinswappen: echtes Logo, wenn vorhanden – sonst generiertes Wappen. */
-export function Crest({ name, size = 32, className }: { name: string; size?: number; className?: string }) {
-  const src = logoFor(name);
+/**
+ * Vereinswappen: mitgeliefertes Logo, sonst Logo aus dem Online-Katalog, sonst
+ * generiertes Wappen. Online-Logos erscheinen erst nach dem Laden – bis dahin
+ * (und offline) steht das generierte Wappen da.
+ * `offline` = nur mitgelieferte Logos (z. B. für den PNG-Export, der keine
+ * fremden Bilder einbetten darf).
+ */
+export function Crest({ name, size = 32, className, offline }: { name: string; size?: number; className?: string; offline?: boolean }) {
+  const local = logoFor(name);
+  const src = local ?? (offline ? undefined : remoteLogoFor(name));
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(Boolean(local));
+  const showImage = src && !failed;
   return (
     <span
       className={className}
-      style={{ width: size, height: size * 1.2, display: "inline-grid", placeItems: "center", flex: "none" }}
+      style={{ position: "relative", width: size, height: size * 1.2, display: "inline-grid", placeItems: "center", flex: "none" }}
     >
-      {src && !failed ? (
+      {(!showImage || !loaded) && <GeneratedCrest name={name} size={size} />}
+      {showImage ? (
         <img
           src={src}
           alt={`Logo ${name}`}
@@ -164,12 +188,18 @@ export function Crest({ name, size = 32, className }: { name: string; size?: num
           height={size}
           loading="lazy"
           decoding="async"
+          onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
-          style={{ width: size, height: size, objectFit: "contain", filter: "drop-shadow(0 2px 3px rgba(0,0,0,.25))" }}
+          style={{
+            position: loaded ? "static" : "absolute",
+            opacity: loaded ? 1 : 0,
+            width: size,
+            height: size,
+            objectFit: "contain",
+            filter: "drop-shadow(0 2px 3px rgba(0,0,0,.25))",
+          }}
         />
-      ) : (
-        <GeneratedCrest name={name} size={size} />
-      )}
+      ) : null}
     </span>
   );
 }

@@ -197,7 +197,7 @@ const CareerCard = forwardRef<HTMLDivElement, { state: GameState; onOpenTrophy: 
         <div className="grid-2">
           {stations.map((st, i) => (
             <div key={`${st.clubId}-${i}`} className="row stat">
-              <Crest name={getClub(st.clubId).name} size={30} />
+              <Crest name={getClub(st.clubId).name} size={30} offline={exporting} />
               <div className="grow">
                 <div className="small break" style={{ fontWeight: 700 }}>
                   {getClub(st.clubId).name}
