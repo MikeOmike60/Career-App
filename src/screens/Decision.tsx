@@ -39,9 +39,10 @@ export function decisionEyebrow(p: PendingDecision): string {
 
 /* ------------------------------------------------------- OVR-Optionen */
 
-function OptionCard({ option, onChoose }: { option: DecisionOption; onChoose: (id: string) => void }) {
+function OptionCard({ option, onChoose, lossStreak = 0 }: { option: DecisionOption; onChoose: (id: string) => void; lossStreak?: number }) {
   const eff = option.ovrEffect;
   const gamble = eff.type === "gamble" ? eff : null;
+  const sure = gamble ? gamble.successChance >= 100 : false;
   return (
     <motion.button
       type="button"
@@ -63,8 +64,11 @@ function OptionCard({ option, onChoose }: { option: DecisionOption; onChoose: (i
         <div className="row" style={{ flexWrap: "wrap", gap: 6 }}>
           {gamble ? (
             <>
+              {gamble && lossStreak > 0 ? (
+                <span className="chip lime">{sure ? "Pechsträhnen-Schutz · sicherer Erfolg" : "Pechsträhnen-Schutz · Chance erhöht"}</span>
+              ) : null}
               <Effect label="OVR" value={`+${gamble.gain} bei Erfolg`} dir="up" />
-              <Effect label="OVR" value={`${gamble.loss} bei Misserfolg`} dir="down" />
+              {!sure && <Effect label="OVR" value={`${gamble.loss} bei Misserfolg`} dir="down" />}
               <Effect label="Chance" value={`${gamble.successChance}%`} />
             </>
           ) : (
@@ -78,10 +82,12 @@ function OptionCard({ option, onChoose }: { option: DecisionOption; onChoose: (i
             <span>+{gamble.gain}</span>
             <span>{gamble.successChance}%</span>
           </span>
-          <span style={{ flex: 100 - gamble.successChance, background: "linear-gradient(90deg,#e05252,#b42727)", padding: "7px 10px", display: "flex", justifyContent: "space-between", minWidth: 0 }}>
-            <span>{gamble.loss}</span>
-            <span>{100 - gamble.successChance}%</span>
-          </span>
+          {!sure && (
+            <span style={{ flex: 100 - gamble.successChance, background: "linear-gradient(90deg,#e05252,#b42727)", padding: "7px 10px", display: "flex", justifyContent: "space-between", minWidth: 0 }}>
+              <span>{gamble.loss}</span>
+              <span>{100 - gamble.successChance}%</span>
+            </span>
+          )}
         </div>
       ) : (
         <div style={{ background: "var(--panel-soft)", borderTop: "1px solid var(--line)", padding: "7px 10px", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 15, color: "var(--muted)" }}>
@@ -300,13 +306,15 @@ export function GambleReveal({ consequence, instant }: { consequence: DecisionLo
             <span>+{g.gain} OVR</span>
             <span>{g.successChance}%</span>
           </motion.div>
-          <motion.div
-            animate={done ? { opacity: win ? 0.25 : 1 } : { opacity: 1 }}
-            style={{ flex: 100 - g.successChance, background: "linear-gradient(90deg,#e05252,#b42727)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 10px" }}
-          >
-            <span>{g.loss}</span>
-            <span>{100 - g.successChance}%</span>
-          </motion.div>
+          {g.successChance < 100 && (
+            <motion.div
+              animate={done ? { opacity: win ? 0.25 : 1 } : { opacity: 1 }}
+              style={{ flex: 100 - g.successChance, background: "linear-gradient(90deg,#e05252,#b42727)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 10px" }}
+            >
+              <span>{g.loss}</span>
+              <span>{100 - g.successChance}%</span>
+            </motion.div>
+          )}
         </div>
         {/* Träger in voller Breite: x in Prozent entspricht der Balkenbreite (nur GPU). */}
         <motion.div animate={controls} initial={{ x: "0%" }} style={{ position: "absolute", top: -8, bottom: -8, left: 0, right: 0, pointerEvents: "none", willChange: "transform" }}>
@@ -380,7 +388,9 @@ export function DecisionSheet({
   onChoose,
   onContinue,
   onClose,
+  lossStreak = 0,
 }: {
+  lossStreak?: number;
   open: boolean;
   pending: PendingDecision | undefined;
   consequence: DecisionLog | undefined;
@@ -431,7 +441,7 @@ export function DecisionSheet({
             {pending.intro}
           </p>
 
-          {pending.kind === "ovr" && pending.options.map((o) => <OptionCard key={o.id} option={o} onChoose={choose} />)}
+          {pending.kind === "ovr" && pending.options.map((o) => <OptionCard key={o.id} option={o} onChoose={choose} lossStreak={lossStreak} />)}
 
           {pending.kind === "club" && (
             <>

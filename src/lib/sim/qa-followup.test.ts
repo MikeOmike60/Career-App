@@ -16,7 +16,7 @@ import { clubsOf, getClub } from "./data";
 import { REGIONS, regionName } from "./regions";
 import { neighborCountries } from "./neighbors";
 import { adjustClubStrength, dynamicStrength, emptyWorld, ensureCountryWorld } from "./world";
-import { makeGamble, streakBonus, CHANCE_STREAK_MAX } from "./gamble";
+import { makeGamble, resolveGamble, streakBonus, CHANCE_STREAK_MAX } from "./gamble";
 import {
   MAX_PROFILES,
   deleteProfile,
@@ -265,15 +265,19 @@ describe("Club-Impact-Grenzen", () => {
 /* ------------------------------------------------------ 6. Gamble-Streak */
 
 describe("Gamble-Streak-Schutz", () => {
-  it("erhöht die Chance nach zwei Verlusten", () => {
+  it("erhöht die Chance schon nach einem Verlust", () => {
     expect(streakBonus(0)).toBe(0);
-    expect(streakBonus(1)).toBe(0);
-    expect(streakBonus(2)).toBeGreaterThan(0);
+    expect(streakBonus(1)).toBeGreaterThan(0);
+    expect(streakBonus(2)).toBeGreaterThan(streakBonus(1));
   });
 
-  it("bleibt bei maximal 92 Prozent", () => {
-    const g = makeGamble(1234, "d1", "risk", 3, 0, 99);
-    expect(g.successChance).toBeLessThanOrEqual(CHANCE_STREAK_MAX);
+  it("bleibt nach einem Verlust unter 100 und garantiert nach zwei Verlusten", () => {
+    for (let i = 0; i < 200; i++) {
+      expect(makeGamble(i, "d1", "risk", 3, 8, 1).successChance).toBeLessThanOrEqual(92);
+      const g = makeGamble(i, "d1", "risk", 3, -8, 2);
+      expect(g.successChance).toBe(CHANCE_STREAK_MAX);
+      expect(resolveGamble(i, "d1", "risk", 3, g).success).toBe(true);
+    }
   });
 
   it("neutrale Wahl setzt die Pechsträhne zurück", () => {

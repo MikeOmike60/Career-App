@@ -76,10 +76,10 @@ describe("Investoren-Projekt · Voraussetzungen", () => {
     expect(buildInvestorDecision(s, subRng(1, "always"), "2030/31")).toBeNull();
   });
 
-  it("steigt mit dem OVR, bleibt aber selten", () => {
+  it("steigt mit dem OVR und bleibt pro Saison unter einem Drittel", () => {
     expect(investorChance(82)).toBeLessThan(investorChance(87));
     expect(investorChance(87)).toBeLessThan(investorChance(93));
-    expect(investorChance(99)).toBeLessThan(0.1);
+    expect(investorChance(99)).toBeLessThanOrEqual(0.3);
   });
 
   it("greift nur im Alterskorridor 20–35", () => {

@@ -5,6 +5,10 @@
  * Verlust -1..-3, sichtbare Erfolgs-%) und eine neutrale (garantiert 0 OVR).
  * Der Verlust ist nie größer als der mögliche Gewinn. Ergebnisse sind
  * deterministisch aus Seed + Decision-ID + Option + Saison.
+ *
+ * Pechsträhnen-Schutz: nach einem Verlust steigt die Chance spürbar, nach zwei
+ * Verlusten in Folge ist der nächste Gamble sicher (100 %). Drei verlorene
+ * Gambles hintereinander gibt es damit nicht mehr.
  */
 import { subRng } from "./rng";
 import type { GambleEffect, NeutralEffect, OvrEffect } from "./types";
@@ -14,11 +18,13 @@ const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(ma
 /** Normaler Korridor der Erfolgschance. */
 export const CHANCE_MIN = 48;
 export const CHANCE_MAX = 75;
-/** Obergrenze mit aktivem Pechsträhnen-Schutz. */
-export const CHANCE_STREAK_MAX = 92;
+/** Obergrenze mit aktivem Pechsträhnen-Schutz (nach zwei Verlusten: sicherer Gewinn). */
+export const CHANCE_STREAK_MAX = 100;
 
 /** Ab so vielen verlorenen Gambles in Folge greift der Pechsträhnen-Schutz. */
-export const STREAK_THRESHOLD = 2;
+export const STREAK_THRESHOLD = 1;
+/** Ab so vielen Verlusten in Folge ist der nächste Gamble garantiert. */
+export const STREAK_GUARANTEE = 2;
 
 export const NEUTRAL: NeutralEffect = { type: "neutral", delta: 0 };
 
@@ -26,10 +32,11 @@ export function neutralEffect(): NeutralEffect {
   return { type: "neutral", delta: 0 };
 }
 
-/** Zusätzliche Prozentpunkte nach verlorenen Gambles in Folge. */
+/** Zusätzliche Prozentpunkte nach verlorenen Gambles in Folge (100 = garantiert). */
 export function streakBonus(lossStreak: number): number {
   if (lossStreak < STREAK_THRESHOLD) return 0;
-  return Math.min(24, 16 + (lossStreak - STREAK_THRESHOLD) * 4);
+  if (lossStreak >= STREAK_GUARANTEE) return 100;
+  return 12;
 }
 
 /**
@@ -56,7 +63,7 @@ export function makeGamble(
   // Größere Gewinne sind etwas seltener erfolgreich.
   const base = rng.int(52, 74) - (gain - 1) * 4;
   const bonus = streakBonus(lossStreak);
-  const max = bonus > 0 ? CHANCE_STREAK_MAX : CHANCE_MAX;
+  const max = bonus >= 100 ? CHANCE_STREAK_MAX : bonus > 0 ? 92 : CHANCE_MAX;
   const successChance = clamp(Math.round(base + bias + bonus), CHANCE_MIN, max);
   return { type: "gamble", gain, loss, successChance };
 }

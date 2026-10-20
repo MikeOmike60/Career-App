@@ -47,12 +47,15 @@ export const INVESTOR_STRENGTH_MAX = 87;
 /** Ein Verein gilt bis zu dieser Stärke als „nicht Elite“. */
 export const INVESTOR_TARGET_MAX_STRENGTH = 77;
 
-/** Seltene, mit dem OVR steigende Chance pro Saison. */
+/**
+ * Mit dem OVR steigende Chance pro Saison. Bewusst spürbar: wer 80+ erreicht,
+ * bekommt das (einmalige) Angebot meist irgendwann in der Karriere.
+ */
 export function investorChance(ovr: number): number {
   if (ovr < INVESTOR_MIN_OVR) return 0;
-  if (ovr >= 90) return 0.07;
-  if (ovr >= 85) return 0.05;
-  return 0.03;
+  if (ovr >= 90) return 0.3;
+  if (ovr >= 85) return 0.22;
+  return 0.15;
 }
 
 /**

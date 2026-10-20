@@ -188,6 +188,7 @@ export function Career({
         onChoose={choose}
         onContinue={continueAfterConsequence}
         onClose={() => setDecisionOpen(false)}
+        lossStreak={state.gambleLossStreak ?? 0}
       />
       <SeasonSheet season={season} state={state} onClose={() => setSeason(null)} onOpenTrophy={setTrophy} />
       <TrophySheet trophy={trophy} onClose={() => setTrophy(null)} />
