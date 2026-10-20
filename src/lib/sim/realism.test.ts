@@ -165,7 +165,7 @@ describe("Entscheidungsfluss", () => {
              * darf danach erneut eine reguläre Saisonentscheidung erzeugen.
              */
             let guard = 0;
-            while (s.pending && guard++ < 20) {
+            while (s.pending && guard++ < 120) {
               expect(["ovr", "club", "comeback", "retirement", "nation"]).toContain(s.pending.kind);
               s = applyDecision(s, decisionOptionIds(s.pending)[0]!);
             }

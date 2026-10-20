@@ -38,7 +38,7 @@ import {
   isBodyFinished,
   nextBodyWear,
   extensionWear,
-  maxCareerAge,
+  HUMAN_AGE_LIMIT,
 } from "./body";
 import {
   STAGNATION_COOLDOWN_MAX,
@@ -475,15 +475,6 @@ export function hasLongevityException(state: GameState): boolean {
   const centuryCareer =
     state.peakOvr >= 93 && state.trophies.some((t) => t.name === "Weltfußballer" || t.name === "Spieler der Saison");
   return p.longevity >= 0.93 && centuryCareer;
-}
-
-/** Spätestens mit diesem Alter ist Schluss (Torhüter und Ausnahme-Legenden etwas später). */
-export function careerAgeLimit(state: GameState): number {
-  return maxCareerAge({
-    goalkeeper: GK(state.profile.pos),
-    longevity: state.player.longevity,
-    legend: hasLongevityException(state),
-  });
 }
 
 /** Umfeldwert 0..1 aus Teamstärke und echter Spielzeit – Bank ist kein Gratiswachstum. */
@@ -988,8 +979,9 @@ function simulateSeason(state: GameState): SeasonRecord {
 
   /**
    * ---------- Körperverschleiß
-   * Der Verschleiß steigt jede Saison strikt monoton und beendet Karrieren
-   * graduell; das Höchstalter (careerAgeLimit) ist die harte Obergrenze.
+   * Ersetzt jedes feste Alterslimit: Der Verschleiß steigt jede Saison strikt
+   * monoton und entscheidet, wann Schluss ist – begrenzt nur durch das
+   * menschenmögliche Alter (HUMAN_AGE_LIMIT).
    */
   const wearBefore = p.bodyWear;
   p.bodyWear = nextBodyWear({
@@ -1633,9 +1625,9 @@ function buildEventDecision(state: GameState, rng: Rng): PendingOvrDecision | nu
 /* ------------------------------------------------------------- Simulation */
 
 /**
- * Ruhestandsabwägung. `retireAge` ist der Zeitpunkt der nächsten Abwägung;
- * jenseits von 35 steigt der Druck deutlich. Das harte Ende liefern
- * Körperverschleiß und Höchstalter (siehe body.ts / careerAgeLimit).
+ * Ruhestandsabwägung – KEIN festes Alterslimit. `retireAge` ist nur der
+ * Zeitpunkt der nächsten Abwägung; ab 32 kommt die Frage etwas früher. Das
+ * echte Ende liefert der Körperverschleiß (siehe body.ts).
  */
 export function checkRetirement(state: GameState, rng: Rng): boolean {
   const p = state.player;
@@ -1737,7 +1729,7 @@ function buildFollowUps(s: GameState, rng: Rng): PendingDecision[] {
 
 /** Wäre die nächste Saison die letzte mögliche, sagt es die Entscheidung offen. */
 function lastSeasonNote(s: GameState, d: PendingRetirementDecision): PendingRetirementDecision {
-  if (s.player.age + 1 < careerAgeLimit(s)) return d;
+  if (s.player.age + 1 < HUMAN_AGE_LIMIT) return d;
   return { ...d, intro: `${d.intro} Eins ist aber klar: Es wäre definitiv deine letzte Saison.` };
 }
 
@@ -1753,13 +1745,13 @@ function runSimulation(s: GameState): GameState {
      * 2. Normale Abwägung -> eigene „Noch ein Jahr?“-Entscheidung nach der OVR-Wahl.
      */
     const bodyDone = s.retirementCause === "body" || isBodyFinished(s.player.bodyWear);
-    const ageDone = !bodyDone && s.player.age >= careerAgeLimit(s);
+    const ageDone = !bodyDone && s.player.age >= HUMAN_AGE_LIMIT;
     if (bodyDone) {
       s.retired = true;
       s.retirementCause = "body";
       s.chunkRemaining = 0;
     } else if (ageDone) {
-      // Höchstalter erreicht – kein „Noch ein Jahr?“ mehr.
+      // Menschenmögliches Alter erreicht – kein „Noch ein Jahr?“ mehr.
       s.retired = true;
       s.retirementCause = "natural";
       s.chunkRemaining = 0;
@@ -1872,7 +1864,8 @@ export function buildComebackDecision(
 function finishCareer(s: GameState): GameState {
   const rng = subRng(s.profile.seed, "comeback", s.comebacks, s.seasonIndex);
   /**
-   * Ein Comeback scheitert am Körper oder am Höchstalter. Nach einem
+   * Kein Altersfenster: ein Comeback scheitert nur am Körper (und am
+   * menschenmöglichen Alter). Nach einem
    * körperlichen Zusammenbruch gibt es keine Rückkehr.
    */
   const comebackYears = rng.int(1, 3);
@@ -1880,7 +1873,7 @@ function finishCareer(s: GameState): GameState {
     !s.comebackChecked &&
     s.comebacks < 1 &&
     s.retirementCause !== "natural" &&
-    s.player.age + comebackYears < careerAgeLimit(s) &&
+    s.player.age + comebackYears < HUMAN_AGE_LIMIT &&
     canComeback(s.player.bodyWear, s.retirementCause) &&
     rng.chance(0.28)
   ) {
@@ -2223,8 +2216,8 @@ export function applyDecision(state: GameState, optionId: string): GameState {
     const chosen = pending.options.find((o) => o.id === optionId);
     if (optionId === "retire-continue") {
       /**
-       * Weitermachen ist erlaubt, solange Körper und Höchstalter es zulassen.
-       * Der Preis ist zusätzlicher Verschleiß.
+       * Weitermachen ist immer erlaubt, solange der Körper trägt – ohne festes
+       * Alterslimit. Der Preis ist zusätzlicher Verschleiß.
        */
       s.player.retirementExtensions += 1;
       s.player.retireAge = s.player.age + 1;
@@ -2268,7 +2261,7 @@ export function applyDecision(state: GameState, optionId: string): GameState {
       s.player.age += gap;
       s.player.ovr = clamp(pending.comebackOvr, 50, 99);
       s.player.fitness = clamp(s.player.fitness - 10, 40, 100);
-      // Der nächste Abwägungszeitpunkt ergibt sich relativ; das Höchstalter gilt weiter.
+      // Kein Alterscap: der nächste Abwägungszeitpunkt ergibt sich rein relativ.
       s.player.retireAge = s.player.age + rng.int(1, 4);
 
       s.player.declineAge = Math.min(s.player.declineAge, s.player.age);
